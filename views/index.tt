@@ -60,6 +60,10 @@
 
         <div id="getting-started">
           <h1>Getting started</h1>
+
+            <h2> Experiment </h2>
+  <div ng-view></div>
+
           <h2>Here&rsquo;s how to get dancing:</h2>
 
           <h3><a href="#" id="about_env_link">About your application's environment</a></h3>

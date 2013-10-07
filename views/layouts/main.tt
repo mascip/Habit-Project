@@ -3,7 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=<% settings.charset %>" />
-<title>HabitLab</title>
+<meta charset="utf-8">
+
+<title>The Habit Lab</title>
+
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" href="css/normalize.css">
+<link rel="stylesheet" type="text/css" href="css/webflow.css">
+<link rel="stylesheet" type="text/css" href="css/thehabitslab.webflow.css">
 <link rel="stylesheet" href="<% request.uri_base %>/css/style.css" />
 <link rel="stylesheet" href="css/app.css"/>
 
@@ -15,19 +24,26 @@
 
 </head>
 <body>
-<% content %>
+
+    <% content %>
+
 <div id="footer">
 Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>
 </div>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-  -->
   <script src="js-libs/angular/angular.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
+    <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    -->
+    <!-- <script src="js-libs/jsscript/jsscript.min.js"></script> -->
+
+<!-- My JS libraries -->
+  <script src="app.coffee"></script>
+  <script src="services.coffee"></script>
+  <script src="controllers.coffee"></script>
+  <script src="filters.coffee"></script>
+  <script src="directives.coffee"></script>
+<!-- END My JS libraries -->
+  
 </body>
 </html>

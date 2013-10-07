@@ -1,10 +1,12 @@
 package HabitLab;
+use strict;
+use warnings;
 use Dancer2;
 
 our $VERSION = '0.1';
 
 get '/' => sub {
-    template 'index';
+    template 'index2';
 };
 
-true;
+1;

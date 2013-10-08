@@ -9,6 +9,8 @@ use autodie qw( :all );
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 
+use IO::All;
+
 use HabitLab;
 use Plack::Builder;
 
@@ -30,7 +32,8 @@ builder {
         compile => sub {
             my ( $in, $out ) = @_;
             say "    * IN: $in, OUT: $out";
-            system("coffee --compile --stdio < $in > $out");
+            #system("coffee --compile --map -o public/coffee $in");
+            system("coffee --compile --map --stdio < $in > $out");
         }
     );
 

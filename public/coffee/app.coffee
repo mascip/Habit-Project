@@ -11,17 +11,12 @@ app.config ['$routeProvider', ($routeProvider) ->
     templateUrl: 'partials/partial1.html'
     controller: 'myCtrl1'
 
-  $routeProvider.when '/view2',
-    templateUrl: 'partials/partial2.html'
-    controller: 'myCtrl2'
-
-  $routeProvider.when '/view3',
-    templateUrl: 'partials/partial3.html'
-    controller: 'myCtrl3'
 
 
   $routeProvider.otherwise
-    redirectTo: '/view1'
+    redirectTo: '/'
+    templateUrl: 'partials/UserBoard.html'
+    controller: 'CtrlUserBoard'
 ]
 
 #angular.bootstrap document, [app_name]

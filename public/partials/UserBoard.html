@@ -1,0 +1,39 @@
+  <div>
+    <div class="w-row">
+      <div class="w-col w-col-6">
+        <div class="w-container display-area">
+          <h2>Pierre M.</h2>
+          <div class="w-container">
+            <div>
+                <img class="previous-date" src="images/left.jpg" width="20" alt="left.jpg">
+                <div class="date">Mon 19 Sept.</div>
+                <img class="next-date" src="images/right.jpg" width="20" alt="right.jpg">
+            </div>
+            <div class="w-row" ng-repeat='habit in habits'>
+                <div class="w-col w-col-2">
+                    <img class="habit-tickbox" ng-click=habit.clicked() src="{{checkboxImages[habit.ticked]}}" width="30s" alt={{checkboxImages[habit.ticked]}}>
+                </div>
+                <div class="w-col w-col-6">
+                    <div class="habit-name">{{habit.name}}</div>
+                </div>
+                <div class="w-col w-col-2">
+                    <div class="habit-streak">{{habit.streak}}</div>
+                </div>
+                <div class="w-col w-col-2">
+                    <div class="habit-result">18/21</div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="w-container rounded-container team-area">
+          <h2>Team Zen</h2>
+        </div>
+      </div>
+      <div class="w-col w-col-6">
+        <div class="w-container rounded-container chat-area">
+          <h2>Chat area...</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+    

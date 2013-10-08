@@ -40,30 +40,29 @@
           this.name = name;
           this.pastResults = pastResults;
           this.clicked = __bind(this.clicked, this);
-          this.streak = _.last(this.pastResults);
+          alert(this.pastResults);
+          this.streak = this.pastResults[0];
         }
 
         Habit.prototype.ticked = 0;
 
-        Habit.prototype.previousStreak = function() {
-          return _.last(this.pastResults);
-        };
+        Habit.previousStreak = Habit.pastResults[0];
 
         Habit.prototype.increaseStreak = function() {
-          if (this.previousStreak() > 1) {
-            return this.previousStreak() + 1;
+          if (this.previousStreak > 1) {
+            return this.previousStreak + 1;
           } else {
             return 1;
           }
         };
 
         Habit.prototype.sameStreak = function() {
-          return this.previousStreak();
+          return this.previousStreak;
         };
 
         Habit.prototype.failedStreak = function() {
-          if (this.previousStreak() < 0) {
-            return this.previousStreak() - 1;
+          if (this.previousStreak < 0) {
+            return this.previousStreak - 1;
           } else {
             return -1;
           }

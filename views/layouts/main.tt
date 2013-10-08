@@ -31,6 +31,8 @@
 Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>
 </div>
 
+  <script src="js-libs/lodash/lodash.js"></script>
+  <!-- in production use minified version -->
   <script src="js-libs/angular/angular.js"></script>
     <!-- In production use:
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>

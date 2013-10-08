@@ -1,4 +1,36 @@
 'use strict'
+        
+today = new Date().toJSON()
+
+class Habit
+    # A habit and the user's results to display for this habit
+    # @name: the name of the habit (eg:meditation)
+    # @streakXdaysAgo: a JSON with {NbDaysInThePast: streak} pairs
+    constructor: (@name, @streakXdaysAgo) ->
+        @streak = @streakXdaysAgo[1]
+
+    ticked: 0
+
+
+
+    previousStreak: -> @streakXdaysAgo[1]
+
+    increaseStreak: -> 
+        if @previousStreak() > 1 then @previousStreak() + 1 else 1
+
+    sameStreak: -> 
+        @previousStreak()
+
+    failedStreak: -> 
+        if @previousStreak() < 0 then @previousStreak() - 1 else -1
+
+    clicked: =>
+        @ticked = (@ticked + 1) % 3  
+        @streak = switch
+            when @ticked == 1 then @increaseStreak()
+            when @ticked == 2 then @failedStreak()
+            else @sameStreak()
+
 
 ### Controllers ###
 
@@ -27,34 +59,9 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
     ]
 
 
-    class Habit
-        constructor: (@name, @pastResults) ->
-            @streak = _.last @pastResults
-
-        ticked: 0
-
-        previousStreak: -> _.last @pastResults
-
-        increaseStreak: -> 
-            if @previousStreak() > 1 then @previousStreak() + 1 else 1
-
-        sameStreak: -> 
-            @previousStreak()
-
-        failedStreak: -> 
-            if @previousStreak() < 0 then @previousStreak() - 1 else -1
-
-        clicked: =>
-            @ticked = (@ticked + 1) % 3  
-            @streak = switch
-                when @ticked == 1 then @increaseStreak()
-                when @ticked == 2 then @failedStreak()
-                else @sameStreak()
-
-
     $scope.habits = [ 
-        new Habit 'meditation', [-2]
-        new Habit 'exercise', [5]
+        new Habit 'meditation', {1: -2}
+        new Habit 'exercise', {1: 5}
     ]
 ]
 

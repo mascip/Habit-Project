@@ -60,8 +60,8 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
 
 
     $scope.habits = [ 
-        new Habit 'meditation', {1: -2}
-        new Habit 'exercise', {1: 5}
+        new Habit 'meditation', {1: -2, 2: -1}
+        new Habit 'exercise', {1: 5, 2: 4}
     ]
 ]
 

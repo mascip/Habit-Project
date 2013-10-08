@@ -91,9 +91,11 @@
       $scope.checkboxImages = ["images/unchecked_checkbox.png", "images/tick-green.png", "images/red-cross.png"];
       return $scope.habits = [
         new Habit('meditation', {
-          1: -2
+          1: -2,
+          2: -1
         }), new Habit('exercise', {
-          1: 5
+          1: 5,
+          2: 4
         })
       ];
     }

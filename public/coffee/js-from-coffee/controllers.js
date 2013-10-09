@@ -21,9 +21,8 @@
       this.previousResults = previousResults;
       this.clicked = __bind(this.clicked, this);
       this.streak = this.previousResults[0].streak;
+      this.ticked = 0;
     }
-
-    Habit.prototype.ticked = 0;
 
     Habit.prototype.previousStreak = function() {
       return this.previousResults[0].streak;
@@ -74,16 +73,6 @@
 
   app = angular.module("" + app_name + ".controllers", []);
 
-  app.controller('myCtrl1', [
-    '$scope', function($scope) {
-      $scope.name = "view 1";
-      $scope.say = function() {
-        return window.alert.apply(window, arguments);
-      };
-      return $scope.test = 4;
-    }
-  ]);
-
   app.controller('myCtrl2', [
     '$scope', function($scope) {
       return $scope.test = 2;
@@ -92,11 +81,6 @@
 
   app.controller('CtrlUserBoard', [
     '$scope', function($scope) {
-      $scope.name = "view 3";
-      $scope.say = function() {
-        return window.alert.apply(window, arguments);
-      };
-      $scope.test = 4;
       $scope.checkboxImages = ["images/unchecked_checkbox.png", "images/tick-green.png", "images/red-cross.png"];
       return $scope.habits = [
         new Habit('meditation', [
@@ -110,6 +94,18 @@
             dateTime: moment().subtract(2),
             ticked: 1,
             streak: 4
+          })
+        ]), new Habit('exercise', [
+          new SingleResult({
+            day: moment().subtract(1).startOf('day'),
+            dateTime: moment().subtract(1),
+            ticked: 0,
+            streak: -1
+          }), new SingleResult({
+            day: moment().subtract(2).startOf('day'),
+            dateTime: moment().subtract(2),
+            ticked: 1,
+            streak: 28
           })
         ])
       ];

@@ -15,19 +15,15 @@ class Habit
         #alert(JSON.stringify(@previousResults))
         #alert(JSON.stringify(@previousResults[0]))
         @streak = @previousResults[0].streak
-
-    ticked: 0
+        @ticked = 0
 
     previousStreak: -> @previousResults[0].streak
 
-    increaseStreak: -> 
-        if @previousStreak() > 1 then @previousStreak() + 1 else 1
+    increaseStreak: -> if @previousStreak() > 1 then @previousStreak() + 1 else 1
 
-    sameStreak: -> 
-        @previousStreak()
+    sameStreak: -> @previousStreak()
 
-    failedStreak: -> 
-        if @previousStreak() < 0 then @previousStreak() - 1 else -1
+    failedStreak: -> if @previousStreak() < 0 then @previousStreak() - 1 else -1
 
     clicked: =>
         @ticked = (@ticked + 1) % 3  
@@ -69,9 +65,21 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
                     ticked: 1
                     streak: 4
             ]
+        new Habit 'exercise', [
+                new SingleResult
+                    day: moment().subtract(1).startOf('day')
+                    dateTime: moment().subtract(1)
+                    ticked: 0
+                    streak: -1
+                    ,
+                new SingleResult
+                    day: moment().subtract(2).startOf('day')
+                    dateTime: moment().subtract(2)
+                    ticked: 1
+                    streak: 28
+            ]
 
         
-        #new Habit 'exercise', {1: 5, 2: 4}
     ]
 
 ]

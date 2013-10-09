@@ -1,19 +1,24 @@
 'use strict'
         
-today = new Date().toJSON()
+today = moment().startOf('day')
+
+class SingleResult
+    constructor: ({@day, @dateTime, @ticked, @streak}) ->
+        #alert('SingleResult: ' + @day + ' - ' + @dateTime+' - ' + @ticked+' - ' + @streak)
+
 
 class Habit
     # A habit and the user's results to display for this habit
     # @name: the name of the habit (eg:meditation)
     # @streakXdaysAgo: a JSON with {NbDaysInThePast: streak} pairs
-    constructor: (@name, @streakXdaysAgo) ->
-        @streak = @streakXdaysAgo[1]
+    constructor: (@name, @previousResults) ->
+        #alert(JSON.stringify(@previousResults))
+        #alert(JSON.stringify(@previousResults[0]))
+        @streak = @previousResults[0].streak
 
     ticked: 0
 
-
-
-    previousStreak: -> @streakXdaysAgo[1]
+    previousStreak: -> @previousResults[0].streak
 
     increaseStreak: -> 
         if @previousStreak() > 1 then @previousStreak() + 1 else 1
@@ -37,20 +42,11 @@ class Habit
 app_name = "myApp"
 app = angular.module "#{app_name}.controllers", []
 
-app.controller 'myCtrl1', ['$scope', ($scope) ->
-    $scope.name = "view 1"
-    $scope.say = -> window.alert.apply window, arguments
-    $scope.test = 4;
-  ]
-
 app.controller 'myCtrl2', ['$scope', ($scope) -> 
         $scope.test = 2;
-    ]
+]
 
 app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
-    $scope.name = "view 3"
-    $scope.say = -> window.alert.apply window, arguments
-    $scope.test = 4;
 
     $scope.checkboxImages = [
         "images/unchecked_checkbox.png",
@@ -60,8 +56,23 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
 
 
     $scope.habits = [ 
-        new Habit 'meditation', {1: -2, 2: -1}
-        new Habit 'exercise', {1: 5, 2: 4}
+        new Habit 'meditation', [
+                new SingleResult
+                    day: moment().subtract(1).startOf('day')
+                    dateTime: moment().subtract(1)
+                    ticked: 1
+                    streak: 5
+                    ,
+                new SingleResult
+                    day: moment().subtract(2).startOf('day')
+                    dateTime: moment().subtract(2)
+                    ticked: 1
+                    streak: 4
+            ]
+
+        
+        #new Habit 'exercise', {1: 5, 2: 4}
     ]
+
 ]
 

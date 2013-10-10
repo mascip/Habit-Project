@@ -21,22 +21,19 @@ class Habit
             ticked: 0
         @nextResults = {}
 
-
     previousStreak: -> @previousResults[0].streak
 
-    increaseStreak: -> if @previousStreak() > 1 then @previousStreak() + 1 else 1
-
-    sameStreak: -> @previousStreak()
-
-    failedStreak: -> if @previousStreak() < 0 then @previousStreak() - 1 else -1
-
     clicked: =>
-        @selectedResult.ticked = (@selectedResult.ticked + 1) % 3  
+        tickedOld = @selectedResult.ticked
+        @selectedResult.ticked = (tickedOld + 1) % 3  
         @selectedResult.streak = switch
-            when @selectedResult.ticked == 1 then @increaseStreak()
-            when @selectedResult.ticked == 2 then @failedStreak()
+            when tickedOld == 1 then @increaseStreak()
+            when tickedOld == 2 then @failedStreak()
             else @sameStreak()
 
+    increaseStreak: -> if @previousStreak() > 1 then @previousStreak() + 1 else 1
+    sameStreak: -> @previousStreak()
+    failedStreak: -> if @previousStreak() < 0 then @previousStreak() - 1 else -1
 
 ### Controllers ###
 

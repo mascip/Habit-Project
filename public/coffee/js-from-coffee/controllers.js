@@ -31,6 +31,22 @@
       return this.previousResults[0].streak;
     };
 
+    Habit.prototype.clicked = function() {
+      var tickedOld;
+      tickedOld = this.selectedResult.ticked;
+      this.selectedResult.ticked = (tickedOld + 1) % 3;
+      return this.selectedResult.streak = (function() {
+        switch (false) {
+          case tickedOld !== 1:
+            return this.increaseStreak();
+          case tickedOld !== 2:
+            return this.failedStreak();
+          default:
+            return this.sameStreak();
+        }
+      }).call(this);
+    };
+
     Habit.prototype.increaseStreak = function() {
       if (this.previousStreak() > 1) {
         return this.previousStreak() + 1;
@@ -49,20 +65,6 @@
       } else {
         return -1;
       }
-    };
-
-    Habit.prototype.clicked = function() {
-      this.selectedResult.ticked = (this.selectedResult.ticked + 1) % 3;
-      return this.selectedResult.streak = (function() {
-        switch (false) {
-          case this.selectedResult.ticked !== 1:
-            return this.increaseStreak();
-          case this.selectedResult.ticked !== 2:
-            return this.failedStreak();
-          default:
-            return this.sameStreak();
-        }
-      }).call(this);
     };
 
     return Habit;

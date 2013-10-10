@@ -120,7 +120,7 @@
 
   app.controller('CtrlUserBoard', [
     '$scope', function($scope) {
-      var createResults, createSingleResult, exer, medit, now, selectedDay;
+      var createResults, createSingleResult, now, selectedDay;
       now = moment();
       selectedDay = now.startOf('day');
       $scope.displayedDay = selectedDay.valueOf();
@@ -140,9 +140,7 @@
           return createSingleResult.apply(null, args);
         });
       };
-      exer = new Habit('exercise', createResults([10, 1, 1], [9, 1, 2], [8, 1, 3], [7, 1, 4], [6, 1, 5], [5, 1, 6], [4, 1, 7], [3, 1, 8], [2, 2, -1], [1, 2, -2]));
-      medit = new Habit('meditation', createResults([5, 1, 1], [4, 1, 2], [3, 1, 3], [2, 1, 4], [1, 1, 5]));
-      $scope.habits = [exer, medit];
+      $scope.habits = [new Habit('exercise', createResults([10, 1, 1], [9, 1, 2], [8, 1, 3], [7, 1, 4], [6, 1, 5], [5, 1, 6], [4, 1, 7], [3, 1, 8], [2, 2, -1], [1, 2, -2])), new Habit('meditation', createResults([5, 1, 1], [4, 1, 2], [3, 1, 3], [2, 1, 4], [1, 1, 5]))];
       return $scope.selectPrevDay = function() {
         var habit, _i, _len, _ref, _results;
         selectedDay.subtract('days', 1);

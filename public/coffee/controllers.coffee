@@ -20,26 +20,26 @@ class Habit
             day: moment().startOf('day')
             dateTime: 0
             streak: _.first(prevResults).streak
-            ticked: 0
+            ticked: 'unknown'
         
         # All results
         @results = _.clone prevResults
         @results.unshift(_.clone @currentResult)
         
         # Which day is displayed to the user (nb of days ago. 0 is today)
-        @daySelected = 0
+        @dayIdx = 0
         
 
     ticked: -> @selectedResult().ticked
 
     streak: -> @selectedResult().streak
 
-    selectedResult: -> @results[@daySelected]
+    selectedResult: -> @results[@dayIdx]
 
     calcStreak: (tick, prevStreak) -> switch
-        when tick == 0 then prevStreak
-        when tick == 1 then @increaseStreak(prevStreak)
-        when tick == 2 then @decreaseStreak(prevStreak)
+        when tick == 'unknown' then prevStreak
+        when tick == 'done' then @increaseStreak(prevStreak)
+        when tick == 'failed' then @decreaseStreak(prevStreak)
 
     firstResult: -> _.last @results
 
@@ -48,18 +48,28 @@ class Habit
             @results[i-1].streak =  @calcStreak(@results[i-1].ticked, @results[i].streak)
 
         # update the first streak in the list
-        @firstResult().streak = @calcStreak(@firstResult().ticked, 0)
+        @firstResult().streak = @calcStreak(@firstResult().ticked, 'unknown')
 
-    clicked: =>
+    clickTick: =>
+        # Once you've ticked it, you HAVE to say whether the habit is done or not
+        @selectedResult().ticked = switch
+            when @ticked() == 'unknown' then 'done'
+            when @ticked() == 'done'    then 'failed'
+            when @ticked() == 'failed'  then 'done'
+            else 'failed'
+        
         # Change the current tick
-        @selectedResult().ticked = (@ticked() + 1) % 3
+        #@selectedResult().ticked = (@ticked() + 1) % 3
 
         # Update all streak values
         @updateAllStreaks()
 
-    clickPrevDay: -> @daySelected++  # One MORE day in the past 
+    selectedDay: -> @results[@dayIdx].day
+
+    clickPrevDay: -> @dayIdx++  # One MORE day in the past 
+    clickNextDay: -> @dayIdx--  # One LESS day in the past 
         
-    doesntExist: -> @daySelected >= @results.length
+    doesntExistYet: -> @dayIdx >= @results.length
 
     increaseStreak: (prevStk) -> if prevStk > 0 then prevStk + 1 else 1
     decreaseStreak: (prevStk) -> if prevStk < 0 then prevStk - 1 else -1
@@ -86,21 +96,23 @@ app.controller 'myCtrl2', ['$scope', ($scope) ->
         $scope.test = 2;
 ]
 
-
 app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
 
-
+    # Days
     now = moment()
-    selectedDay = now.startOf('day')
+    today = now.startOf('day')
+    selectedDay = moment(today)
     $scope.displayedDay = selectedDay.valueOf()
         # AngularJS wants milliseconds, valueOf() gives milliseconds
 
-    $scope.checkboxImages = [
-        "images/unchecked_checkbox.png",
-        "images/tick-green.png",
-        "images/red-cross.png",
-    ]
+    # Images for tick-boxes
+    $scope.checkboxImages = 
+        unknown:    "images/unchecked_checkbox.png"
+        done:       "images/tick-green.png"
+        failed:     "images/red-cross.png"
 
+
+        # Helper functions to create data, for test
     createSingleResult = (daysAgo, tck, strk) ->
         new SingleResult
             day: moment().subtract('days',daysAgo).startOf('day')
@@ -110,21 +122,27 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
 
     createResults = (resultsArgs...) ->
         results = _.map(resultsArgs, (args) -> 
-                #createSingleResult.apply(this,args)
-                createSingleResult(args...)
-            )
-
-        
+            #createSingleResult.apply(this,args)
+            createSingleResult(args...)
+        )
+   
 
     $scope.habits = [ 
-        new Habit 'meditation', createResults([1,1,5], [2,1,4], [3,1,3], [4,1,2], [5,1,1])
-        new Habit 'exercise', createResults([1,1,10], [2,1,9], [3,1,8], [4,1,7], [5,1,6], [6,1,5], [7,1,4], [8,1,3], [9,2,-1], [10,2,-2]) 
+        new Habit 'meditation', createResults([1,'done',5], [2,'done',4], [3,'done',3], [4,'done',2], [5,'done',1])
+        new Habit 'exercise', createResults([1,'failed',-2], [2,'failed',-1], [3,'done',8], [4,'done',7], [5,'done',6], [6,'done',5], [7,'done',4], [8,'done',3], [9,'done',2], [10,'done',1]) 
     ]
+
+    $scope.thisIsToday = -> selectedDay.isSame(today)
 
     $scope.clickPrevDay = ->
         selectedDay.subtract('days',1)
         $scope.displayedDay = selectedDay.valueOf()
         habit.clickPrevDay() for habit in $scope.habits
+    
+    $scope.clickNextDay = ->
+        selectedDay.add('days',1)
+        $scope.displayedDay = selectedDay.valueOf()
+        habit.clickNextDay() for habit in $scope.habits
 
+ 
 ]
-

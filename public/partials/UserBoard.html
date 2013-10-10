@@ -7,12 +7,12 @@
                     <div>
                         <img class="previous-date" ng-click=clickPrevDay() src="images/left.jpg" width="20" alt="left.jpg">
                         <div class="date">{{displayedDay | date:'EEE d MMM'}}</div>
-                        <img class="next-date" src="images/right.jpg" width="20" alt="right.jpg">
+                        <img class="next-date" ng-click=clickNextDay() src="images/right.jpg" width="20" alt="right.jpg" ng-hide=thisIsToday()>
                     </div>
                     <span ng-repeat='habit in habits'>
-                        <div class="w-row" ng-hide=habit.doesntExist()> 
+                        <div class="w-row" ng-hide=habit.doesntExistYet()> 
                             <div class="w-col w-col-2">
-                                <img class="habit-tickbox" ng-click=habit.clicked() src="{{checkboxImages[habit.ticked()]}}" width="30s" alt="TODO: describe checkbox result"/>
+                                <img class="habit-tickbox" ng-click=habit.clickTick() src="{{checkboxImages[habit.ticked()]}}" width="30s" alt="TODO: describe checkbox result"/>
                             </div>
                             <div class="w-col w-col-6">
                                 <div class="habit-name">{{habit.name}}</div>
@@ -22,7 +22,7 @@
                             </div>
                             <div class="w-col w-col-2">
                                 <div class="habit-result">
-                                    <span ng-repeat='result in habit.results.slice(0).reverse()'>{{result.ticked}}={{result.streak}}<span ng-hide=$last> , </span></span>
+                                    <span ng-repeat='result in habit.results.slice(0).reverse()'><span ng-show='result.day.isSame(habit.selectedDay())'>**</span>{{result.streak}}<span ng-hide=$last> , </span></span>
                                 </div>
                                 <!-- <div class="habit-result">18/21</div> -->
                             </div>

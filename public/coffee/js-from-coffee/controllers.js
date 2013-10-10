@@ -17,16 +17,16 @@
   Habit = (function() {
     function Habit(name, prevResults) {
       this.name = name;
-      this.clicked = __bind(this.clicked, this);
+      this.clickTick = __bind(this.clickTick, this);
       this.currentResult = {
         day: moment().startOf('day'),
         dateTime: 0,
         streak: _.first(prevResults).streak,
-        ticked: 0
+        ticked: 'unknown'
       };
       this.results = _.clone(prevResults);
       this.results.unshift(_.clone(this.currentResult));
-      this.daySelected = 0;
+      this.dayIdx = 0;
     }
 
     Habit.prototype.ticked = function() {
@@ -38,16 +38,16 @@
     };
 
     Habit.prototype.selectedResult = function() {
-      return this.results[this.daySelected];
+      return this.results[this.dayIdx];
     };
 
     Habit.prototype.calcStreak = function(tick, prevStreak) {
       switch (false) {
-        case tick !== 0:
+        case tick !== 'unknown':
           return prevStreak;
-        case tick !== 1:
+        case tick !== 'done':
           return this.increaseStreak(prevStreak);
-        case tick !== 2:
+        case tick !== 'failed':
           return this.decreaseStreak(prevStreak);
       }
     };
@@ -61,20 +61,39 @@
       for (i = _i = _ref = this.results.length - 1; _ref <= 1 ? _i <= 1 : _i >= 1; i = _ref <= 1 ? ++_i : --_i) {
         this.results[i - 1].streak = this.calcStreak(this.results[i - 1].ticked, this.results[i].streak);
       }
-      return this.firstResult().streak = this.calcStreak(this.firstResult().ticked, 0);
+      return this.firstResult().streak = this.calcStreak(this.firstResult().ticked, 'unknown');
     };
 
-    Habit.prototype.clicked = function() {
-      this.selectedResult().ticked = (this.ticked() + 1) % 3;
+    Habit.prototype.clickTick = function() {
+      this.selectedResult().ticked = (function() {
+        switch (false) {
+          case this.ticked() !== 'unknown':
+            return 'done';
+          case this.ticked() !== 'done':
+            return 'failed';
+          case this.ticked() !== 'failed':
+            return 'done';
+          default:
+            return 'failed';
+        }
+      }).call(this);
       return this.updateAllStreaks();
     };
 
-    Habit.prototype.clickPrevDay = function() {
-      return this.daySelected++;
+    Habit.prototype.selectedDay = function() {
+      return this.results[this.dayIdx].day;
     };
 
-    Habit.prototype.doesntExist = function() {
-      return this.daySelected >= this.results.length;
+    Habit.prototype.clickPrevDay = function() {
+      return this.dayIdx++;
+    };
+
+    Habit.prototype.clickNextDay = function() {
+      return this.dayIdx--;
+    };
+
+    Habit.prototype.doesntExistYet = function() {
+      return this.dayIdx >= this.results.length;
     };
 
     Habit.prototype.increaseStreak = function(prevStk) {
@@ -116,11 +135,16 @@
 
   app.controller('CtrlUserBoard', [
     '$scope', function($scope) {
-      var createResults, createSingleResult, now, selectedDay;
+      var createResults, createSingleResult, now, selectedDay, today;
       now = moment();
-      selectedDay = now.startOf('day');
+      today = now.startOf('day');
+      selectedDay = moment(today);
       $scope.displayedDay = selectedDay.valueOf();
-      $scope.checkboxImages = ["images/unchecked_checkbox.png", "images/tick-green.png", "images/red-cross.png"];
+      $scope.checkboxImages = {
+        unknown: "images/unchecked_checkbox.png",
+        done: "images/tick-green.png",
+        failed: "images/red-cross.png"
+      };
       createSingleResult = function(daysAgo, tck, strk) {
         return new SingleResult({
           day: moment().subtract('days', daysAgo).startOf('day'),
@@ -136,8 +160,11 @@
           return createSingleResult.apply(null, args);
         });
       };
-      $scope.habits = [new Habit('meditation', createResults([1, 1, 5], [2, 1, 4], [3, 1, 3], [4, 1, 2], [5, 1, 1])), new Habit('exercise', createResults([1, 1, 10], [2, 1, 9], [3, 1, 8], [4, 1, 7], [5, 1, 6], [6, 1, 5], [7, 1, 4], [8, 1, 3], [9, 2, -1], [10, 2, -2]))];
-      return $scope.clickPrevDay = function() {
+      $scope.habits = [new Habit('meditation', createResults([1, 'done', 5], [2, 'done', 4], [3, 'done', 3], [4, 'done', 2], [5, 'done', 1])), new Habit('exercise', createResults([1, 'failed', -2], [2, 'failed', -1], [3, 'done', 8], [4, 'done', 7], [5, 'done', 6], [6, 'done', 5], [7, 'done', 4], [8, 'done', 3], [9, 'done', 2], [10, 'done', 1]))];
+      $scope.thisIsToday = function() {
+        return selectedDay.isSame(today);
+      };
+      $scope.clickPrevDay = function() {
         var habit, _i, _len, _ref, _results;
         selectedDay.subtract('days', 1);
         $scope.displayedDay = selectedDay.valueOf();
@@ -146,6 +173,18 @@
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           habit = _ref[_i];
           _results.push(habit.clickPrevDay());
+        }
+        return _results;
+      };
+      return $scope.clickNextDay = function() {
+        var habit, _i, _len, _ref, _results;
+        selectedDay.add('days', 1);
+        $scope.displayedDay = selectedDay.valueOf();
+        _ref = $scope.habits;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          habit = _ref[_i];
+          _results.push(habit.clickNextDay());
         }
         return _results;
       };

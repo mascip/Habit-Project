@@ -2,7 +2,8 @@
 (function() {
   'use strict';
   var Habit, SingleResult, app, app_name,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __slice = [].slice;
 
   SingleResult = (function() {
     function SingleResult(_arg) {
@@ -21,35 +22,49 @@
       this.selectedResult = {
         day: moment().startOf('day'),
         dateTime: 0,
-        streak: this.prevResults[0].streak,
+        streak: _.last(this.prevResults).streak,
         ticked: 0
       };
       this.nextResults = [];
-      this.allTicked = _.pluck(this.allResults(), 'ticked');
+      this.allTicks = [];
+      this.updateAllTicks();
     }
 
+    Habit.prototype.noPrevResults = function() {
+      return this.prevResults.length === 0;
+    };
+
     Habit.prototype.prevStreak = function() {
-      return this.prevResults[0].streak;
+      if (this.noPrevResults()) {
+        return 0;
+      } else {
+        return _.last(this.prevResults).streak;
+      }
     };
 
     Habit.prototype.clicked = function() {
-      var tickedOld;
-      tickedOld = this.selectedResult.ticked;
-      this.selectedResult.ticked = (tickedOld + 1) % 3;
-      return this.selectedResult.streak = (function() {
+      var tickedNew;
+      tickedNew = (this.selectedResult.ticked + 1) % 3;
+      this.selectedResult.ticked = tickedNew;
+      this.selectedResult.streak = (function() {
         switch (false) {
-          case tickedOld !== 1:
+          case tickedNew !== 1:
             return this.increaseStreak();
-          case tickedOld !== 2:
+          case tickedNew !== 2:
             return this.decreaseStreak();
           default:
             return this.prevStreak();
         }
       }).call(this);
+      return this.updateAllTicks();
+    };
+
+    Habit.prototype.updateAllTicks = function() {
+      return this.allTicked = _.pluck(this.allResults(), 'ticked');
     };
 
     Habit.prototype.increaseStreak = function() {
-      if (this.prevStreak() > 1) {
+      if (this.prevStreak() > 0) {
         return this.prevStreak() + 1;
       } else {
         return 1;
@@ -66,7 +81,7 @@
 
     Habit.prototype.selectPrevDay = function() {
       this.nextResults.unshift(this.selectedResult);
-      return this.selectedResult = this.prevResults.shift();
+      return this.selectedResult = this.prevResults.pop();
     };
 
     Habit.prototype.selectNextDay = function() {
@@ -105,48 +120,29 @@
 
   app.controller('CtrlUserBoard', [
     '$scope', function($scope) {
-      var now, selectedDay;
+      var createResults, createSingleResult, exer, medit, now, selectedDay;
       now = moment();
       selectedDay = now.startOf('day');
       $scope.displayedDay = selectedDay.valueOf();
       $scope.checkboxImages = ["images/unchecked_checkbox.png", "images/tick-green.png", "images/red-cross.png"];
-      $scope.habits = [
-        new Habit('meditation', [
-          new SingleResult({
-            day: moment().subtract('days', 1).startOf('day'),
-            dateTime: moment().subtract('days', 1),
-            ticked: 1,
-            streak: 5
-          }), new SingleResult({
-            day: moment().subtract('days', 2).startOf('day'),
-            dateTime: moment().subtract('days', 2),
-            ticked: 1,
-            streak: 4
-          }, new SingleResult({
-            day: moment().subtract('days', 3).startOf('day'),
-            dateTime: moment().subtract('days', 3),
-            ticked: 1,
-            streak: 3
-          }))
-        ]), new Habit('exercise', [
-          new SingleResult({
-            day: moment().subtract('days', 1).startOf('day'),
-            dateTime: moment().subtract('days', 1),
-            ticked: 2,
-            streak: -1
-          }), new SingleResult({
-            day: moment().subtract('days', 2).startOf('day'),
-            dateTime: moment().subtract('days', 2),
-            ticked: 1,
-            streak: 28
-          }, new SingleResult({
-            day: moment().subtract('days', 3).startOf('day'),
-            dateTime: moment().subtract('days', 3),
-            ticked: 1,
-            streak: 27
-          }))
-        ])
-      ];
+      createSingleResult = function(daysAgo, tck, strk) {
+        return new SingleResult({
+          day: moment().subtract('days', daysAgo).startOf('day'),
+          dateTime: moment().subtract('days', daysAgo),
+          ticked: tck,
+          streak: strk
+        });
+      };
+      createResults = function() {
+        var results, resultsArgs;
+        resultsArgs = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+        return results = _.map(resultsArgs, function(args) {
+          return createSingleResult.apply(null, args);
+        });
+      };
+      exer = new Habit('exercise', createResults([10, 1, 1], [9, 1, 2], [8, 1, 3], [7, 1, 4], [6, 1, 5], [5, 1, 6], [4, 1, 7], [3, 1, 8], [2, 2, -1], [1, 2, -2]));
+      medit = new Habit('meditation', createResults([5, 1, 1], [4, 1, 2], [3, 1, 3], [2, 1, 4], [1, 1, 5]));
+      $scope.habits = [exer, medit];
       return $scope.selectPrevDay = function() {
         var habit, _i, _len, _ref, _results;
         selectedDay.subtract('days', 1);

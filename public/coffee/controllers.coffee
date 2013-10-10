@@ -11,37 +11,49 @@ class Habit
     # @name: the name of the habit (eg:meditation)
     # @streakXdaysAgo: a JSON with {NbDaysInThePast: streak} pairs
     constructor: (@name, @prevResults) ->
-        #alert(JSON.stringify(@prevResults))
-        #alert(JSON.stringify(@prevResults[0]))
         # Result currently selected by the user (default: today's result)
         @selectedResult = 
             day: moment().startOf('day')
             dateTime: 0
-            streak: @prevResults[0].streak
+            streak: _.last(@prevResults).streak
             ticked: 0
         @nextResults = []
-        @allTicked = _.pluck(@allResults(), 'ticked')
+        @allTicks = []
+        
+        # Initialization
+        @updateAllTicks()
+        
 
-    prevStreak: -> @prevResults[0].streak
+    noPrevResults: -> return @prevResults.length == 0
+
+    prevStreak: -> 
+        if @noPrevResults() then 0 else _.last(@prevResults).streak
 
     clicked: =>
-        tickedOld = @selectedResult.ticked
-        @selectedResult.ticked = (tickedOld + 1) % 3  
+        # Update the tick
+        tickedNew = (@selectedResult.ticked + 1) % 3  
+        @selectedResult.ticked = tickedNew
+
+        # Update the streak
         @selectedResult.streak = switch
-            when tickedOld == 1 then @increaseStreak()
-            when tickedOld == 2 then @decreaseStreak()
+            when tickedNew == 1 then @increaseStreak()
+            when tickedNew == 2 then @decreaseStreak()
             else @prevStreak() 
 
-    increaseStreak: -> if @prevStreak() > 1 then @prevStreak() + 1 else 1
+        # Update all the record of all ticks
+            #TODO: try to do it with angular-underscore, in the template
+        @updateAllTicks()
+        
+    updateAllTicks: -> @allTicked = _.pluck(@allResults(), 'ticked')
+
+    increaseStreak: -> if @prevStreak() > 0 then @prevStreak() + 1 else 1
     decreaseStreak: -> if @prevStreak() < 0 then @prevStreak() - 1 else -1
 
     selectPrevDay: ->
         #alert('prev:' + JSON.stringify(@prevResults) + 'sel:' + JSON.stringify(@selectedResult) + 'next:' + JSON.stringify(@nextResults)   )
 
         @nextResults.unshift(@selectedResult)
-        #alert('next:' + JSON.stringify @nextResults)
-        @selectedResult = @prevResults.shift()
-        #alert('sel:' + JSON.stringify @selectedResult)
+        @selectedResult = @prevResults.pop()
 
         #alert('prev:' + JSON.stringify(@prevResults) + 'sel:' + JSON.stringify(@selectedResult) + 'next:' + JSON.stringify(@nextResults)   )
 
@@ -84,47 +96,24 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
         "images/red-cross.png",
     ]
 
-    $scope.habits = [ 
-        new Habit 'meditation', [
-                new SingleResult
-                    day: moment().subtract('days',1).startOf('day')
-                    dateTime: moment().subtract('days',1)
-                    ticked: 1
-                    streak: 5
-                    ,
-                new SingleResult
-                    day: moment().subtract('days',2).startOf('day')
-                    dateTime: moment().subtract('days',2)
-                    ticked: 1
-                    streak: 4
-                ,
-                new SingleResult
-                    day: moment().subtract('days',3).startOf('day')
-                    dateTime: moment().subtract('days',3)
-                    ticked: 1
-                    streak: 3
-            ]
-        new Habit 'exercise', [
-                new SingleResult
-                    day: moment().subtract('days',1).startOf('day')
-                    dateTime: moment().subtract('days',1)
-                    ticked: 2
-                    streak: -1
-                    ,
-                new SingleResult
-                    day: moment().subtract('days',2).startOf('day')
-                    dateTime: moment().subtract('days',2)
-                    ticked: 1
-                    streak: 28
-                ,
-                new SingleResult
-                    day: moment().subtract('days',3).startOf('day')
-                    dateTime: moment().subtract('days',3)
-                    ticked: 1
-                    streak: 27
-            ]
+    createSingleResult = (daysAgo, tck, strk) ->
+        new SingleResult
+            day: moment().subtract('days',daysAgo).startOf('day')
+            dateTime: moment().subtract('days',daysAgo)
+            ticked: tck
+            streak: strk
 
-    ]
+    createResults = (resultsArgs...) ->
+        results = _.map(resultsArgs, (args) -> 
+                #createSingleResult.apply(this,args)
+                createSingleResult(args...)
+            )
+
+    exer = new Habit 'exercise', createResults([10,1,1], [9,1,2], [8,1,3], [7,1,4], [6,1,5], [5,1,6], [4,1,7], [3,1,8], [2,2,-1], [1,2,-2]) 
+        
+    medit = new Habit 'meditation', createResults([5,1,1], [4,1,2], [3,1,3], [2,1,4], [1,1,5])
+
+    $scope.habits = [ exer, medit ]
 
     $scope.selectPrevDay = ->
         selectedDay.subtract('days',1)

@@ -42,21 +42,30 @@
       }
     };
 
-    Habit.prototype.clicked = function() {
-      var tickedNew;
-      tickedNew = (this.selectedResult.ticked + 1) % 3;
-      this.selectedResult.ticked = tickedNew;
-      this.selectedResult.streak = (function() {
+    Habit.prototype.ticked = function() {
+      return this.selectedResult.ticked;
+    };
+
+    Habit.prototype.updateStreak = function() {
+      return this.selectedResult.streak = (function() {
         switch (false) {
-          case tickedNew !== 1:
+          case this.ticked() !== 1:
             return this.increaseStreak();
-          case tickedNew !== 2:
+          case this.ticked() !== 2:
             return this.decreaseStreak();
           default:
             return this.prevStreak();
         }
       }).call(this);
-      return this.updateAllTicks();
+    };
+
+    Habit.prototype.clicked = function() {
+      this.selectedResult.ticked = (this.ticked() + 1) % 3;
+      this.updateStreak();
+      this.updateAllTicks();
+      return _.map(this.nextResults, function(res) {
+        return res.updateStreak();
+      });
     };
 
     Habit.prototype.updateAllTicks = function() {
@@ -140,7 +149,7 @@
           return createSingleResult.apply(null, args);
         });
       };
-      $scope.habits = [new Habit('exercise', createResults([10, 1, 1], [9, 1, 2], [8, 1, 3], [7, 1, 4], [6, 1, 5], [5, 1, 6], [4, 1, 7], [3, 1, 8], [2, 2, -1], [1, 2, -2])), new Habit('meditation', createResults([5, 1, 1], [4, 1, 2], [3, 1, 3], [2, 1, 4], [1, 1, 5]))];
+      $scope.habits = [new Habit('meditation', createResults([5, 1, 1], [4, 1, 2], [3, 1, 3], [2, 1, 4], [1, 1, 5])), new Habit('exercise', createResults([10, 1, 1], [9, 1, 2], [8, 1, 3], [7, 1, 4], [6, 1, 5], [5, 1, 6], [4, 1, 7], [3, 1, 8], [2, 2, -1], [1, 2, -2]))];
       return $scope.selectPrevDay = function() {
         var habit, _i, _len, _ref, _results;
         selectedDay.subtract('days', 1);

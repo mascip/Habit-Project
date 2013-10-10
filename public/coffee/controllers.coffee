@@ -1,10 +1,18 @@
 'use strict'
+
+#TODO:
+# ticked = [unknown, done, failed]
         
 
 class SingleResult
     constructor: ({@day, @dateTime, @ticked, @streak}) ->
         #alert('SingleResult: ' + @day + ' - ' + @dateTime+' - ' + @ticked+' - ' + @streak)
 
+    updateStreak: (prevResult) ->
+        @selectedResult.streak = switch
+            when @ticked() == 1 then @increaseStreak()
+            when @ticked() == 2 then @decreaseStreak()
+            else @prevStreak() 
 
 class Habit
     # A habit and the user's results to display for this habit
@@ -29,20 +37,23 @@ class Habit
     prevStreak: -> 
         if @noPrevResults() then 0 else _.last(@prevResults).streak
 
+    ticked: -> @selectedResult.ticked
+    updateStreak: @selectedResult.updateStreak(@prevResult)
+
+
     clicked: =>
-        # Update the tick
-        tickedNew = (@selectedResult.ticked + 1) % 3  
-        @selectedResult.ticked = tickedNew
+        # Change the tick
+        @selectedResult.ticked = (@ticked() + 1) % 3  
 
         # Update the streak
-        @selectedResult.streak = switch
-            when tickedNew == 1 then @increaseStreak()
-            when tickedNew == 2 then @decreaseStreak()
-            else @prevStreak() 
+        @updateStreak()
 
         # Update all the record of all ticks
             #TODO: try to do it with angular-underscore, in the template
         @updateAllTicks()
+
+        # Update the streak in the next days' results
+        _.map( @nextResults, (res) -> res.updateStreak() )
         
     updateAllTicks: -> @allTicked = _.pluck(@allResults(), 'ticked')
 
@@ -112,8 +123,8 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
         
 
     $scope.habits = [ 
-        new Habit 'exercise', createResults([10,1,1], [9,1,2], [8,1,3], [7,1,4], [6,1,5], [5,1,6], [4,1,7], [3,1,8], [2,2,-1], [1,2,-2]) 
         new Habit 'meditation', createResults([5,1,1], [4,1,2], [3,1,3], [2,1,4], [1,1,5])
+        new Habit 'exercise', createResults([10,1,1], [9,1,2], [8,1,3], [7,1,4], [6,1,5], [5,1,6], [4,1,7], [3,1,8], [2,2,-1], [1,2,-2]) 
     ]
 
     $scope.selectPrevDay = ->

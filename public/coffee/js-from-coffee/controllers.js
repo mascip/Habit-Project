@@ -14,21 +14,22 @@
   })();
 
   Habit = (function() {
-    function Habit(name, previousResults) {
+    function Habit(name, prevResults) {
       this.name = name;
-      this.previousResults = previousResults;
+      this.prevResults = prevResults;
       this.clicked = __bind(this.clicked, this);
       this.selectedResult = {
         day: moment().startOf('day'),
         dateTime: 0,
-        streak: this.previousResults[0].streak,
+        streak: this.prevResults[0].streak,
         ticked: 0
       };
-      this.nextResults = {};
+      this.nextResults = [];
+      this.allTicked = _.pluck(this.allResults(), 'ticked');
     }
 
-    Habit.prototype.previousStreak = function() {
-      return this.previousResults[0].streak;
+    Habit.prototype.prevStreak = function() {
+      return this.prevResults[0].streak;
     };
 
     Habit.prototype.clicked = function() {
@@ -42,29 +43,47 @@
           case tickedOld !== 2:
             return this.decreaseStreak();
           default:
-            return this.previousStreak();
+            return this.prevStreak();
         }
       }).call(this);
     };
 
     Habit.prototype.increaseStreak = function() {
-      if (this.previousStreak() > 1) {
-        return this.previousStreak() + 1;
+      if (this.prevStreak() > 1) {
+        return this.prevStreak() + 1;
       } else {
         return 1;
       }
     };
 
     Habit.prototype.decreaseStreak = function() {
-      if (this.previousStreak() < 0) {
-        return this.previousStreak() - 1;
+      if (this.prevStreak() < 0) {
+        return this.prevStreak() - 1;
       } else {
         return -1;
       }
     };
 
-    Habit.prototype.selectPreviousDay = function() {
-      return this.selectedResult = this.previousResults.shift();
+    Habit.prototype.selectPrevDay = function() {
+      this.nextResults.unshift(this.selectedResult);
+      return this.selectedResult = this.prevResults.shift();
+    };
+
+    Habit.prototype.selectNextDay = function() {
+      this.nextResults.unshift(this.selectedResult);
+      return this.selectedResult = this.prevResults.shift();
+    };
+
+    Habit.prototype.allResults = function() {
+      var allR;
+      allR = [this.selectedResult];
+      if (this.prevResults.length) {
+        allR = this.prevResults.concat(allR);
+      }
+      if (this.nextResults.length) {
+        allR = allR.concat(this.nextResults);
+      }
+      return allR;
     };
 
     return Habit;
@@ -128,7 +147,7 @@
           }))
         ])
       ];
-      return $scope.selectPreviousDay = function() {
+      return $scope.selectPrevDay = function() {
         var habit, _i, _len, _ref, _results;
         selectedDay.subtract('days', 1);
         $scope.displayedDay = selectedDay.valueOf();
@@ -136,7 +155,7 @@
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           habit = _ref[_i];
-          _results.push(habit.selectPreviousDay());
+          _results.push(habit.selectPrevDay());
         }
         return _results;
       };

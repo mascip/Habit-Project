@@ -5,7 +5,7 @@
           <h2>Pierre M.</h2>
           <div class="w-container">
             <div>
-                <img class="previous-date" ng-click=selectPreviousDay() src="images/left.jpg" width="20" alt="left.jpg">
+                <img class="previous-date" ng-click=selectPrevDay() src="images/left.jpg" width="20" alt="left.jpg">
                 <div class="date">{{displayedDay | date:'EEE d MMM'}}</div>
                 <img class="next-date" src="images/right.jpg" width="20" alt="right.jpg">
             </div>
@@ -20,7 +20,10 @@
                     <div class="habit-streak">{{habit.selectedResult.streak}}</div>
                 </div>
                 <div class="w-col w-col-2">
-                    <div class="habit-result">18/21</div>
+                    <div class="habit-result">
+                        <span ng-repeat='ticked in habit.allTicked'>{{ticked}}<span ng-hide=$last>,</span></span>
+                    </div>
+                    <!-- <div class="habit-result">18/21</div> -->
                 </div>
             </div>
             </div>

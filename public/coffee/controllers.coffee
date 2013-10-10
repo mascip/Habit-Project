@@ -10,18 +10,19 @@ class Habit
     # A habit and the user's results to display for this habit
     # @name: the name of the habit (eg:meditation)
     # @streakXdaysAgo: a JSON with {NbDaysInThePast: streak} pairs
-    constructor: (@name, @previousResults) ->
-        #alert(JSON.stringify(@previousResults))
-        #alert(JSON.stringify(@previousResults[0]))
+    constructor: (@name, @prevResults) ->
+        #alert(JSON.stringify(@prevResults))
+        #alert(JSON.stringify(@prevResults[0]))
         # Result currently selected by the user (default: today's result)
         @selectedResult = 
             day: moment().startOf('day')
             dateTime: 0
-            streak: @previousResults[0].streak
+            streak: @prevResults[0].streak
             ticked: 0
-        @nextResults = {}
+        @nextResults = []
+        @allTicked = _.pluck(@allResults(), 'ticked')
 
-    previousStreak: -> @previousResults[0].streak
+    prevStreak: -> @prevResults[0].streak
 
     clicked: =>
         tickedOld = @selectedResult.ticked
@@ -29,13 +30,32 @@ class Habit
         @selectedResult.streak = switch
             when tickedOld == 1 then @increaseStreak()
             when tickedOld == 2 then @decreaseStreak()
-            else @previousStreak() 
+            else @prevStreak() 
 
-    increaseStreak: -> if @previousStreak() > 1 then @previousStreak() + 1 else 1
-    decreaseStreak: -> if @previousStreak() < 0 then @previousStreak() - 1 else -1
+    increaseStreak: -> if @prevStreak() > 1 then @prevStreak() + 1 else 1
+    decreaseStreak: -> if @prevStreak() < 0 then @prevStreak() - 1 else -1
 
-    selectPreviousDay: ->
-        @selectedResult = @previousResults.shift()
+    selectPrevDay: ->
+        #alert('prev:' + JSON.stringify(@prevResults) + 'sel:' + JSON.stringify(@selectedResult) + 'next:' + JSON.stringify(@nextResults)   )
+
+        @nextResults.unshift(@selectedResult)
+        #alert('next:' + JSON.stringify @nextResults)
+        @selectedResult = @prevResults.shift()
+        #alert('sel:' + JSON.stringify @selectedResult)
+
+        #alert('prev:' + JSON.stringify(@prevResults) + 'sel:' + JSON.stringify(@selectedResult) + 'next:' + JSON.stringify(@nextResults)   )
+
+    selectNextDay: ->
+        @nextResults.unshift(@selectedResult)
+        @selectedResult = @prevResults.shift()
+
+
+    allResults: -> 
+        allR = [@selectedResult]
+        if @prevResults.length then allR = @prevResults.concat(allR) 
+        if @nextResults.length then allR = allR.concat(@nextResults) 
+        return allR
+
         
 
 
@@ -106,10 +126,10 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
 
     ]
 
-    $scope.selectPreviousDay = ->
+    $scope.selectPrevDay = ->
         selectedDay.subtract('days',1)
         $scope.displayedDay = selectedDay.valueOf()
-        habit.selectPreviousDay() for habit in $scope.habits
+        habit.selectPrevDay() for habit in $scope.habits
 
 ]
 

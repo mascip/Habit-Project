@@ -8,76 +8,71 @@ class SingleResult
     constructor: ({@day, @dateTime, @ticked, @streak}) ->
         #alert('SingleResult: ' + @day + ' - ' + @dateTime+' - ' + @ticked+' - ' + @streak)
 
-    updateStreak: (prevResult) ->
-        @selectedResult.streak = switch
-            when @ticked() == 1 then @increaseStreak()
-            when @ticked() == 2 then @decreaseStreak()
-            else @prevStreak() 
 
 class Habit
     # A habit and the user's results to display for this habit
     # @name: the name of the habit (eg:meditation)
-    # @streakXdaysAgo: a JSON with {NbDaysInThePast: streak} pairs
-    constructor: (@name, @prevResults) ->
+    # @prevResults: a list of previous results. The N-th element was N days ago
+    constructor: (@name, prevResults) ->
+         
         # Result currently selected by the user (default: today's result)
-        @selectedResult = 
+        @currentResult = 
             day: moment().startOf('day')
             dateTime: 0
-            streak: _.last(@prevResults).streak
+            streak: _.first(prevResults).streak
             ticked: 0
-        @nextResults = []
-        @allTicks = []
         
-        # Initialization
-        @updateAllTicks()
+        # All results
+        @results = _.clone prevResults
+        @results.unshift(_.clone @currentResult)
+        
+        # Which day is displayed to the user (nb of days ago. 0 is today)
+        @daySelected = 0
         
 
-    noPrevResults: -> return @prevResults.length == 0
+    ticked: -> @selectedResult().ticked
 
-    prevStreak: -> 
-        if @noPrevResults() then 0 else _.last(@prevResults).streak
+    streak: -> @selectedResult().streak
 
-    ticked: -> @selectedResult.ticked
-    updateStreak: @selectedResult.updateStreak(@prevResult)
+    selectedResult: -> @results[@daySelected]
 
+    calcStreak: (tick, prevStreak) -> switch
+        when tick == 0 then prevStreak
+        when tick == 1 then @increaseStreak(prevStreak)
+        when tick == 2 then @decreaseStreak(prevStreak)
+
+    firstResult: -> _.last @results
+
+    updateAllStreaks: ->
+        for i in [@results.length-1..1] # starting from the oldest streak...
+            @results[i-1].streak =  @calcStreak(@results[i-1].ticked, @results[i].streak)
+
+        # update the first streak in the list
+        @firstResult().streak = @calcStreak(@firstResult().ticked, 0)
 
     clicked: =>
-        # Change the tick
-        @selectedResult.ticked = (@ticked() + 1) % 3  
+        # Change the current tick
+        @selectedResult().ticked = (@ticked() + 1) % 3
 
-        # Update the streak
-        @updateStreak()
+        # Update all streak values
+        @updateAllStreaks()
 
-        # Update all the record of all ticks
-            #TODO: try to do it with angular-underscore, in the template
-        @updateAllTicks()
-
-        # Update the streak in the next days' results
-        _.map( @nextResults, (res) -> res.updateStreak() )
+    clickPrevDay: -> @daySelected++  # One MORE day in the past 
         
-    updateAllTicks: -> @allTicked = _.pluck(@allResults(), 'ticked')
+    doesntExist: -> @daySelected >= @results.length
 
-    increaseStreak: -> if @prevStreak() > 0 then @prevStreak() + 1 else 1
-    decreaseStreak: -> if @prevStreak() < 0 then @prevStreak() - 1 else -1
+    increaseStreak: (prevStk) -> if prevStk > 0 then prevStk + 1 else 1
+    decreaseStreak: (prevStk) -> if prevStk < 0 then prevStk - 1 else -1
 
     selectPrevDay: ->
-        #alert('prev:' + JSON.stringify(@prevResults) + 'sel:' + JSON.stringify(@selectedResult) + 'next:' + JSON.stringify(@nextResults)   )
+        #@nextResults.unshift(@selectedResult())
+        #@selectedResult() = @prevResults.pop()
 
-        @nextResults.unshift(@selectedResult)
-        @selectedResult = @prevResults.pop()
-
-        #alert('prev:' + JSON.stringify(@prevResults) + 'sel:' + JSON.stringify(@selectedResult) + 'next:' + JSON.stringify(@nextResults)   )
 
     selectNextDay: ->
-        @nextResults.unshift(@selectedResult)
-        @selectedResult = @prevResults.shift()
+        #@nextResults.unshift(@selectedResult())
+        #@selectedResult() = @prevResults.shift()
 
-
-    allResults: -> 
-        allR = [@selectedResult]
-        if @prevResults.length then allR = @prevResults.concat(allR) 
-        if @nextResults.length then allR = allR.concat(@nextResults) 
-        return allR
 
         
 
@@ -94,7 +89,6 @@ app.controller 'myCtrl2', ['$scope', ($scope) ->
 
 app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
 
-    #alert 'controller' 
 
     now = moment()
     selectedDay = now.startOf('day')
@@ -123,14 +117,14 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
         
 
     $scope.habits = [ 
-        new Habit 'meditation', createResults([5,1,1], [4,1,2], [3,1,3], [2,1,4], [1,1,5])
-        new Habit 'exercise', createResults([10,1,1], [9,1,2], [8,1,3], [7,1,4], [6,1,5], [5,1,6], [4,1,7], [3,1,8], [2,2,-1], [1,2,-2]) 
+        new Habit 'meditation', createResults([1,1,5], [2,1,4], [3,1,3], [4,1,2], [5,1,1])
+        new Habit 'exercise', createResults([1,1,10], [2,1,9], [3,1,8], [4,1,7], [5,1,6], [6,1,5], [7,1,4], [8,1,3], [9,2,-1], [10,2,-2]) 
     ]
 
-    $scope.selectPrevDay = ->
+    $scope.clickPrevDay = ->
         selectedDay.subtract('days',1)
         $scope.displayedDay = selectedDay.valueOf()
-        habit.selectPrevDay() for habit in $scope.habits
+        habit.clickPrevDay() for habit in $scope.habits
 
 ]
 

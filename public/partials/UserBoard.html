@@ -5,8 +5,8 @@
           <h2>Pierre M.</h2>
           <div class="w-container">
             <div>
-                <img class="previous-date" ng-click=selectPreviousDate() src="images/left.jpg" width="20" alt="left.jpg">
-                <div class="date">{{displayedDate | date:'EEE d MMM'}}</div>
+                <img class="previous-date" ng-click=selectPreviousDay() src="images/left.jpg" width="20" alt="left.jpg">
+                <div class="date">{{displayedDay | date:'EEE d MMM'}}</div>
                 <img class="next-date" src="images/right.jpg" width="20" alt="right.jpg">
             </div>
             <div class="w-row" ng-repeat='habit in habits'>

@@ -28,12 +28,11 @@ class Habit
         @selectedResult.ticked = (tickedOld + 1) % 3  
         @selectedResult.streak = switch
             when tickedOld == 1 then @increaseStreak()
-            when tickedOld == 2 then @failedStreak()
-            else @sameStreak()
+            when tickedOld == 2 then @decreaseStreak()
+            else @previousStreak() 
 
     increaseStreak: -> if @previousStreak() > 1 then @previousStreak() + 1 else 1
-    sameStreak: -> @previousStreak()
-    failedStreak: -> if @previousStreak() < 0 then @previousStreak() - 1 else -1
+    decreaseStreak: -> if @previousStreak() < 0 then @previousStreak() - 1 else -1
 
 ### Controllers ###
 
@@ -47,11 +46,11 @@ app.controller 'myCtrl2', ['$scope', ($scope) ->
 
 app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
 
-    alert 'controller' 
+    #alert 'controller' 
 
     now = moment()
-    selectedDate = now.startOf('day')
-    $scope.displayedDate = selectedDate.valueOf()
+    selectedDay = now.startOf('day')
+    $scope.displayedDay = selectedDay.valueOf()
         # AngularJS wants milliseconds, valueOf() gives milliseconds
 
     $scope.checkboxImages = [
@@ -102,9 +101,10 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
 
     ]
 
-    $scope.selectPreviousDate = ->
-        selectedDate.subtract('days',1)
-        $scope.displayedDate = selectedDate.valueOf()
+    $scope.selectPreviousDay = ->
+        selectedDay.subtract('days',1)
+        $scope.displayedDay = selectedDay.valueOf()
+        #habits.moveToPreviousDay
 
 ]
 

@@ -40,9 +40,9 @@
           case tickedOld !== 1:
             return this.increaseStreak();
           case tickedOld !== 2:
-            return this.failedStreak();
+            return this.decreaseStreak();
           default:
-            return this.sameStreak();
+            return this.previousStreak();
         }
       }).call(this);
     };
@@ -55,11 +55,7 @@
       }
     };
 
-    Habit.prototype.sameStreak = function() {
-      return this.previousStreak();
-    };
-
-    Habit.prototype.failedStreak = function() {
+    Habit.prototype.decreaseStreak = function() {
       if (this.previousStreak() < 0) {
         return this.previousStreak() - 1;
       } else {
@@ -86,11 +82,10 @@
 
   app.controller('CtrlUserBoard', [
     '$scope', function($scope) {
-      var now, selectedDate;
-      alert('controller');
+      var now, selectedDay;
       now = moment();
-      selectedDate = now.startOf('day');
-      $scope.displayedDate = selectedDate.valueOf();
+      selectedDay = now.startOf('day');
+      $scope.displayedDay = selectedDay.valueOf();
       $scope.checkboxImages = ["images/unchecked_checkbox.png", "images/tick-green.png", "images/red-cross.png"];
       $scope.habits = [
         new Habit('meditation', [
@@ -129,9 +124,9 @@
           }))
         ])
       ];
-      return $scope.selectPreviousDate = function() {
-        selectedDate.subtract('days', 1);
-        return $scope.displayedDate = selectedDate.valueOf();
+      return $scope.selectPreviousDay = function() {
+        selectedDay.subtract('days', 1);
+        return $scope.displayedDay = selectedDay.valueOf();
       };
     }
   ]);

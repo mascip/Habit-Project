@@ -30,26 +30,13 @@ class Habit
         @dayIdx = 0
         
 
-    ticked: -> @selectedResult().ticked
-
-    streak: -> @selectedResult().streak
-
+    # Delegation to attributes
     selectedResult: -> @results[@dayIdx]
+    ticked: -> @selectedResult().ticked
+    streak: -> @selectedResult().streak
+    selectedDay: -> @results[@dayIdx].day
 
-    calcStreak: (tick, prevStreak) -> switch
-        when tick == 'unknown' then prevStreak
-        when tick == 'done' then @increaseStreak(prevStreak)
-        when tick == 'failed' then @decreaseStreak(prevStreak)
-
-    firstResult: -> _.last @results
-
-    updateAllStreaks: ->
-        for i in [@results.length-1..1] # starting from the oldest streak...
-            @results[i-1].streak =  @calcStreak(@results[i-1].ticked, @results[i].streak)
-
-        # update the first streak in the list
-        @firstResult().streak = @calcStreak(@firstResult().ticked, 'unknown')
-
+    # When the user indicates whether they have done the habit or not
     clickTick: =>
         # Once you've ticked it, you HAVE to say whether the habit is done or not
         @selectedResult().ticked = switch
@@ -57,34 +44,33 @@ class Habit
             when @ticked() == 'done'    then 'failed'
             when @ticked() == 'failed'  then 'done'
             else 'failed'
-        
-        # Change the current tick
-        #@selectedResult().ticked = (@ticked() + 1) % 3
-
         # Update all streak values
         @updateAllStreaks()
 
-    selectedDay: -> @results[@dayIdx].day
-
-    clickPrevDay: -> @dayIdx++  # One MORE day in the past 
-    clickNextDay: -> @dayIdx--  # One LESS day in the past 
+    # When a result has been changes, all the following Streak values get changed
+    updateAllStreaks: ->
+        for i in [@results.length-1..1] # starting from the oldest streak...
+            @results[i-1].streak =  @calcStreak(@results[i-1].ticked, @results[i].streak)
+        # update the first streak in the list
+        @firstResult().streak = @calcStreak(@firstResult().ticked, 'unknown')
         
-    doesntExistYet: -> @dayIdx >= @results.length
-
+    firstResult: -> _.last @results
+    calcStreak: (tick, prevStreak) -> switch
+        when tick == 'unknown' then prevStreak
+        when tick == 'done' then @increaseStreak(prevStreak)
+        when tick == 'failed' then @decreaseStreak(prevStreak)
     increaseStreak: (prevStk) -> if prevStk > 0 then prevStk + 1 else 1
     decreaseStreak: (prevStk) -> if prevStk < 0 then prevStk - 1 else -1
 
-    selectPrevDay: ->
-        #@nextResults.unshift(@selectedResult())
-        #@selectedResult() = @prevResults.pop()
+    # Changing which day is displayed
+    clickPrevDay: -> @dayIdx++  # One MORE day in the past 
+    clickNextDay: -> @dayIdx--  # One LESS day in the past 
 
+    # If a habit doesn't exist yet at the selected date... perhaps don't display it?
+    # TODO: a better solution will be to list the habits that are present each day!
+    # ... or to use UserDailyResults = { habits: [ { 'meditation' ..., but that might be a pain for calculating future streak results, unless if I use a linked list. Think about it...
+    doesntExistYet: -> @dayIdx >= @results.length
 
-    selectNextDay: ->
-        #@nextResults.unshift(@selectedResult())
-        #@selectedResult() = @prevResults.shift()
-
-
-        
 
 
 ### Controllers ###

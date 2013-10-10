@@ -29,6 +29,10 @@
       this.dayIdx = 0;
     }
 
+    Habit.prototype.selectedResult = function() {
+      return this.results[this.dayIdx];
+    };
+
     Habit.prototype.ticked = function() {
       return this.selectedResult().ticked;
     };
@@ -37,31 +41,8 @@
       return this.selectedResult().streak;
     };
 
-    Habit.prototype.selectedResult = function() {
-      return this.results[this.dayIdx];
-    };
-
-    Habit.prototype.calcStreak = function(tick, prevStreak) {
-      switch (false) {
-        case tick !== 'unknown':
-          return prevStreak;
-        case tick !== 'done':
-          return this.increaseStreak(prevStreak);
-        case tick !== 'failed':
-          return this.decreaseStreak(prevStreak);
-      }
-    };
-
-    Habit.prototype.firstResult = function() {
-      return _.last(this.results);
-    };
-
-    Habit.prototype.updateAllStreaks = function() {
-      var i, _i, _ref;
-      for (i = _i = _ref = this.results.length - 1; _ref <= 1 ? _i <= 1 : _i >= 1; i = _ref <= 1 ? ++_i : --_i) {
-        this.results[i - 1].streak = this.calcStreak(this.results[i - 1].ticked, this.results[i].streak);
-      }
-      return this.firstResult().streak = this.calcStreak(this.firstResult().ticked, 'unknown');
+    Habit.prototype.selectedDay = function() {
+      return this.results[this.dayIdx].day;
     };
 
     Habit.prototype.clickTick = function() {
@@ -80,20 +61,27 @@
       return this.updateAllStreaks();
     };
 
-    Habit.prototype.selectedDay = function() {
-      return this.results[this.dayIdx].day;
+    Habit.prototype.updateAllStreaks = function() {
+      var i, _i, _ref;
+      for (i = _i = _ref = this.results.length - 1; _ref <= 1 ? _i <= 1 : _i >= 1; i = _ref <= 1 ? ++_i : --_i) {
+        this.results[i - 1].streak = this.calcStreak(this.results[i - 1].ticked, this.results[i].streak);
+      }
+      return this.firstResult().streak = this.calcStreak(this.firstResult().ticked, 'unknown');
     };
 
-    Habit.prototype.clickPrevDay = function() {
-      return this.dayIdx++;
+    Habit.prototype.firstResult = function() {
+      return _.last(this.results);
     };
 
-    Habit.prototype.clickNextDay = function() {
-      return this.dayIdx--;
-    };
-
-    Habit.prototype.doesntExistYet = function() {
-      return this.dayIdx >= this.results.length;
+    Habit.prototype.calcStreak = function(tick, prevStreak) {
+      switch (false) {
+        case tick !== 'unknown':
+          return prevStreak;
+        case tick !== 'done':
+          return this.increaseStreak(prevStreak);
+        case tick !== 'failed':
+          return this.decreaseStreak(prevStreak);
+      }
     };
 
     Habit.prototype.increaseStreak = function(prevStk) {
@@ -112,9 +100,17 @@
       }
     };
 
-    Habit.prototype.selectPrevDay = function() {};
+    Habit.prototype.clickPrevDay = function() {
+      return this.dayIdx++;
+    };
 
-    Habit.prototype.selectNextDay = function() {};
+    Habit.prototype.clickNextDay = function() {
+      return this.dayIdx--;
+    };
+
+    Habit.prototype.doesntExistYet = function() {
+      return this.dayIdx >= this.results.length;
+    };
 
     return Habit;
 

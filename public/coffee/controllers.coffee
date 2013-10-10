@@ -34,6 +34,11 @@ class Habit
     increaseStreak: -> if @previousStreak() > 1 then @previousStreak() + 1 else 1
     decreaseStreak: -> if @previousStreak() < 0 then @previousStreak() - 1 else -1
 
+    selectPreviousDay: ->
+        @selectedResult = @previousResults.shift()
+        
+
+
 ### Controllers ###
 
 app_name = "myApp"
@@ -83,7 +88,7 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
                 new SingleResult
                     day: moment().subtract('days',1).startOf('day')
                     dateTime: moment().subtract('days',1)
-                    ticked: 0
+                    ticked: 2
                     streak: -1
                     ,
                 new SingleResult
@@ -104,7 +109,7 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
     $scope.selectPreviousDay = ->
         selectedDay.subtract('days',1)
         $scope.displayedDay = selectedDay.valueOf()
-        #habits.moveToPreviousDay
+        habit.selectPreviousDay() for habit in $scope.habits
 
 ]
 

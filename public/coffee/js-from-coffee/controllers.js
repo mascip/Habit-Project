@@ -63,6 +63,10 @@
       }
     };
 
+    Habit.prototype.selectPreviousDay = function() {
+      return this.selectedResult = this.previousResults.shift();
+    };
+
     return Habit;
 
   })();
@@ -109,7 +113,7 @@
           new SingleResult({
             day: moment().subtract('days', 1).startOf('day'),
             dateTime: moment().subtract('days', 1),
-            ticked: 0,
+            ticked: 2,
             streak: -1
           }), new SingleResult({
             day: moment().subtract('days', 2).startOf('day'),
@@ -125,8 +129,16 @@
         ])
       ];
       return $scope.selectPreviousDay = function() {
+        var habit, _i, _len, _ref, _results;
         selectedDay.subtract('days', 1);
-        return $scope.displayedDay = selectedDay.valueOf();
+        $scope.displayedDay = selectedDay.valueOf();
+        _ref = $scope.habits;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          habit = _ref[_i];
+          _results.push(habit.selectPreviousDay());
+        }
+        return _results;
       };
     }
   ]);

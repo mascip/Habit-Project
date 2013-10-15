@@ -36,6 +36,7 @@ class Habit
     streak: -> @selectedResult().streak
     selectedDay: -> @results[@dayIdx].day
 
+    ## ClickTick
     # When the user indicates whether they have done the habit or not
     clickTick: =>
         # Once you've ticked it, you HAVE to say whether the habit is done or not
@@ -47,12 +48,16 @@ class Habit
         # Update all streak values
         @updateAllStreaks()
 
-    # When a result has been changes, all the following Streak values get changed
+    ## updateAllStreaks
+    # When a result has been changed, all the following Streak values get changed
     updateAllStreaks: ->
-        for i in [@results.length-1..1] # starting from the oldest streak...
-            @results[i-1].streak =  @calcStreak(@results[i-1].ticked, @results[i].streak)
-        # update the first streak in the list
+        # update the first streak value in the list
         @firstResult().streak = @calcStreak(@firstResult().ticked, 'unknown')
+
+        # Update all the other streak values
+        for i in [@results.length-2..1] # starting from the second oldest streak...
+            console.log @results[i]
+            @results[i].streak =  @calcStreak(@results[i].ticked, @results[i+1].streak)
         
     firstResult: -> _.last @results
     calcStreak: (tick, prevStreak) -> switch

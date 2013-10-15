@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 
 # General
-use 5.16.3;    # Perl version requirement
-use feature ":5.16";
+use 5.14.1;    # Perl version requirement
+use feature ":5.14";
 use strictures;
 use autodie qw( :all );
 

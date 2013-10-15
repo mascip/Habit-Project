@@ -62,11 +62,14 @@
     };
 
     Habit.prototype.updateAllStreaks = function() {
-      var i, _i, _ref;
-      for (i = _i = _ref = this.results.length - 1; _ref <= 1 ? _i <= 1 : _i >= 1; i = _ref <= 1 ? ++_i : --_i) {
-        this.results[i - 1].streak = this.calcStreak(this.results[i - 1].ticked, this.results[i].streak);
+      var i, _i, _ref, _results;
+      this.firstResult().streak = this.calcStreak(this.firstResult().ticked, 'unknown');
+      _results = [];
+      for (i = _i = _ref = this.results.length - 2; _ref <= 1 ? _i <= 1 : _i >= 1; i = _ref <= 1 ? ++_i : --_i) {
+        console.log(this.results[i]);
+        _results.push(this.results[i].streak = this.calcStreak(this.results[i].ticked, this.results[i + 1].streak));
       }
-      return this.firstResult().streak = this.calcStreak(this.firstResult().ticked, 'unknown');
+      return _results;
     };
 
     Habit.prototype.firstResult = function() {

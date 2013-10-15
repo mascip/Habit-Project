@@ -65,7 +65,7 @@
       var i, _i, _ref, _results;
       this.firstResult().streak = this.calcStreak(this.firstResult().ticked, 'unknown');
       _results = [];
-      for (i = _i = _ref = this.results.length - 2; _ref <= 1 ? _i <= 1 : _i >= 1; i = _ref <= 1 ? ++_i : --_i) {
+      for (i = _i = _ref = this.results.length - 2; _ref <= 0 ? _i <= 0 : _i >= 0; i = _ref <= 0 ? ++_i : --_i) {
         console.log(this.results[i]);
         _results.push(this.results[i].streak = this.calcStreak(this.results[i].ticked, this.results[i + 1].streak));
       }

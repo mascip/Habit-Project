@@ -39,7 +39,7 @@ class Habit
     ## ClickTick
     # When the user indicates whether they have done the habit or not
     clickTick: =>
-        # Once you've ticked it, you HAVE to say whether the habit is done or not
+        # Once you have ticked, the state cannot be 'unknown' anymore
         @selectedResult().ticked = switch
             when @ticked() == 'unknown' then 'done'
             when @ticked() == 'done'    then 'failed'
@@ -55,7 +55,7 @@ class Habit
         @firstResult().streak = @calcStreak(@firstResult().ticked, 'unknown')
 
         # Update all the other streak values
-        for i in [@results.length-2..1] # starting from the second oldest streak...
+        for i in [@results.length-2..0] # starting from the second oldest streak...
             console.log @results[i]
             @results[i].streak =  @calcStreak(@results[i].ticked, @results[i+1].streak)
         

@@ -15,9 +15,8 @@ use HabitLab;
 use Plack::Builder;
 
 builder {
-    enable 'Debug', panels =>
-      [qw<DBITrace Memory Timer Parameters Dancer::Version Dancer::Settings>];
 
+    # Both in Production and Development
     enable 'Compile' => (
         pattern => qr{\.coffee$},
         lib     => 'public/coffee',
@@ -26,17 +25,34 @@ builder {
         map     => sub {
             my $filename = shift;
             $filename =~ s/coffee$/js/;
-            say "    * FILE: $filename";
+            say "    * FILE: $filename" if $ENV{env} eq 'dev';
             return $filename;
         },
         compile => sub {
             my ( $in, $out ) = @_;
-            say "    * IN: $in, OUT: $out";
-
-            #system("coffee --compile --map -o public/coffee $in");
+            say "    * IN: $in, OUT: $out" if $ENV{env} eq 'dev';
             system("coffee --compile --map --stdio < $in > $out");
         }
     );
+
+    if ( $ENV{env} eq 'prod' ) {
+        # Production
+
+        enable "Plack::Middleware::ServerStatus::Lite",
+            path => '/server-status',
+            allow => [ '127.0.0.1', '192.168.0.0/16' ],
+            counter_file => '/tmp/counter_file',
+            scoreboard => '/var/run/server'
+            ;
+    }
+    else { 
+        # Development
+        
+        enable 'Debug', panels =>
+        [qw<DBITrace Memory Timer Parameters Dancer::Version Dancer::Settings>];
+
+    }
+
 
     HabitLab->dance;
 };

@@ -26,6 +26,10 @@
       };
       this.results = _.clone(prevResults);
       this.results.unshift(_.clone(this.currentResult));
+      this.countResults = _.countBy(prevResults, function(result) {
+        return result.ticked;
+      });
+      this.countResults.total = _.size(prevResults);
       this.dayIdx = 0;
     }
 

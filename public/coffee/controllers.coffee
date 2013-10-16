@@ -25,6 +25,10 @@ class Habit
         # All results
         @results = _.clone prevResults
         @results.unshift(_.clone @currentResult)
+
+        # Calculate the total number of successes and failures
+        @countResults = _.countBy( prevResults, (result) -> result.ticked )
+        @countResults.total = _.size(prevResults)
         
         # Which day is displayed to the user (nb of days ago. 0 is today)
         @dayIdx = 0

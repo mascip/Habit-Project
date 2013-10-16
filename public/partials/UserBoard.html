@@ -14,14 +14,14 @@
                             <div class="w-col w-col-2">
                                 <img class="habit-tickbox" ng-click=habit.clickTick() src="{{checkboxImages[habit.ticked()]}}" width="30s" alt="TODO: describe checkbox result"/>
                             </div>
-                            <div class="w-col w-col-4">
+                            <div class="w-col w-col-3">
                                 <div class="habit-name">{{habit.name}}</div>
                             </div>
                             <div class="w-col w-col-1">
                                 <div class="habit-streak">{{habit.streak()}}</div>
                             </div>
                             <div class="w-col w-col-5">
-                                <div class="habit-result">
+                                <div class="habit-results">
                                     <table class='table table-bordered'>
                                         <tr>
                                             <td width="9%" ng-repeat='num in [10, 9, 8, 7,6,5,4,3,2,1,0]'> 
@@ -32,6 +32,9 @@
                                     </table>
                                 </div>
                                 <!-- <div class="habit-result">18/21</div> -->
+                            </div>
+                            <div class="w-col w-col-1">
+                                <div class="habit-result-ratio">{{habit.countResults.done}} / {{habit.countResults.total}}</div>
                             </div>
                         </div> <!-- END row -->
                     </span>

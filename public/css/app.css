@@ -24,3 +24,15 @@
   padding: 0;
 }
 
+.habit-results {
+    padding-right: 0.3em
+}
+
+.habit-result-ratio {
+    min-width: 0px;
+    padding-top: 31px;
+    font-size: 16px;
+    padding-left: 1em
+}
+}
+

@@ -20,7 +20,7 @@ builder {
     enable 'Compile' => (
         pattern => qr{\.coffee$},
         lib     => 'public/coffee',
-        blib    => 'public/coffee/js-from-coffee',
+        blib    => 'public/coffee',
         mime    => 'text/plain',
         map     => sub {
             my $filename = shift;
@@ -34,6 +34,8 @@ builder {
             system("coffee --compile --map --stdio < $in > $out");
         }
     );
+
+    $ENV{env} = 'dev';
 
     if ( $ENV{env} eq 'prod' ) {
         # Production

@@ -16,7 +16,7 @@ class Habit
     constructor: (@name, prevResults) ->
          
         # Result currently selected by the user (default: today's result)
-        @currentResult = 
+        currentResult = 
             day: moment().startOf('day')
             dateTime: 0
             streak: _.first(prevResults).streak
@@ -24,14 +24,13 @@ class Habit
         
         # All results
         @results = _.clone prevResults
-        @results.unshift(_.clone @currentResult)
+        @results.unshift(_.clone currentResult)
+        @updateAllStreaks()
 
-        # Calculate the total number of successes and failures
-        @countResults = _.countBy( prevResults, (result) -> result.ticked )
-        @countResults.total = _.size(prevResults)
-        
         # Which day is displayed to the user (nb of days ago. 0 is today)
         @dayIdx = 0
+        # Has today's result been ticked?
+        @notTickedToday = true
         
 
     # Delegation to attributes
@@ -39,6 +38,7 @@ class Habit
     ticked: -> @selectedResult().ticked
     streak: -> @selectedResult().streak
     selectedDay: -> @results[@dayIdx].day
+
 
     ## ClickTick
     # When the user indicates whether they have done the habit or not
@@ -49,6 +49,10 @@ class Habit
             when @ticked() == 'done'    then 'failed'
             when @ticked() == 'failed'  then 'done'
             else 'failed'
+        
+        # Was it today's result?
+        @notTickedToday = false if @dayIds == 0
+
         # Update all streak values
         @updateAllStreaks()
 
@@ -63,6 +67,17 @@ class Habit
             console.log @results[i]
             @results[i].streak =  @calcStreak(@results[i].ticked, @results[i+1].streak)
         
+        # Update the total numbers of results, and number of done/failed habits
+        @countAllResults()
+
+    countAllResults: ->
+        @countResults = _.countBy( @results, (result) -> result.ticked )
+        @countResults['unknown'] ||= 0
+        @countResults.total = _.size(@results) - @countResults['unknown']
+
+    # Update the results every time the streak is changed
+    #$scope.$watch(@streak, alert('streak changed'))
+
     firstResult: -> _.last @results
     calcStreak: (tick, prevStreak) -> switch
         when tick == 'unknown' then prevStreak
@@ -100,6 +115,7 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
     $scope.displayedDay = selectedDay.valueOf()
         # AngularJS wants milliseconds, valueOf() gives milliseconds
 
+
     # Images for tick-boxes
     $scope.checkboxImages = 
         unknown:    "images/unchecked_checkbox.png"
@@ -107,13 +123,13 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
         failed:     "images/red-cross.png"
 
 
-        # Helper functions to create data, for test
-    createSingleResult = (daysAgo, tck, strk) ->
+    # Helper functions to create data, for test
+    createSingleResult = (daysAgo, tck) ->
         new SingleResult
             day: moment().subtract('days',daysAgo).startOf('day')
             dateTime: moment().subtract('days',daysAgo)
             ticked: tck
-            streak: strk
+            streak: 0
 
     createResults = (resultsArgs...) ->
         results = _.map(resultsArgs, (args) -> 
@@ -123,8 +139,8 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
    
 
     $scope.habits = [ 
-        new Habit 'meditation', createResults([1,'done',5], [2,'done',4], [3,'done',3], [4,'done',2], [5,'done',1])
-        new Habit 'exercise', createResults([1,'failed',-2], [2,'failed',-1], [3,'done',8], [4,'done',7], [5,'done',6], [6,'done',5], [7,'done',4], [8,'done',3], [9,'done',2], [10,'done',1]) 
+        new Habit 'meditation', createResults([1,'done'], [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
+        new Habit 'exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'done']) 
     ]
 
     $scope.thisIsToday = -> selectedDay.isSame(today)

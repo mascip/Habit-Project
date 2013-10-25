@@ -56,7 +56,8 @@ class Habit
         @notTickedToday = false if @dayIds == 0
 
         # Update all streak values
-        @updateAllStreaks()
+        emptyHabit = _.size(@results) == 0
+        @updateAllStreaks() if not emptyHabit
 
     ## updateAllStreaks
     # When a result has been changed, all the following Streak values get changed

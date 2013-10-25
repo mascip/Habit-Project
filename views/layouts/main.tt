@@ -44,7 +44,7 @@ Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>
     <script src="js-libs/moment/moment-with-langs.js"></script>
     <script src="//code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js-libs/bootstrap.min.js"></script>
 
 <!-- My JS libraries -->
   <script src="app.coffee"></script>

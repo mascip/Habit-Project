@@ -37,9 +37,28 @@
                             </div>
                         </div> <!-- END row -->
                     </span>
+                    <div class="w-row" ng-show='nowAddingHabit'> 
+                        <form class="form-inline" role='form'>
+                            <div class="w-col w-col-2">
+                                <img class="habit-tickbox" ng-click=habit.clickTick() src="images/unchecked_checkbox.png" width="30s" alt="TODO: describe checkbox result"/>
+                            </div>
+                            <div class="w-col w-col-3">
+                                <input class='input-habit-name' ng-model='inputHabitName'></input>
+                            </div>
+                            <div class="w-col w-col-1">
+                                <div class="habit-streak"><!--streak column --></div>
+                            </div>
+                            <div class="w-col w-col-5">
+                                <button ng-click='addOneHabit(inputHabitName)'>Start!</button>
+                            </div>
+                            <div class="w-col w-col-1">
+                                <button ng-click='nowAddingHabit=false'>Cancel</button>
+                            </div>
+                        </form>
+                    </div>
                     <div class="w-row"> 
                         <div class="w-col w-col-2">
-                            <img class="add-habit" ng-click=addOneHabit() src="add.jpg" width="40" alt="add.jpg"> 
+                            <img class="add-habit" ng-click='nowAddingHabit=true' ng-hide='nowAddingHabit' src="add.jpg" width="40" alt="add.jpg"> 
                         </div> 
                     </div>
                 </div>

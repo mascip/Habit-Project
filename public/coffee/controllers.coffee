@@ -155,7 +155,9 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
         $scope.displayedDay = selectedDay.valueOf()
         habit.clickNextDay() for habit in $scope.habits
 
-    $scope.addOneHabit = ->
-        $scope.habits.push( new Habit 'haha')
+
+    $scope.addOneHabit = (name) ->
+        $scope.habits.push( new Habit name)
+        $scope.nowAddingHabit = false   # Close the form that adds a habit
  
 ]

@@ -13,19 +13,21 @@ class Habit
     # A habit and the user's results to display for this habit
     # @name: the name of the habit (eg:meditation)
     # @prevResults: a list of previous results. The N-th element was N days ago
-    constructor: (@name, prevResults) ->
+    constructor: (@name, prevResults=[]) ->
          
         # Result currently selected by the user (default: today's result)
+        emptyHabit = _.size(prevResults) == 0
+        currentStreak = if emptyHabit then 0 else _.first(prevResults).streak
         currentResult = 
             day: moment().startOf('day')
             dateTime: 0
-            streak: _.first(prevResults).streak
+            streak: currentStreak 
             ticked: 'unknown'
         
         # All results
         @results = _.clone prevResults
         @results.unshift(_.clone currentResult)
-        @updateAllStreaks()
+        @updateAllStreaks() if not emptyHabit
 
         # Which day is displayed to the user (nb of days ago. 0 is today)
         @dayIdx = 0
@@ -130,19 +132,17 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
             dateTime: moment().subtract('days',daysAgo)
             ticked: tck
             streak: 0
-
     createResults = (resultsArgs...) ->
         results = _.map(resultsArgs, (args) -> 
             #createSingleResult.apply(this,args)
             createSingleResult(args...)
         )
-   
-
     $scope.habits = [ 
         new Habit 'meditation', createResults([1,'done'], [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
         new Habit 'exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'done']) 
     ]
 
+    # Functions called from within the page
     $scope.thisIsToday = -> selectedDay.isSame(today)
 
     $scope.clickPrevDay = ->
@@ -155,5 +155,7 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
         $scope.displayedDay = selectedDay.valueOf()
         habit.clickNextDay() for habit in $scope.habits
 
+    $scope.addOneHabit = ->
+        $scope.habits.push( new Habit 'haha')
  
 ]

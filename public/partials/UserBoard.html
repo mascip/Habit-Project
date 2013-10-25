@@ -26,19 +26,23 @@
                                         <tr>
                                             <td width="9%" ng-repeat='num in [10, 9, 8, 7,6,5,4,3,2,1,0]'> 
                                                 {{habit.results[num].streak}} 
-                                                <span ng-show='habit.results[num].day.isSame(habit.selectedDay())'>**</span> 
+                                                <span ng-show='habit.results[num].day.issame(habit.selectedday())'>**</span> 
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
-                                <!-- <div class="habit-result">18/21</div> -->
                             </div>
                             <div class="w-col w-col-1">
                                 <div class="habit-result-ratio">{{habit.countResults.done}} / {{habit.countResults.total}}</div>
                             </div>
                         </div> <!-- END row -->
                     </span>
-                </div> 
+                    <div class="w-row"> 
+                        <div class="w-col w-col-2">
+                            <img class="add-habit" ng-click=addOneHabit() src="add.jpg" width="40" alt="add.jpg"> 
+                        </div> 
+                    </div>
+                </div>
             </div> <!-- END display-area -->
             <div class="w-container rounded-container team-area">
                 <h2>Team Zen</h2>

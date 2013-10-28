@@ -12,7 +12,7 @@
                     <span ng-repeat='habit in habits | filter: FilterActiveHabit'>
                         <div class="w-row"> 
                             <div class="w-col w-col-2">
-                                <img class="habit-tickbox" ng-click=habit.clickTick() ng-src="{{checkboxImages[habit.ticked()]}}" width="30s" alt="TODO: describe checkbox result"/>
+                                <img class="habit-tickbox" ng-click=habit.clickTick(daysAgo) ng-src="{{checkboxImages[habit.tickedOnDay(daysAgo)]}}" width="30s" alt="TODO: describe checkbox result"/>
                             </div>
                             <div class="w-col w-col-3">
                                 <div class="habit-name">{{habit.name}}</div>
@@ -26,7 +26,7 @@
                                         <tr>
                                             <td width="9%" ng-repeat='num in [10, 9, 8, 7,6,5,4,3,2,1,0]'> 
                                                 {{habit.results[num].streak}} 
-                                                <span ng-show='habit.results[num].day.issame(habit.selectedday())'>**</span> 
+                                                <span ng-show='num == daysAgo'>**</span> 
                                             </td>
                                         </tr>
                                     </table>
@@ -40,7 +40,7 @@
                     <div class="w-row" ng-show='nowAddingHabit'> 
                         <form class="form-inline" role='form'>
                             <div class="w-col w-col-2">
-                                <img class="habit-tickbox" ng-click=habit.clickTick() ng-src="images/unchecked_checkbox.png" width="30s" alt="TODO: describe checkbox result"/>
+                                <img class="habit-tickbox" ng-src="images/unchecked_checkbox.png" width="30s" alt="TODO: describe checkbox result"/>
                             </div>
                             <div class="w-col w-col-3">
                                 <input class='input-habit-name' ng-model='inputHabitName'></input>

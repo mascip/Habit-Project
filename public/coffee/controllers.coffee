@@ -35,23 +35,18 @@ class Habit
         # Has today's result been ticked?
         @notTickedToday = true
         
-
     streakOnDay: (daysAgo) -> @results[daysAgo].streak
-    # Delegation to attributes
-    selectedResult: -> @results[@dayIdx] #TODO: rename to resultOnDay
-    ticked: -> @selectedResult().ticked
-    streak: -> @selectedResult().streak
-    selectedDay: -> @results[@dayIdx].day
-
+    tickedOnDay: (daysAgo) -> @results[daysAgo].ticked
 
     ## ClickTick
     # When the user indicates whether they have done the habit or not
-    clickTick: =>
+    clickTick: (daysAgo) ->
         # Once you have ticked, the state cannot be 'unknown' anymore
-        @selectedResult().ticked = switch
-            when @ticked() == 'unknown' then 'done'
-            when @ticked() == 'done'    then 'failed'
-            when @ticked() == 'failed'  then 'done'
+        ticked = @tickedOnDay(daysAgo)
+        @results[daysAgo].ticked = switch
+            when ticked == 'unknown' then 'done'
+            when ticked == 'done'    then 'failed'
+            when ticked == 'failed'  then 'done'
             else 'failed'
         
         # Was it today's result?
@@ -100,14 +95,11 @@ class Habit
     increaseStreak: (prevStk) -> if prevStk > 0 then prevStk + 1 else 1
     decreaseStreak: (prevStk) -> if prevStk < 0 then prevStk - 1 else -1
 
-    # Changing which day is displayed
-    clickPrevDay: -> @dayIdx++  # One MORE day in the past 
-    clickNextDay: -> @dayIdx--  # One LESS day in the past 
-
     # If a habit doesn't exist yet at the selected date... perhaps don't display it?
     # TODO: a better solution will be to list the habits that are present each day!
     # ... or to use UserDailyResults = { habits: [ { 'meditation' ..., but that might be a pain for calculating future streak results, unless if I use a linked list. Think about it...
-    doesntExistYet: (dayIdx) -> @dayIdx >= @results.length
+    
+    doesntExistYet: (dayIdx) -> @dayIdx >= @results.length # TODO delete when filter created
 
 
 
@@ -140,8 +132,6 @@ class CtrlUserBoard
         $scope.displayedDay = selectedDay.valueOf()
             # AngularJS wants milliseconds, valueOf() gives milliseconds
 
-        
-
         # Images for tick-boxes
         $scope.checkboxImages = 
             unknown:    "images/unchecked_checkbox.png"
@@ -154,7 +144,6 @@ class CtrlUserBoard
             new Habit 'exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'done']) 
         ]
 
-
         ## Functions called from within the page
         $scope.thisIsToday = -> selectedDay.isSame(today)
 
@@ -162,13 +151,11 @@ class CtrlUserBoard
             $scope.daysAgo++
             selectedDay.subtract('days',1)
             $scope.displayedDay = selectedDay.valueOf()
-            habit.clickPrevDay() for habit in $scope.habits
         
         $scope.clickNextDay = ->
             $scope.daysAgo--
             selectedDay.add('days',1)
             $scope.displayedDay = selectedDay.valueOf()
-            habit.clickNextDay() for habit in $scope.habits
 
         $scope.addOneHabit = (name) ->
             $scope.habits.push( new Habit name)

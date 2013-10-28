@@ -17,21 +17,17 @@ class Habit
          
         # Result currently selected by the user (default: today's result)
         emptyHabit = prevResults.length == 0
-        console.log( emptyHabit)
         currentStreak = if emptyHabit then 0 else _.first(prevResults).streak
         currentResult = 
             day: moment().startOf('day')
             dateTime: 0
             streak: currentStreak 
             ticked: 'unknown'
-        console.log currentResult
         
         # Copy previous results and update new one
         @results = _.clone prevResults
         @results.unshift(_.clone currentResult)
-        console.log( 'bef:' + JSON.stringify(@results))
         @updateAllStreaks() 
-        console.log( 'aft:' + JSON.stringify(@results))
 
         # Which day is displayed to the user (nb of days ago. 0 is today)
         @dayIdx = 0
@@ -71,19 +67,15 @@ class Habit
         #return if @emptyHabit() # Nothing to update
         if !@emptyHabit()
             # Update the first streak value in the list
-            console.log( 'a:' + JSON.stringify(@results))
             @firstResult().streak = @calcStreak(@firstResult().ticked, 0)
-            console.log( 'b:' + JSON.stringify(@results))
 
             # Update all the other streak values
             if @results.length > 1
                 for i in [@results.length-2..0] # starting from the second oldest streak...
                     @results[i].streak =  @calcStreak(@results[i].ticked, @results[i+1].streak)
-            console.log( 'c:' + JSON.stringify(@results))
         
         # Update the total numbers of results, and number of done/failed habits
         @countAllResults()
-        console.log( 'a:' + JSON.stringify(@results))
 
     countAllResults: ->
         @countResults = _.countBy( @results, (result) -> result.ticked )
@@ -173,9 +165,9 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
         $scope.displayedDay = selectedDay.valueOf()
         habit.clickNextDay() for habit in $scope.habits
 
-
     $scope.addOneHabit = (name) ->
         $scope.habits.push( new Habit name)
         $scope.nowAddingHabit = false   # Close the form that adds a habit
+
  
-]
+] # END CtrlUserBoard

@@ -5,14 +5,14 @@
                 <h2>Pierre M.</h2>
                 <div class="w-container">
                     <div>
-                        <img class="previous-date" ng-click=clickPrevDay() src="images/left.jpg" width="20" alt="left.jpg">
+                        <img class="previous-date" ng-click=clickPrevDay() ng-src="images/left.jpg" width="20" alt="left.jpg">
                         <div class="date">{{displayedDay | date:'EEE d MMM'}}</div>
-                        <img class="next-date" ng-click=clickNextDay() src="images/right.jpg" width="20" alt="right.jpg" ng-hide=thisIsToday()>
+                        <img class="next-date" ng-click=clickNextDay() ng-src="images/right.jpg" width="20" alt="right.jpg" ng-hide=thisIsToday()>
                     </div>
                     <span ng-repeat='habit in habits'>
-                        <div class="w-row" ng-hide=habit.doesntExistYet()> 
+                        <div class="w-row"> 
                             <div class="w-col w-col-2">
-                                <img class="habit-tickbox" ng-click=habit.clickTick() src="{{checkboxImages[habit.ticked()]}}" width="30s" alt="TODO: describe checkbox result"/>
+                                <img class="habit-tickbox" ng-click=habit.clickTick() ng-src="{{checkboxImages[habit.ticked()]}}" width="30s" alt="TODO: describe checkbox result"/>
                             </div>
                             <div class="w-col w-col-3">
                                 <div class="habit-name">{{habit.name}}</div>
@@ -40,7 +40,7 @@
                     <div class="w-row" ng-show='nowAddingHabit'> 
                         <form class="form-inline" role='form'>
                             <div class="w-col w-col-2">
-                                <img class="habit-tickbox" ng-click=habit.clickTick() src="images/unchecked_checkbox.png" width="30s" alt="TODO: describe checkbox result"/>
+                                <img class="habit-tickbox" ng-click=habit.clickTick() ng-src="images/unchecked_checkbox.png" width="30s" alt="TODO: describe checkbox result"/>
                             </div>
                             <div class="w-col w-col-3">
                                 <input class='input-habit-name' ng-model='inputHabitName'></input>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="w-row"> 
                         <div class="w-col w-col-2">
-                            <img class="add-habit" ng-click='nowAddingHabit=true' ng-hide='nowAddingHabit' src="add.jpg" width="40" alt="add.jpg"> 
+                            <img class="add-habit" ng-click='nowAddingHabit=true' ng-hide='nowAddingHabit' ng-src="add.jpg" width="40" alt="add.jpg"> 
                         </div> 
                     </div>
                 </div>

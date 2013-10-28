@@ -31,12 +31,14 @@ class Habit
 
         # Which day is displayed to the user (nb of days ago. 0 is today)
         @dayIdx = 0
+
         # Has today's result been ticked?
         @notTickedToday = true
         
 
+    streakOnDay: (daysAgo) -> @results[daysAgo].streak
     # Delegation to attributes
-    selectedResult: -> @results[@dayIdx]
+    selectedResult: -> @results[@dayIdx] #TODO: rename to resultOnDay
     ticked: -> @selectedResult().ticked
     streak: -> @selectedResult().streak
     selectedDay: -> @results[@dayIdx].day
@@ -105,7 +107,7 @@ class Habit
     # If a habit doesn't exist yet at the selected date... perhaps don't display it?
     # TODO: a better solution will be to list the habits that are present each day!
     # ... or to use UserDailyResults = { habits: [ { 'meditation' ..., but that might be a pain for calculating future streak results, unless if I use a linked list. Think about it...
-    doesntExistYet: -> @dayIdx >= @results.length
+    doesntExistYet: (dayIdx) -> @dayIdx >= @results.length
 
 
 
@@ -114,60 +116,79 @@ class Habit
 app_name = "myApp"
 app = angular.module "#{app_name}.controllers", []
 
+app.factory('FilterActiveHabit', ->
+    return (habit) ->
+        return habit.doesntExistYet()
+)
+
 app.controller 'myCtrl2', ['$scope', ($scope) -> 
-        $scope.test = 2;
+        $scope.test = 'some text'
 ]
 
-app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
+class CtrlUserBoard
+    constructor: ($scope) ->
 
-    # Days
-    now = moment()
-    today = now.startOf('day')
-    selectedDay = moment(today)
-    $scope.displayedDay = selectedDay.valueOf()
-        # AngularJS wants milliseconds, valueOf() gives milliseconds
+        ## DATA
+
+        # Which day is displayed to the user (nb of days ago. 0 is today)
+        $scope.daysAgo = 0 # Default: today
+
+        # Days
+        now = moment()
+        today = now.startOf('day')
+        selectedDay = moment(today)
+        $scope.displayedDay = selectedDay.valueOf()
+            # AngularJS wants milliseconds, valueOf() gives milliseconds
+
+        
+
+        # Images for tick-boxes
+        $scope.checkboxImages = 
+            unknown:    "images/unchecked_checkbox.png"
+            done:       "images/tick-green.png"
+            failed:     "images/red-cross.png"
+
+        # Habits data
+        $scope.habits = [ 
+            new Habit 'meditation', createResults([1,'done']) #, [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
+            new Habit 'exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'done']) 
+        ]
 
 
-    # Images for tick-boxes
-    $scope.checkboxImages = 
-        unknown:    "images/unchecked_checkbox.png"
-        done:       "images/tick-green.png"
-        failed:     "images/red-cross.png"
+        ## Functions called from within the page
+        $scope.thisIsToday = -> selectedDay.isSame(today)
 
+        $scope.clickPrevDay = ->
+            $scope.daysAgo++
+            selectedDay.subtract('days',1)
+            $scope.displayedDay = selectedDay.valueOf()
+            habit.clickPrevDay() for habit in $scope.habits
+        
+        $scope.clickNextDay = ->
+            $scope.daysAgo--
+            selectedDay.add('days',1)
+            $scope.displayedDay = selectedDay.valueOf()
+            habit.clickNextDay() for habit in $scope.habits
 
-    # Helper functions to create data, for test
+        $scope.addOneHabit = (name) ->
+            $scope.habits.push( new Habit name)
+            $scope.nowAddingHabit = false   # Close the form that adds a habit
+    
+    ## Helper functions to create data, for test
     createSingleResult = (daysAgo, tck) ->
         new SingleResult
             day: moment().subtract('days',daysAgo).startOf('day')
             dateTime: moment().subtract('days',daysAgo)
             ticked: tck
             streak: 0
+
     createResults = (resultsArgs...) ->
         results = _.map(resultsArgs, (args) -> 
             #createSingleResult.apply(this,args)
             createSingleResult(args...)
         )
-    $scope.habits = [ 
-        new Habit 'meditation', createResults([1,'done']) #, [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
-        new Habit 'exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'done']) 
-    ]
 
-    # Functions called from within the page
-    $scope.thisIsToday = -> selectedDay.isSame(today)
-
-    $scope.clickPrevDay = ->
-        selectedDay.subtract('days',1)
-        $scope.displayedDay = selectedDay.valueOf()
-        habit.clickPrevDay() for habit in $scope.habits
-    
-    $scope.clickNextDay = ->
-        selectedDay.add('days',1)
-        $scope.displayedDay = selectedDay.valueOf()
-        habit.clickNextDay() for habit in $scope.habits
-
-    $scope.addOneHabit = (name) ->
-        $scope.habits.push( new Habit name)
-        $scope.nowAddingHabit = false   # Close the form that adds a habit
 
  
-] # END CtrlUserBoard
+ # END CtrlUserBoard
+app.controller 'CtrlUserBoard', CtrlUserBoard

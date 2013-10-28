@@ -16,18 +16,22 @@ class Habit
     constructor: (@name, prevResults=[]) ->
          
         # Result currently selected by the user (default: today's result)
-        emptyHabit = _.size(prevResults) == 0
+        emptyHabit = prevResults.length == 0
+        console.log( emptyHabit)
         currentStreak = if emptyHabit then 0 else _.first(prevResults).streak
         currentResult = 
             day: moment().startOf('day')
             dateTime: 0
             streak: currentStreak 
             ticked: 'unknown'
+        console.log currentResult
         
-        # All results
+        # Copy previous results and update new one
         @results = _.clone prevResults
         @results.unshift(_.clone currentResult)
-        @updateAllStreaks() if not emptyHabit
+        console.log( 'bef:' + JSON.stringify(@results))
+        @updateAllStreaks() 
+        console.log( 'aft:' + JSON.stringify(@results))
 
         # Which day is displayed to the user (nb of days ago. 0 is today)
         @dayIdx = 0
@@ -57,35 +61,44 @@ class Habit
 
         # Update all streak values
         @updateAllStreaks()
-
+    
     ## emptyHabit
-    emptyHabit: -> _.size(@results) == 0
+    emptyHabit: -> @results.length == 0
 
     ## updateAllStreaks
     # When a result has been changed, all the following Streak values get changed
     updateAllStreaks: ->
-        return if @emptyHabit() # Nothing to update
+        #return if @emptyHabit() # Nothing to update
+        if !@emptyHabit()
+            # Update the first streak value in the list
+            console.log( 'a:' + JSON.stringify(@results))
+            @firstResult().streak = @calcStreak(@firstResult().ticked, 0)
+            console.log( 'b:' + JSON.stringify(@results))
 
-        # update the first streak value in the list
-        @firstResult().streak = @calcStreak(@firstResult().ticked, 'unknown')
-
-        # Update all the other streak values
-        for i in [@results.length-2..0] # starting from the second oldest streak...
-            console.log @results[i]
-            @results[i].streak =  @calcStreak(@results[i].ticked, @results[i+1].streak)
+            # Update all the other streak values
+            if @results.length > 1
+                for i in [@results.length-2..0] # starting from the second oldest streak...
+                    @results[i].streak =  @calcStreak(@results[i].ticked, @results[i+1].streak)
+            console.log( 'c:' + JSON.stringify(@results))
         
         # Update the total numbers of results, and number of done/failed habits
         @countAllResults()
+        console.log( 'a:' + JSON.stringify(@results))
 
     countAllResults: ->
         @countResults = _.countBy( @results, (result) -> result.ticked )
-        @countResults['unknown'] ||= 0
-        @countResults.total = _.size(@results) - @countResults['unknown']
+        for res in ['unknown', 'done', 'fail']
+            @countResults[res] ||= 0
+        @countResults.total = @results.length - @countResults['unknown']
 
     # Update the results every time the streak is changed
     #$scope.$watch(@streak, alert('streak changed'))
 
     firstResult: -> _.last @results
+
+    ## calcStreak
+    # tick: current tick status (unkown / failed / done)
+    # prevStreak: value of the previous streak
     calcStreak: (tick, prevStreak) -> switch
         when tick == 'unknown' then prevStreak
         when tick == 'done' then @increaseStreak(prevStreak)
@@ -143,7 +156,7 @@ app.controller 'CtrlUserBoard', ['$scope', ($scope) ->
             createSingleResult(args...)
         )
     $scope.habits = [ 
-        new Habit 'meditation', createResults([1,'done'], [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
+        new Habit 'meditation', createResults([1,'done']) #, [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
         new Habit 'exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'done']) 
     ]
 

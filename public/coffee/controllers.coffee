@@ -113,6 +113,7 @@ app.controller 'myCtrl2', ['$scope', ($scope) ->
         $scope.test = 'some text'
 ]
 
+app.controller 'CtrlUserBoard',
 class CtrlUserBoard
     constructor: ($scope, HabitService) ->
 
@@ -174,7 +175,5 @@ class CtrlUserBoard
             createSingleResult(args...)
         )
 
-
  
  # END CtrlUserBoard
-app.controller 'CtrlUserBoard', CtrlUserBoard

@@ -99,8 +99,10 @@ class Habit
     # TODO: a better solution will be to list the habits that are present each day!
     # ... or to use UserDailyResults = { habits: [ { 'meditation' ..., but that might be a pain for calculating future streak results, unless if I use a linked list. Think about it...
     
-    doesntExistYet: (dayIdx) -> @dayIdx >= @results.length # TODO delete when filter created
+    doesntExistOnDay: (daysAgo) -> daysAgo >= @results.length # TODO delete when filter created
 
+    wasActive: (daysAgo) -> daysAgo < @results.length 
+        # TODO LATER: will need to be more complex when habits will end
 
 
 ### Controllers ###
@@ -110,7 +112,7 @@ app = angular.module "#{app_name}.controllers", []
 
 app.factory('FilterActiveHabit', ->
     return (habit) ->
-        return habit.doesntExistYet()
+        return habit.doesntExistOnDay(daysAgo)
 )
 
 app.controller 'myCtrl2', ['$scope', ($scope) -> 
@@ -160,6 +162,9 @@ class CtrlUserBoard
         $scope.addOneHabit = (name) ->
             $scope.habits.push( new Habit name)
             $scope.nowAddingHabit = false   # Close the form that adds a habit
+
+        $scope.wasActive = (habit)->
+            return habit.wasActive($scope.daysAgo)
     
     ## Helper functions to create data, for test
     createSingleResult = (daysAgo, tck) ->

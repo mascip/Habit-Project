@@ -17,7 +17,6 @@ charset: "UTF-8"
 # template engine
 # simple: default and very basic template engine
 # template_toolkit: TT
-
 template: "simple"
 
 # template: "template_toolkit"
@@ -27,4 +26,3 @@ template: "simple"
 #       start_tag: '<%'
 #       end_tag:   '%>'
 
-# Plack Middlewares

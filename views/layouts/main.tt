@@ -44,7 +44,10 @@ Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>
     <script src="js-libs/moment/moment-with-langs.js"></script>
     <script src="//code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js-libs/bootstrap.min.js"></script>
+    <script src="js-libs/bootstrap.js"></script>
+        <script src="js-libs/angular-ui-bak/bootstrap/ui-bootstrap-0.6.0.js"></script>
+        <!-- <script src="js-libs/angular-ui-bak/bootstrap/ui-bootstrap-0.6.0.js"></script> -->
+        <!-- Don't forget to add the 'ui.bootstrap' dependency in the modules -->
 
 <!-- My JS libraries -->
   <script src="app.coffee"></script>

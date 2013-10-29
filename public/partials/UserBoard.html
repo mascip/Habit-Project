@@ -41,9 +41,10 @@
                         <form class="form-inline" role='form'>
                             <div class="w-col w-col-2">
                                 <img class="habit-tickbox" ng-src="images/unchecked_checkbox.png" width="30s" alt="TODO: describe checkbox result"/>
+                                <!-- <alert>haha!</alert> -->
                             </div>
                             <div class="w-col w-col-3">
-                                <input class='input-habit-name' ng-model='inputHabitName'></input>
+                                <input type="text" class='input-habit-name' ng-model='inputHabitName' typeahead="name for name in habitNames | filter:$viewValue | limitTo:8"></input>
                             </div>
                             <div class="w-col w-col-1">
                                 <div class="habit-streak"><!--streak column --></div>

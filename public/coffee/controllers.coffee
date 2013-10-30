@@ -11,7 +11,7 @@ class SingleResult
 
 app.controller 'CtrlUserBoard',
 class CtrlUserBoard
-    constructor: ($scope, HabitService) ->
+    constructor: ($scope, ActiveHabit, Habit) ->
 
         ## DATA
 
@@ -31,16 +31,21 @@ class CtrlUserBoard
             done:       "images/tick-green.png"
             failed:     "images/red-cross.png"
 
-
         # Habits data
-        $scope.habits = [ 
-            new HabitService 'meditation', createResults([1,'done']) #, [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
-            new HabitService 'exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'done']) 
+        #$scope.allHabits = ['Meditation', 'Exercise', 'Procrastination', 'Get Organized']
+        $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized'],
+            (name) -> new Habit(name))
+
+        $scope.myHabits = [ 
+            new ActiveHabit 'Meditation', createResults([1,'done']) #, [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
+            new ActiveHabit 'Exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'done']) 
         ]
+
+
 
         # New Habit input field
         $scope.inputHabitName = undefined
-        $scope.habitNames = _.pluck($scope.habits, 'name')
+        $scope.habitNames = _.pluck($scope.myHabits, 'name')
 
         ## Functions called from within the page
         $scope.thisIsToday = -> selectedDay.isSame(today)
@@ -56,9 +61,10 @@ class CtrlUserBoard
             $scope.displayedDay = selectedDay.valueOf()
 
         $scope.addOneHabit = (name) ->
-            $scope.habits.push(new HabitService name)
+            $scope.myHabits.push(new ActiveHabit name)
             $scope.nowAddingHabit = false   # Close the form that adds a habit
 
+        # TODO: make it an angular filter, external to the controller
         $scope.wasActive = (habit)->
             return habit.wasActive($scope.daysAgo)
     

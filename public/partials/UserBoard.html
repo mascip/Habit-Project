@@ -9,7 +9,7 @@
                         <div class="date">{{displayedDay | date:'EEE d MMM'}}</div>
                         <img class="next-date" ng-click=clickNextDay() ng-src="images/right.jpg" width="20" alt="right.jpg" ng-hide=thisIsToday()>
                     </div>
-                    <span ng-repeat='habit in habits | filter:wasActive'>
+                    <span ng-repeat='habit in myHabits | filter:wasActive'>
                         <div class="w-row"> 
                             <div class="w-col w-col-2">
                                 <img class="habit-tickbox" ng-click=habit.clickTick(daysAgo) ng-src="{{checkboxImages[habit.tickedOnDay(daysAgo)]}}" width="30s" alt="TODO: describe checkbox result"/>
@@ -44,7 +44,7 @@
                                 <!-- <alert>haha!</alert> -->
                             </div>
                             <div class="w-col w-col-3">
-                                <input type="text" class='input-habit-name' ng-model='inputHabitName' typeahead="name for name in habitNames | filter:$viewValue | limitTo:8"></input>
+                                <input type="text" class='input-habit-name' ng-model='inputHabitName' typeahead="name for name in allHabits | filter:$viewValue | filter:myHabits | limitTo:8"></input>
                             </div>
                             <div class="w-col w-col-1">
                                 <div class="habit-streak"><!--streak column --></div>

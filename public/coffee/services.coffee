@@ -10,18 +10,25 @@ app.factory 'CreateResults', ->
 class CreateResults
     constructor: (resultsArgs...) ->
         results = _.map(resultsArgs, (args) -> 
-            SingleResultService(args...)
+            SingleResult(args...)
         )
 
 
-
-app.factory 'HabitService', ->
+app.factory 'Habit', ->
     class Habit
+        constructor: (@name) ->
+
+
+app.factory 'ActiveHabit', (Habit) ->
+    class ActiveHabit
         # A habit and the user's results to display for this habit
         # @name: the name of the habit (eg:meditation)
-        # @prevResults: a list of previous results. The N-th element was N days ago
-        constructor: (@name, prevResults=[]) ->
+        # prevResults: a list of previous results. The N-th element was N days ago
+        constructor: (name, prevResults=[]) ->
             
+            @habit = new Habit(name)
+            @name = @habit.name
+
             # Result currently selected by the user (default: today's result)
             emptyHabit = prevResults.length == 0
             currentStreak = if emptyHabit then 0 else _.first(prevResults).streak

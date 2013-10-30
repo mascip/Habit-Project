@@ -33,7 +33,7 @@ class CtrlUserBoard
 
         # Habits data
         #$scope.allHabits = ['Meditation', 'Exercise', 'Procrastination', 'Get Organized']
-        $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized'],
+        $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized', 'Stay Organized', 'Organize Emails'],
             (name) -> new Habit(name))
 
         $scope.myHabits = [ 
@@ -45,7 +45,9 @@ class CtrlUserBoard
 
         # New Habit input field
         $scope.inputHabitName = undefined
-        $scope.habitNames = _.pluck($scope.myHabits, 'name')
+        $scope.allHabitNames = _.pluck($scope.allHabits, 'name')
+        $scope.myHabitNames = _.pluck($scope.myHabits, 'name')
+        $scope.otherHabitNames = _.difference( $scope.allHabitNames, $scope.myHabitNames)
 
         ## Functions called from within the page
         $scope.thisIsToday = -> selectedDay.isSame(today)

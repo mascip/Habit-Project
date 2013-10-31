@@ -31,21 +31,29 @@ builder {
         compile => sub {
             my ( $in, $out ) = @_;
             say "    * IN: $in, OUT: $out" if $ENV{env} eq 'dev';
-            system("coffee --compile --map --stdio < $in > $out");
+            system("coffee --compile --stdio < $in > $out");
         }
     );
 
-    $ENV{env} = 'dev';
+    # Minify and Concatenate JS and CSS files
+    enable "Assets",
+        files => [<public/js-libs/*.js>];
+    enable "Assets",
+        files => [<public/css/*.css>],
+        minify => 1; 
+        # $env->{'psgix.assets'}->[0] points at the first asset.
+
+    $ENV{env} = 'prod';
 
     if ( $ENV{env} eq 'prod' ) {
         # Production
 
-        enable "Plack::Middleware::ServerStatus::Lite",
-            path => '/server-status',
-            allow => [ '127.0.0.1', '192.168.0.0/16' ],
-            counter_file => '/tmp/counter_file',
-            scoreboard => '/var/run/server'
-            ;
+        # enable "Plack::Middleware::ServerStatus::Lite",
+        #     path => '/server-status',
+        #     allow => [ '127.0.0.1', '192.168.0.0/16' ],
+        #     counter_file => '/tmp/counter_file',
+        #     scoreboard => '/var/run/server'
+        #     ;
     }
     else { 
         # Development

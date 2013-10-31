@@ -25,11 +25,11 @@ class CtrlUserBoard
         $scope.displayedDay = selectedDay.valueOf()
             # AngularJS wants milliseconds, valueOf() gives milliseconds
 
-        # Images for tick-boxes
-        $scope.checkboxImages = 
-            unknown:    "images/unchecked_checkbox.png"
-            done:       "images/tick-green.png"
-            failed:     "images/red-cross.png"
+        # # Images for tick-boxes
+        # $scope.checkboxIcon = 
+        #     unknown: "unchecked"
+        #     done:    "ok"
+        #     failed:  "remove"
 
         # Habits data
         #$scope.allHabits = ['Meditation', 'Exercise', 'Procrastination', 'Get Organized']
@@ -38,7 +38,7 @@ class CtrlUserBoard
 
         $scope.myHabits = [ 
             new ActiveHabit 'Meditation', createResults([1,'done']) #, [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
-            new ActiveHabit 'Exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'done']) 
+            new ActiveHabit 'Exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done']) 
         ]
 
 
@@ -48,6 +48,9 @@ class CtrlUserBoard
         $scope.allHabitNames = _.pluck($scope.allHabits, 'name')
         $scope.myHabitNames = _.pluck($scope.myHabits, 'name')
         $scope.otherHabitNames = _.difference( $scope.allHabitNames, $scope.myHabitNames)
+
+        # Start date input field
+        $scope.dateChangeIsSelected=0
 
         ## Functions called from within the page
         $scope.thisIsToday = -> selectedDay.isSame(today)
@@ -63,8 +66,11 @@ class CtrlUserBoard
             $scope.displayedDay = selectedDay.valueOf()
 
         $scope.addOneHabit = (name) ->
+            return if name == undefined || name == ''
+            console.log('added')
             $scope.myHabits.push(new ActiveHabit name)
             $scope.nowAddingHabit = false   # Close the form that adds a habit
+            $scope.dateChangeIsSelected=0
 
         # TODO: make it an angular filter, external to the controller
         $scope.wasActive = (habit)->

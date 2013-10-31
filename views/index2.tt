@@ -2,7 +2,7 @@
     <div class="w-container">
       <div class="w-row header">
         <div class="w-col w-col-1">
-          <img class="main-logo" src="images/hl-logo-stolen.jpg" alt="hl-logo-stolen.jpg">
+          <!-- <img class="main-logo" src="images/hl-logo-stolen.jpg" alt="hl-logo-stolen.jpg"> -->
         </div>
         <div class="w-col w-col-8">
           <h1>The Habit Lab</h1>

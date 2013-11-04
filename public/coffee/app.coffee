@@ -15,7 +15,7 @@ app.config ['$routeProvider', ($routeProvider) ->
 
   $routeProvider.otherwise
     redirectTo: '/'
-    templateUrl: 'partials/UserBoard.html'
+    templateUrl: 'partials/UserBoard2.html'
     controller: 'CtrlUserBoard'
 ]
 

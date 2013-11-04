@@ -43,7 +43,11 @@ builder {
         minify => 1; 
         # $env->{'psgix.assets'}->[0] points at the first asset.
 
-    $ENV{env} = 'prod';
+    enable "Deflater",
+        content_type => ['text/css','text/html','text/javascript','application/javascript'],
+        vary_user_agent => 1;
+
+        $ENV{env} = 'prod';
 
     if ( $ENV{env} eq 'prod' ) {
         # Production

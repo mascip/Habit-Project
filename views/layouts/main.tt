@@ -20,22 +20,22 @@
 
         <% content %>
 
-    <div id="footer">
-        Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>. Icons by <a href="glyphicons.com">Glyphicons.com</a>
-    </div>
+        <div id="footer">
+            Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>. Icons by <a href="glyphicons.com">Glyphicons.com</a>
+        </div>
 
-    <!-- Load useful Js libraries -->
-    <% FOREACH js_file IN  js_files %>
-        <script src="<% js_file %>"></script>
-    <% END %>
+        <!-- Load useful Js libraries -->
+        <% FOREACH js_file IN  js_files %>
+            <script src="<% js_file %>"></script>
+        <% END %>
 
-    <!-- My JS libraries -->
-    <script src="app.coffee"></script>
-    <script src="services.coffee"></script>
-    <script src="controllers.coffee"></script>
-    <script src="filters.coffee"></script>
-    <script src="directives.coffee"></script>
-    <!-- END My JS libraries -->
-    
+        <!-- My JS libraries -->
+        <script src="app.coffee"></script>
+        <script src="services.coffee"></script>
+        <script src="controllers.coffee"></script>
+        <script src="filters.coffee"></script>
+        <script src="directives.coffee"></script>
+        <!-- END My JS libraries -->
+        
     </body>
 </html>

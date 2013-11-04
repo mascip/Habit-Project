@@ -55,14 +55,15 @@ class CtrlUserBoard
         ## Functions called from within the page
         $scope.thisIsToday = -> selectedDay.isSame(today)
 
-        $scope.clickPrevDay = ->
-            $scope.daysAgo++
-            selectedDay.subtract('days',1)
+        $scope.clickPrevWeek = ->
+            $scope.daysAgo += 7
+            selectedDay.subtract('days',7)
             $scope.displayedDay = selectedDay.valueOf()
         
-        $scope.clickNextDay = ->
-            $scope.daysAgo--
-            selectedDay.add('days',1)
+        $scope.clickNextWeek = ->
+            # TODO: move to latest day, if it's less than 7 days ahead?
+            $scope.daysAgo -= 7
+            selectedDay.add('days',7)
             $scope.displayedDay = selectedDay.valueOf()
 
         $scope.addOneHabit = (name) ->

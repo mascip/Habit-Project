@@ -38,9 +38,9 @@ js_files:
 # Note: in a String, so that I can add attributes (YAML does not like whitespaces)
 css_files:
  - '"css/normalize.css"'
- - '"css/webflow.css"'
- - '"css/thehabitslab.webflow.css"'
- - '"css/style.css"'
+ # - '"css/webflow.css"'
+ # - '"css/thehabitslab.webflow.css"'
+ # - '"css/style.css"'
  - '"css/app.css"'
  - '"css/bootstrap.css" media="screen"'
 # - '"css/bootstrap-theme.css" media="screen"' # Optional theme

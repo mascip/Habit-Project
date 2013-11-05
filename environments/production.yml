@@ -29,19 +29,20 @@ js_files:
  - //netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js 
     # bootstrap
  #- //cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js # angular-ui-bootstrap
- - js-libs/angular-ui/bootstrap3_bis2/ui-bootstrap-0.6.0.min.js
+ - js/vendor/angular-ui/bootstrap3_bis2/ui-bootstrap-0.6.0.min.js
      # <!-- Don't forget to add the 'ui.bootstrap' dependency in the modules -->
      # Also, the templates are in public/template!
+ - js/vendor/angular-underscore.js
 
 # CSS files to load in the Layout
 # Note: in a String, so that I can add attributes (YAML does not like whitespaces)
 css_files:
- - '"css/normalize.css"'
+ - '"css/vendor/normalize.css"'
  # - '"css/webflow.css"'
  # - '"css/thehabitslab.webflow.css"'
  # - '"css/style.css"'
  - '"css/app.css"'
 # - '"//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" media="screen"'
- - '"css/bootstrap.min.css"'
+ - '"css/vendor/bootstrap.min.css"'
  - '"//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"'
  #- '"//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css"' # Optional theme

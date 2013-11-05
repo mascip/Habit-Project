@@ -3,7 +3,7 @@
 ### Declare app level module which depends on filters, and services ###
 
 app_name = "myApp"
-app = angular.module app_name, ["#{app_name}.filters", "#{app_name}.services", "#{app_name}.directives", "#{app_name}.controllers"]
+app = angular.module app_name, ["#{app_name}.filters", "#{app_name}.services", "#{app_name}.directives", "#{app_name}.controllers", "angular-underscore"]
 
 app.config ['$routeProvider', ($routeProvider) ->
 

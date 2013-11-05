@@ -16,3 +16,15 @@
   padding-bottom: 197px;
   padding-left: 20px;
 }
+.main-logo {
+  position: static;
+  width: 90px;
+  padding-top: 27px;
+  clear: none;
+}
+
+.fail {
+  /* color: #ffff00; */
+  /* background-color: #333300; */
+  /* border-color: #333300; */
+}

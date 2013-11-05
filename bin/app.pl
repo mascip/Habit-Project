@@ -37,9 +37,9 @@ builder {
 
     # Minify and Concatenate JS and CSS files
     enable "Assets",
-        files => [<public/js-libs/*.js>];
+        files => [<public/js/**/*.js>];
     enable "Assets",
-        files => [<public/css/*.css>],
+        files => [<public/css/**/*.css>],
         minify => 1; 
         # $env->{'psgix.assets'}->[0] points at the first asset.
 
@@ -47,7 +47,7 @@ builder {
         content_type => ['text/css','text/html','text/javascript','application/javascript'],
         vary_user_agent => 1;
 
-        $ENV{env} = 'prod';
+        $ENV{env} = 'none';
 
     if ( $ENV{env} eq 'prod' ) {
         # Production

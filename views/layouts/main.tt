@@ -20,9 +20,6 @@
 
         <% content %>
 
-        <div id="footer">
-            Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>. Icons by <a href="glyphicons.com">Glyphicons.com</a>
-        </div>
 
         <!-- Load useful Js libraries -->
         <% FOREACH js_file IN  js_files %>

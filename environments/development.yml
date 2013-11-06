@@ -22,7 +22,7 @@ startup_info: 1
 
 # JS files to load in the Layout
 js_files:
- - js/vendor/angular/angular.min.js
+ - js/vendor/angular/angular.js
  - js/vendor/lodash/lodash.min.js
  - js/vendor/moment/moment-with-langs.min.js
  - //code.jquery.com/jquery.min.js
@@ -39,11 +39,11 @@ js_files:
 # Note: in a String, so that I can add attributes (YAML does not like whitespaces)
 css_files:
  - '"css/vendor/normalize.css"'
- # - '"css/webflow.css"'
- # - '"css/thehabitslab.webflow.css"'
- # - '"css/style.css"'
- - '"css/app.css"'
+### Vendor styles
  - '"css/vendor/bootstrap.css" media="screen"'
 # - '"css/bootstrap-theme.css" media="screen"' # Optional theme
  - '"css/vendor/bootstrap-glyphicons.css"'
+### My own styles
+ - '"css/app.css"'
+    # Keep this one last, to override the others
 

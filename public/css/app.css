@@ -23,8 +23,22 @@
   clear: none;
 }
 
-.fail {
-  /* color: #ffff00; */
-  /* background-color: #333300; */
-  /* border-color: #333300; */
+.result-btn {
+    opacity: 1;
+    transition-property: opacity;
+}
+.result-btn:hover {
+    opacity: 0.4;
+}
+.unknown, .unknown:hover {
+  background-color: #f7ff75;
+}
+.done, .done:hover {
+  background-color: #2ecc71;
+}
+.failed, .failed:hover {
+  background-color: #FF6666;
+}
+.habit-results {
+    margin-bottom: 0.1em
 }

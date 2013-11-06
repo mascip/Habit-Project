@@ -52,6 +52,12 @@ app.factory 'ActiveHabit', (Habit) ->
         streakOnDay: (daysAgo) -> @results[daysAgo].streak
         tickedOnDay: (daysAgo) -> @results[daysAgo].ticked
 
+        nbDaysSinceStart: () -> @results.length
+        nbWeeksStarted: () -> Math.ceil(@nbDaysSinceStart() / 7)
+        nbDaysInWeek: (weekNum) -> Math.min(7, @nbDaysSinceStart() - 7 * weekNum)
+            # weekNum: 0 is the current week, 1 is the previous week, etc
+        nbWeeksToDisplay: -> Math.min(2, @nbWeeksStarted())
+
         ## ClickTick
         # When the user indicates whether they have done the habit or not
         clickTick: (daysAgo) ->

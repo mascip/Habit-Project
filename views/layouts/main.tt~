@@ -27,11 +27,11 @@
         <% END %>
 
         <!-- My JS libraries -->
-        <script src="app.coffee"></script>
-        <script src="services.coffee"></script>
-        <script src="controllers.coffee"></script>
-        <script src="filters.coffee"></script>
-        <script src="directives.coffee"></script>
+        <script src="<% uri_base %>app.coffee"></script>
+        <script src="<% uri_base %>services.coffee"></script>
+        <script src="<% uri_base %>controllers.coffee"></script>
+        <script src="<% uri_base %>filters.coffee"></script>
+        <script src="<% uri_base %>directives.coffee"></script>
         <!-- END My JS libraries -->
         
     </body>

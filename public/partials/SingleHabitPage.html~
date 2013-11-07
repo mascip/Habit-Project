@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="rounded-container display-area"> 
+                <div class="row">
+                    <h2>Pierre M.</h2>
+                </div>
+                <div class="row">
+                    <h3>{{habit.name}} : {{percentSuccess | number:0}}% success!</h3>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <!-- replace by an offset -->
+                    </div>
+                    <div class="col-xs-6">
+                        <i class="glyphicon glyphicon-backward next-week" ng-hide="thisIsToday()" ng-click="clickNextWeek()" alt="Go to next week"></i>
+                        <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span>
+                        <i class="glyphicon glyphicon-forward prev-week" ng-click="clickPrevWeek()" alt="Go to previous week"></i>
+                    </div>
+                </div>
+                <div class="row habit-row">
+                    <div class="col-xs-3">
+                        <span class="habit-ratio">{{habit.countResults.done}} / {{habit.countResults.total}} - Streak: {{habit.streakOnDay(0)}}</span>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="habit-results">
+                            <div class="btn-toolbar" role="toolbar">
+                                <!-- Results (unknown / done / failed) for each day, grouped by week -->
+                                <div class="btn-group" ng-repeat='weekNum in range(habit.nbWeeksToDisplay(daysAgo))'>
+                                    <!-- TODO: clean the code and variable names: dayNum, weekNum, daysAgo -->
+                                    <button type="button" ng-repeat="dayNum in range(habit.nbDaysInWeek(weekNum+daysAgo/7))" class="btn btn-default result-btn ng-class:{unknown:'unknown', done:'done', 'failed':'failed'}[habit.tickedOnDay(dayNum+daysAgo+7*(weekNum))]" ng-click="habit.clickTick(dayNum+daysAgo+7*weekNum)"></buabit.countResults.done / $scope.habit.countResults.total * 100
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- END ng-repeat -->
+            </div>
+        </div>
+    </div>
+</div>

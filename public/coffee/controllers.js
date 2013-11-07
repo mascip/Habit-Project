@@ -15,7 +15,7 @@
 
   app.controller('CtrlHabitPage', CtrlHabitPage = (function() {
     function CtrlHabitPage($scope, $stateParams, MyHabits) {
-      var myHabits, myHabitsService, now, today;
+      var myHabits, now, today;
       $scope.daysAgo = 0;
       now = moment();
       today = now.startOf('day');
@@ -30,9 +30,7 @@
         return $scope.displayedDay = $scope.selectedDay.valueOf();
       });
       $scope.habitName = $stateParams.name;
-      myHabitsService = new MyHabits;
-      myHabitsService.fillList();
-      myHabits = myHabitsService.list;
+      myHabits = MyHabits;
       $scope.habit = _.find(myHabits, function(habit) {
         console.log(habit.name + '---' + $scope.habitName);
         return habit.name === $scope.habitName;
@@ -58,7 +56,7 @@
 
   app.controller('CtrlUserBoard', CtrlUserBoard = (function() {
     function CtrlUserBoard($scope, ActiveHabit, Habit, MyHabits) {
-      var myHabitsService, now, today;
+      var now, today;
       $scope.daysAgo = 0;
       now = moment();
       today = now.startOf('day');
@@ -75,9 +73,7 @@
       $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized', 'Stay Organized', 'Organize Emails'], function(name) {
         return new Habit(name);
       });
-      myHabitsService = new MyHabits;
-      myHabitsService.fillList();
-      $scope.myHabits = myHabitsService.list;
+      $scope.myHabits = MyHabits;
       $scope.inputHabitName = void 0;
       $scope.allHabitNames = _.pluck($scope.allHabits, 'name');
       $scope.myHabitNames = _.pluck($scope.myHabits, 'name');

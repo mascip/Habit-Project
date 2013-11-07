@@ -43,38 +43,23 @@
   })();
 
   app.factory('MyHabits', function(ActiveHabit) {
-    var MyHabits;
-    return MyHabits = (function() {
-      var createResults, createSingleResult;
-
-      function MyHabits() {
-        this.list = [];
-      }
-
-      createSingleResult = function(daysAgo, tck) {
-        return new SingleResult({
-          day: moment().subtract('days', daysAgo).startOf('day'),
-          dateTime: moment().subtract('days', daysAgo),
-          ticked: tck,
-          streak: 0
-        });
-      };
-
-      createResults = function() {
-        var results, resultsArgs;
-        resultsArgs = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-        return results = _.map(resultsArgs, function(args) {
-          return createSingleResult.apply(null, args);
-        });
-      };
-
-      MyHabits.prototype.fillList = function() {
-        return this.list = [new ActiveHabit('Meditation', 0, createResults([1, 'done'], [2, 'done'], [3, 'done', 3], [4, 'done', 2], [5, 'done', 1])), new ActiveHabit('Exercise', 0, createResults([1, 'failed'], [2, 'failed'], [3, 'done'], [4, 'done'], [5, 'done'], [6, 'done'], [7, 'done'], [8, 'done'], [9, 'done'], [10, 'failed'], [11, 'done'], [12, 'done'], [13, 'done'], [14, 'done'], [15, 'done'], [16, 'done'], [17, 'done'], [18, 'done']))];
-      };
-
-      return MyHabits;
-
-    })();
+    var createResults, createSingleResult;
+    createSingleResult = function(daysAgo, tck) {
+      return new SingleResult({
+        day: moment().subtract('days', daysAgo).startOf('day'),
+        dateTime: moment().subtract('days', daysAgo),
+        ticked: tck,
+        streak: 0
+      });
+    };
+    createResults = function() {
+      var results, resultsArgs;
+      resultsArgs = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return results = _.map(resultsArgs, function(args) {
+        return createSingleResult.apply(null, args);
+      });
+    };
+    return [new ActiveHabit('Meditation', 0, createResults([1, 'done'], [2, 'done'], [3, 'done', 3], [4, 'done', 2], [5, 'done', 1])), new ActiveHabit('Exercise', 0, createResults([1, 'failed'], [2, 'failed'], [3, 'done'], [4, 'done'], [5, 'done'], [6, 'done'], [7, 'done'], [8, 'done'], [9, 'done'], [10, 'failed'], [11, 'done'], [12, 'done'], [13, 'done'], [14, 'done'], [15, 'done'], [16, 'done'], [17, 'done'], [18, 'done']))];
   });
 
   app.factory('Habit', function() {

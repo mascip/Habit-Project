@@ -31,9 +31,7 @@ class CtrlHabitPage
 
         # Obtain the pre-prepared list of Habits and results
         $scope.habitName = $stateParams.name
-        myHabitsService = new MyHabits
-        myHabitsService.fillList()
-        myHabits = myHabitsService.list
+        myHabits = MyHabits
         $scope.habit = _.find(myHabits, (habit) ->
            console.log(habit.name + '---' + $scope.habitName)
            return habit.name == $scope.habitName
@@ -86,9 +84,7 @@ class CtrlUserBoard
             (name) -> new Habit(name))
 
         # Obtain the pre-prepared list of Habits and results
-        myHabitsService = new MyHabits
-        myHabitsService.fillList()
-        $scope.myHabits = myHabitsService.list
+        $scope.myHabits = MyHabits
 
         # New Habit input field
         $scope.inputHabitName = undefined

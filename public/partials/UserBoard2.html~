@@ -36,19 +36,19 @@
                     </div>
                 </div> <!-- END ng-repeat -->
                 <div class="row" ng-show='nowAddingHabit'> 
-                    <form class="form-inline" role='form'>
+                    <form class="form-inline" role='form' name="addHabitForm">
                         <div class="col-xs-3">
-                            <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder=' Habit name' typeahead="name for name in otherHabitNames | filter:$viewValue | limitTo:8"></input>
+                            <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder=' Habit name' typeahead="name for name in otherHabitNames | filter:$viewValue | limitTo:8" required></input>
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col-xs-4">
                             <button type="text" class='input-start-date' ng-click='dateChangeIsSelected = 1' ng-hide='dateChangeIsSelected'> Not starting today... </button>
                             <div class="form-horizontal" ng-show='dateChangeIsSelected'>
-                                <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
+                                <input type="text" datepicker-popup="EEE d MMM" ng-model="pickedDate" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
                                 <button class="btn" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
                             </div>
                         </div>
-                        <div class="col-xs-5">
-                            <button type="button" class="btn btn-mini" ng-click='addOneHabit(inputHabitName)'><i class="glyphicon glyphicon-play"></i></button>
+                        <div class="col-xs-4">
+                            <button ng-disabled='!addHabitForm.$valid' type="button" class="btn btn-mini" ng-click='addOneHabit(inputHabitName, pickedDate)'><i class="glyphicon glyphicon-play"></i></button>
                                 <button type="button" class="btn btn-mini" ng-click='nowAddingHabit=false'><i class="glyphicon glyphicon-remove"></i></button>
                         </div>
                     </form>

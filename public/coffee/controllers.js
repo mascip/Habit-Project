@@ -31,16 +31,20 @@
       $scope.daysAgo = 0;
       now = moment();
       today = now.startOf('day');
+      $scope.displayedToday = today.valueOf();
+      $scope.$watch('today', function() {
+        return $scope.displayedToday = today.valueOf();
+      });
       $scope.selectedDay = moment(today);
       $scope.displayedDay = $scope.selectedDay.valueOf();
       $scope.$watch('daysAgo', function() {
-        $scope.selectedDay = moment(today).add('days', $scope.daysAgo);
+        $scope.selectedDay = moment($scope.today).add('days', $scope.daysAgo);
         return $scope.displayedDay = $scope.selectedDay.valueOf();
       });
       $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized', 'Stay Organized', 'Organize Emails'], function(name) {
         return new Habit(name);
       });
-      $scope.myHabits = [new ActiveHabit('Meditation', createResults([1, 'done'])), new ActiveHabit('Exercise', createResults([1, 'failed'], [2, 'failed'], [3, 'done'], [4, 'done'], [5, 'done'], [6, 'done'], [7, 'done'], [8, 'done']))];
+      $scope.myHabits = [new ActiveHabit('Meditation', 0, createResults([1, 'done'])), new ActiveHabit('Exercise', 0, createResults([1, 'failed'], [2, 'failed'], [3, 'done'], [4, 'done'], [5, 'done'], [6, 'done'], [7, 'done'], [8, 'done']))];
       $scope.inputHabitName = void 0;
       $scope.allHabitNames = _.pluck($scope.allHabits, 'name');
       $scope.myHabitNames = _.pluck($scope.myHabits, 'name');
@@ -55,12 +59,15 @@
       $scope.clickNextWeek = function() {
         return $scope.daysAgo -= 7;
       };
-      $scope.addOneHabit = function(name) {
+      $scope.pickedDate = today.format('YYYY-MM-DD');
+      $scope.addOneHabit = function(name, pickedDate) {
+        var nbDaysToInit;
         if (name === void 0 || name === '') {
           return;
         }
+        nbDaysToInit = today.diff(pickedDate, 'days');
+        $scope.myHabits.push(new ActiveHabit(name, nbDaysToInit));
         console.log('Habit #{name} added');
-        $scope.myHabits.push(new ActiveHabit(name));
         $scope.nowAddingHabit = false;
         return $scope.dateChangeIsSelected = 0;
       };

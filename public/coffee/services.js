@@ -40,14 +40,20 @@
   app.factory('ActiveHabit', function(Habit) {
     var ActiveHabit;
     return ActiveHabit = (function() {
-      function ActiveHabit(name, prevResults) {
+      function ActiveHabit(name, nbDaysToInit, prevResults) {
         var currentResult, currentStreak, emptyHabit;
+        if (nbDaysToInit == null) {
+          nbDaysToInit = 0;
+        }
         if (prevResults == null) {
           prevResults = [];
         }
         this.habit = new Habit(name);
         this.name = this.habit.name;
         emptyHabit = prevResults.length === 0;
+        if (nbDaysToInit > 0 && !emptyHabit) {
+          addalert("Defect: to create a Habit, it must either have previous results, or past days to initialize; not both");
+        }
         currentStreak = emptyHabit ? 0 : _.first(prevResults).streak;
         currentResult = {
           day: moment().startOf('day'),

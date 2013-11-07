@@ -21,12 +21,16 @@ class CtrlUserBoard
         # Days
         now = moment()
         today = now.startOf('day')
+        $scope.displayedToday = today.valueOf()
+        $scope.$watch( 'today', -> 
+            $scope.displayedToday = today.valueOf()
+        )
         $scope.selectedDay = moment(today)
         # The date to display, and current week, updating when selectedDay changes
         # AngularJS wants milliseconds, valueOf() gives milliseconds
         $scope.displayedDay = $scope.selectedDay.valueOf()
         $scope.$watch( 'daysAgo', -> 
-            $scope.selectedDay = moment(today).add('days',$scope.daysAgo)
+            $scope.selectedDay = moment($scope.today).add('days',$scope.daysAgo)
             $scope.displayedDay = $scope.selectedDay.valueOf()
         )
 
@@ -42,8 +46,8 @@ class CtrlUserBoard
             (name) -> new Habit(name))
 
         $scope.myHabits = [ 
-            new ActiveHabit 'Meditation', createResults([1,'done']) #, [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
-            new ActiveHabit 'Exercise', createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done']) 
+            new ActiveHabit 'Meditation', 0, createResults([1,'done']) #, [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
+            new ActiveHabit 'Exercise', 0, createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done']) 
         ]
 
 
@@ -58,9 +62,7 @@ class CtrlUserBoard
         $scope.dateChangeIsSelected=0
 
         ## Functions called from within the page
-        $scope.thisIsToday = -> 
-            alert(JSON.stringify(today) + ' - ' + JSON.stringify($scope.selectedDay))
-            $scope.selectedDay.isSame(today)
+        $scope.thisIsToday = -> $scope.selectedDay.isSame(today)
 
         $scope.clickPrevWeek = ->
             $scope.daysAgo += 7
@@ -70,17 +72,21 @@ class CtrlUserBoard
             $scope.daysAgo -= 7
 
         # When a user adds a habit
-        $scope.addOneHabit = (name) ->
+        $scope.pickedDate = $scope.today.format('YYYY-MM-DD')
+        $scope.addOneHabit = (name, pickedDate) ->
             return if name == undefined || name == ''
+            nbDaysToInit = today.diff(pickedDate, 'days')
+                # If an earlier starting date was selected
+            $scope.myHabits.push(new ActiveHabit name, nbDaysToInit)
             console.log('Habit #{name} added')
-            $scope.myHabits.push(new ActiveHabit name)
             $scope.nowAddingHabit = false   # Close the form that adds a habit
             $scope.dateChangeIsSelected=0
 
         # TODO: make it an angular filter, external to the controller
         $scope.wasActive = (habit)->
             return habit.wasActive($scope.daysAgo)
-    
+
+         
     ## Helper functions to create data, for test
     createSingleResult = (daysAgo, tck) ->
         new SingleResult

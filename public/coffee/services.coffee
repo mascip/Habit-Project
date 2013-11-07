@@ -24,13 +24,25 @@ app.factory 'ActiveHabit', (Habit) ->
         # A habit and the user's results to display for this habit
         # @name: the name of the habit (eg:meditation)
         # prevResults: a list of previous results. The N-th element was N days ago
-        constructor: (name, prevResults=[]) ->
+        constructor: (name, nbDaysToInit=0, prevResults=[]) ->
             
             @habit = new Habit(name)
             @name = @habit.name
 
+
             # Result currently selected by the user (default: today's result)
             emptyHabit = prevResults.length == 0
+            addalert("Defect: to create a Habit, it must either have previous results, or past days to initialize; not both") if nbDaysToInit>0 and !emptyHabit
+
+            # if nbDaysInit > 0 then
+            #     unknownResult = 
+            #         day: moment().startOf('day')
+            #         dateTime: moment()
+            #         streak: 0
+            #         ticked: 'unknown'
+            #     @results =  []
+            #     #TODO NOW: add unknown results, changing the day each time
+                
             currentStreak = if emptyHabit then 0 else _.first(prevResults).streak
             currentResult = 
                 day: moment().startOf('day')

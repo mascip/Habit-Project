@@ -22,7 +22,7 @@ startup_info: 1
 
 # JS files to load in the Layout
 js_files:
- - js/vendor/angular/angular.min.js
+ - js/vendor/angular/angular.js
  - js/vendor/lodash/lodash.min.js
  - js/vendor/moment/moment-with-langs.min.js
  - //code.jquery.com/jquery.min.js

@@ -6,13 +6,34 @@ app = angular.module "#{app_name}.services", []
 # In this case it is a simple value service.
 app.value 'version', '0.1'
 
-app.factory 'CreateResults', ->
-class CreateResults
-    constructor: (resultsArgs...) ->
-        results = _.map(resultsArgs, (args) -> 
-            SingleResult(args...)
-        )
 
+class SingleResult
+    constructor: ({@day, @dateTime, @ticked, @streak}) ->
+    
+## MyHabits
+app.factory 'MyHabits', (ActiveHabit) ->
+    class MyHabits
+        constructor: ->
+            @list = []
+            
+        ## Helper functions to create data, for test
+        createSingleResult = (daysAgo, tck) ->
+            new SingleResult
+                day: moment().subtract('days',daysAgo).startOf('day')
+                dateTime: moment().subtract('days',daysAgo)
+                ticked: tck
+                streak: 0
+        createResults = (resultsArgs...) ->
+            results = _.map(resultsArgs, (args) ->
+                #createSingleResult.apply(this,args)
+                createSingleResult(args...)
+            )
+        fillList: ->
+            # TODO: no need for the day number here
+            @list = [
+                new ActiveHabit 'Meditation', 0, createResults([1,'done'], [2,'done'], [3,'done',3], [4,'done',2], [5,'done',1])
+                new ActiveHabit 'Exercise', 0, createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'failed'], [11,'done'], [12,'done'], [13,'done'], [14,'done'], [15,'done'], [16,'done'], [17,'done'], [18,'done']) 
+            ]
 
 app.factory 'Habit', ->
     class Habit
@@ -34,6 +55,8 @@ app.factory 'ActiveHabit', (Habit) ->
             emptyHabit = prevResults.length == 0
             addalert("Defect: to create a Habit, it must either have previous results, or past days to initialize; not both") if nbDaysToInit>0 and !emptyHabit
 
+    # To initialize an array: arr = (0 for [1..100]) 
+    # I will need some fuctions: initOneDay(), initSomeDays()
             # if nbDaysInit > 0 then
             #     unknownResult = 
             #         day: moment().startOf('day')

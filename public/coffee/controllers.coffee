@@ -6,12 +6,15 @@ app.controller 'myCtrl2', ['$scope', ($scope) ->
     $scope.test = 'some text'
 ]
 
-class SingleResult
-    constructor: ({@day, @dateTime, @ticked, @streak}) ->
+
+app.controller 'CtrlHabitPage',
+class CtrlHabitPage
+    constructor: ($scope, $stateParams, MyHabits) ->
+        $scope.habitName = $stateParams.name
 
 app.controller 'CtrlUserBoard',
 class CtrlUserBoard
-    constructor: ($scope, ActiveHabit, Habit) ->
+    constructor: ($scope, ActiveHabit, Habit, MyHabits) ->
 
         ## DATA
 
@@ -22,7 +25,7 @@ class CtrlUserBoard
         now = moment()
         today = now.startOf('day')
         $scope.displayedToday = today.valueOf()
-        $scope.$watch( 'today', -> 
+        $scope.$watch( 'today', ->
             $scope.displayedToday = today.valueOf()
         )
         $scope.selectedDay = moment(today)
@@ -34,23 +37,15 @@ class CtrlUserBoard
             $scope.displayedDay = $scope.selectedDay.valueOf()
         )
 
-        # # Images for tick-boxes
-        # $scope.checkboxIcon = 
-        #     unknown: "unchecked"
-        #     done:    "ok"
-        #     failed:  "remove"
 
         # Habits data
-        #$scope.allHabits = ['Meditation', 'Exercise', 'Procrastination', 'Get Organized']
         $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized', 'Stay Organized', 'Organize Emails'],
             (name) -> new Habit(name))
 
-        $scope.myHabits = [ 
-            new ActiveHabit 'Meditation', 0, createResults([1,'done']) #, [2,'done']) #, [3,'done',3], [4,'done',2], [5,'done',1])
-            new ActiveHabit 'Exercise', 0, createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done']) 
-        ]
-
-
+        # Obtain the pre-prepared list of Habits and results
+        myHabitsService = new MyHabits
+        myHabitsService.fillList()
+        $scope.myHabits = myHabitsService.list
 
         # New Habit input field
         $scope.inputHabitName = undefined
@@ -87,19 +82,6 @@ class CtrlUserBoard
             return habit.wasActive($scope.daysAgo)
 
          
-    ## Helper functions to create data, for test
-    createSingleResult = (daysAgo, tck) ->
-        new SingleResult
-            day: moment().subtract('days',daysAgo).startOf('day')
-            dateTime: moment().subtract('days',daysAgo)
-            ticked: tck
-            streak: 0
-
-    createResults = (resultsArgs...) ->
-        results = _.map(resultsArgs, (args) -> 
-            #createSingleResult.apply(this,args)
-            createSingleResult(args...)
-        )
 
  
  # END CtrlUserBoard

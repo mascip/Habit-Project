@@ -43,9 +43,16 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
-.date, .habit-name, .habit-ratio {
+.date, .habit-name, .habit-ratio .reminder {
     font-size: 1.2em;
 }
 .now {
     font-size: 0.8em;
+}
+.date {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.grey {
+    color: grey;
 }

@@ -3,20 +3,21 @@
 ### Declare app level module which depends on filters, and services ###
 
 app_name = "myApp"
-app = angular.module app_name, ["#{app_name}.filters", "#{app_name}.services", "#{app_name}.directives", "#{app_name}.controllers", "angular-underscore]
+app = angular.module app_name, ["#{app_name}.filters", "#{app_name}.services", "#{app_name}.directives", "#{app_name}.controllers", "angular-underscore", "ui.router"]
 
-app.config ['$routeProvider', ($routeProvider) ->
+app.config ($stateProvider, $urlRouterProvider) ->
 
-  $routeProvider.when '/view1',
-    templateUrl: 'partials/partial1.html'
-    controller: 'myCtrl1'
+    $stateProvider
+        .state( 'userboard', {
+            url: '/',
+            templateUrl: 'partials/UserBoard2.html',
+            controller: 'CtrlUserBoard'
+        })
+        .state( 'habit.name', {
+            url: '/habit/:name',
+            templateUrl: 'partials/SingleHabitPage.html',
+            controller: 'CtrlHabitPage'
+        })
 
-
-
-  $routeProvider.otherwise
-    redirectTo: '/'
-    templateUrl: 'partials/UserBoard2.html'
-    controller: 'CtrlUserBoard'
-]
 
 #angular.bootstrap document, [app_name]

@@ -11,7 +11,7 @@
     </div>
   </header>
 
-  <div ng-view></div>
+  <div ui-view></div>
 
   <footer>
             Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>. Icons by <a href="glyphicons.com">Glyphicons.com</a>

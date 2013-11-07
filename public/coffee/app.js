@@ -7,20 +7,18 @@
 
   app_name = "myApp";
 
-  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".controllers", "angular-underscore"]);
+  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".controllers", "angular-underscore", "ui.router"]);
 
-  app.config([
-    '$routeProvider', function($routeProvider) {
-      $routeProvider.when('/view1', {
-        templateUrl: 'partials/partial1.html',
-        controller: 'myCtrl1'
-      });
-      return $routeProvider.otherwise({
-        redirectTo: '/',
-        templateUrl: 'partials/UserBoard2.html',
-        controller: 'CtrlUserBoard'
-      });
-    }
-  ]);
+  app.config(function($stateProvider, $urlRouterProvider) {
+    return $stateProvider.state('userboard', {
+      url: '/',
+      templateUrl: 'partials/UserBoard2.html',
+      controller: 'CtrlUserBoard'
+    }).state('habit', {
+      url: '/habit/:name',
+      templateUrl: 'partials/SingleHabitPage.html',
+      controller: 'CtrlHabitPage'
+    });
+  });
 
 }).call(this);

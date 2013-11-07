@@ -10,6 +10,29 @@
 
   app.value('version', '0.1');
 
+  app.factory('TheTime', function() {
+    var TheTime;
+    return TheTime = (function() {
+      function TheTime() {
+        this.daysAgoVar = 0;
+        this.now = moment();
+        this.today = this.now.startOf('day');
+        this.selectedDay = moment(this.today);
+      }
+
+      TheTime.prototype.changeDaysAgo = function(nb) {
+        return this.daysAgo += nb;
+      };
+
+      TheTime.prototype.daysAgo = function() {
+        return this.daysAgo;
+      };
+
+      return TheTime;
+
+    })();
+  });
+
   SingleResult = (function() {
     function SingleResult(_arg) {
       this.day = _arg.day, this.dateTime = _arg.dateTime, this.ticked = _arg.ticked, this.streak = _arg.streak;

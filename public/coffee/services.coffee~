@@ -6,12 +6,17 @@ app = angular.module "#{app_name}.services", []
 # In this case it is a simple value service.
 app.value 'version', '0.1'
 
-app.factory 'CreateResults', ->
-class CreateResults
-    constructor: (resultsArgs...) ->
-        results = _.map(resultsArgs, (args) ->
-            SingleResult(args...)
-        )
+
+app.factory 'TheTime', ->
+    class TheTime
+        constructor: ->
+            @daysAgoVar = 0 # Default: today
+            @now = moment()
+            @today = @now.startOf('day')
+            @selectedDay = moment(@today)
+
+        changeDaysAgo: (nb) -> @daysAgo += nb
+        daysAgo: -> @daysAgo
 
 class SingleResult
     constructor: ({@day, @dateTime, @ticked, @streak}) ->

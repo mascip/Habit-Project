@@ -7,6 +7,18 @@ app = angular.module "#{app_name}.services", []
 app.value 'version', '0.1'
 
 
+# TODO: delete this service?
+app.factory 'TheTime', ->
+    class TheTime
+        constructor: ->
+            @daysAgoVar = 0 # Default: today
+            @now = moment()
+            @today = @now.startOf('day')
+            @selectedDay = moment(@today)
+
+        changeDaysAgo: (nb) -> @daysAgo += nb
+        daysAgo: -> @daysAgo
+
 class SingleResult
     constructor: ({@day, @dateTime, @ticked, @streak}) ->
     

@@ -17,7 +17,7 @@
                 </div>
                 <div class="row habit-row" ng-repeat='habit in myHabits | filter:wasActive'>
                     <div class="col-xs-3">
-                        <span class="habit-name">{{habit.name}}</span>
+                        <a class="habit-name" href="#/habit/{{habit.name}}">{{habit.name}}</a>
                     </div>
                     <div class="col-xs-3">
                         <span class="habit-ratio">{{habit.countResults.done}} / {{habit.countResults.total}} - Streak: {{habit.streakOnDay(0)}}</span>

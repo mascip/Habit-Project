@@ -15,7 +15,42 @@
 
   app.controller('CtrlHabitPage', CtrlHabitPage = (function() {
     function CtrlHabitPage($scope, $stateParams, MyHabits) {
+      var myHabits, myHabitsService, now, today;
+      $scope.daysAgo = 0;
+      now = moment();
+      today = now.startOf('day');
+      $scope.displayedToday = today.valueOf();
+      $scope.$watch('today', function() {
+        return $scope.displayedToday = today.valueOf();
+      });
+      $scope.selectedDay = moment(today);
+      $scope.displayedDay = $scope.selectedDay.valueOf();
+      $scope.$watch('daysAgo', function() {
+        $scope.selectedDay = moment(today).add('days', $scope.daysAgo);
+        return $scope.displayedDay = $scope.selectedDay.valueOf();
+      });
       $scope.habitName = $stateParams.name;
+      myHabitsService = new MyHabits;
+      myHabitsService.fillList();
+      myHabits = myHabitsService.list;
+      $scope.habit = _.find(myHabits, function(habit) {
+        console.log(habit.name + '---' + $scope.habitName);
+        return habit.name === $scope.habitName;
+      });
+      $scope.percentSuccess = $scope.habit.countResults.done / $scope.habit.countResults.total * 100;
+      $scope.dateChangeIsSelected = 0;
+      $scope.thisIsToday = function() {
+        return $scope.selectedDay.isSame(today);
+      };
+      $scope.wasActive = function(habit) {
+        return habit.wasActive($scope.daysAgo);
+      };
+      $scope.clickPrevWeek = function() {
+        return $scope.daysAgo += 7;
+      };
+      $scope.clickNextWeek = function() {
+        return $scope.daysAgo -= 7;
+      };
     }
 
     return CtrlHabitPage;

@@ -39,6 +39,17 @@
 .failed, .failed:hover {
   background-color: #FF6666;
 }
-.habit-results {
-    margin-bottom: 0.1em
+.habit-row {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.date, .habit-name, .habit-ratio {
+    font-size: 1.2em;
+}
+.now {
+    font-size: 0.8em;
+}
+.date {
+    margin-left: 10px;
+    margin-right: 10px;
 }

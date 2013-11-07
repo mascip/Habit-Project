@@ -21,9 +21,14 @@ class CtrlUserBoard
         # Days
         now = moment()
         today = now.startOf('day')
-        selectedDay = moment(today)
-        $scope.displayedDay = selectedDay.valueOf()
-            # AngularJS wants milliseconds, valueOf() gives milliseconds
+        $scope.selectedDay = moment(today)
+        # The date to display, and current week, updating when selectedDay changes
+        # AngularJS wants milliseconds, valueOf() gives milliseconds
+        $scope.displayedDay = $scope.selectedDay.valueOf()
+        $scope.$watch( 'daysAgo', -> 
+            $scope.selectedDay = moment(today).add('days',$scope.daysAgo)
+            $scope.displayedDay = $scope.selectedDay.valueOf()
+        )
 
         # # Images for tick-boxes
         # $scope.checkboxIcon = 
@@ -53,22 +58,19 @@ class CtrlUserBoard
         $scope.dateChangeIsSelected=0
 
         ## Functions called from within the page
-        $scope.thisIsToday = -> selectedDay.isSame(today)
+        $scope.thisIsToday = -> $scope.selectedDay.isSame(today)
 
         $scope.clickPrevWeek = ->
             $scope.daysAgo += 7
-            selectedDay.subtract('days',7)
-            $scope.displayedDay = selectedDay.valueOf()
         
         $scope.clickNextWeek = ->
             # TODO: move to latest day, if it's less than 7 days ahead?
             $scope.daysAgo -= 7
-            selectedDay.add('days',7)
-            $scope.displayedDay = selectedDay.valueOf()
 
+        # When a user adds a habit
         $scope.addOneHabit = (name) ->
             return if name == undefined || name == ''
-            console.log('added')
+            console.log('Habit #{name} added')
             $scope.myHabits.push(new ActiveHabit name)
             $scope.nowAddingHabit = false   # Close the form that adds a habit
             $scope.dateChangeIsSelected=0

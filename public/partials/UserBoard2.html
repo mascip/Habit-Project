@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="rounded-container display-area"> 
+                <div class="row">
+                    <h2>Pierre M.</h2>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <span class="now"></span>
+                    </div>
+                    <div class="col-xs-6">
+                        <i class="glyphicon glyphicon-backward next-week" ng-hide="thisIsToday()" ng-click="clickNextWeek()" alt="Go to next week"></i>
+                        <span class="date">{{displayedDay | date:'EEE d MMM'}}</span>
+                        <i class="glyphicon glyphicon-forward prev-week" ng-click="clickPrevWeek()" alt="Go to previous week"></i>
+                    </div>
+                </div>
+                <div class="row habit-row" ng-repeat='habit in myHabits | filter:wasActive'>
+                    <div class="col-xs-3">
+                        <span class="habit-name">{{habit.name}}</span>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="habit-ratio">{{habit.countResults.done}} / {{habit.countResults.total}} - Streak: {{habit.streakOnDay(0)}}</span>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="habit-results">
+                            <div class="btn-toolbar" role="toolbar">
+                                <!-- Results (unknown / done / failed) for each day, grouped by week -->
+                                <div class="btn-group" ng-repeat='weekNum in range(habit.nbWeeksToDisplay(daysAgo))'>
+                                    <!-- TODO: clean the code and variable names: dayNum, weekNum, daysAgo -->
+                                    <button type="button" ng-repeat="dayNum in range(habit.nbDaysInWeek(weekNum+daysAgo/7))" class="btn btn-default result-btn ng-class:{unknown:'unknown', done:'done', 'failed':'failed'}[habit.tickedOnDay(dayNum+daysAgo+7*(weekNum))]" ng-click="habit.clickTick(dayNum+daysAgo+7*weekNum)"></button>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- END ng-repeat -->
+                <div class="row" ng-show='nowAddingHabit'> 
+                    <form class="form-inline" role='form'>
+                        <div class="col-xs-3">
+                            <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder=' Habit name' typeahead="name for name in otherHabitNames | filter:$viewValue | limitTo:8"></input>
+                        </div>
+                        <div class="col-xs-3">
+                            <button type="text" class='input-start-date' ng-click='dateChangeIsSelected = 1' ng-hide='dateChangeIsSelected'> Not starting today... </button>
+                            <div class="form-horizontal" ng-show='dateChangeIsSelected'>
+                                <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
+                                <button class="btn" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <button type="button" class="btn btn-mini" ng-click='addOneHabit(inputHabitName)'><i class="glyphicon glyphicon-play"></i></button>
+                                <button type="button" class="btn btn-mini" ng-click='nowAddingHabit=false'><i class="glyphicon glyphicon-remove"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row"> 
+                    <div class="col-xs-2">
+                        <button class="btn btn-large" ng-click='nowAddingHabit=true' ng-hide='nowAddingHabit' alt="Add a new habit"><i style="font-size: 1.4em" class="glyphicon glyphicon-plus"></i></button>
+                            <!-- <button type="button" class="btn btn-default btn-sm, add-habit" ng-click='nowAddingHabit=true' ng-hide='nowAddingHabit' alt="add.jpg"> --> 
+                            <!--     <i class="icon-large glyphicon glyphicon-plus"></i> -->
+                        <!-- </button> -->
+                    </div> 
+                </div>
+            </div> <!-- END display-area -->
+            <div class="rounded-container team-area">
+                <h2>Team Zen</h2>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="rounded-container chat-area">
+                <h2>Chat area...</h2>
+            </div>
+        </div>
+    </div> <!-- END row -->
+</div>
+    

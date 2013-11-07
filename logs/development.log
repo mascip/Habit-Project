@@ -1,0 +1,153 @@
+[HabitLab:30766]  core @2013-10-21 12:04:45> looking for get / in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:30766]  core @2013-10-21 12:04:45> looking for get /css/normalize.css in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:30766]  core @2013-10-21 12:04:45> looking for get /css/webflow.css in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:30766]  core @2013-10-21 12:04:45> looking for get /css/thehabitslab.webflow.css in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:30766]  core @2013-10-21 12:04:45> looking for get /css/app.css in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:30766]  core @2013-10-21 12:04:45> looking for get /images/hl-logo-stolen.jpg in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:30766]  core @2013-10-21 12:04:45> looking for get /js-libs/lodash/lodash.js in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:30766]  core @2013-10-21 12:04:45> looking for get /js-libs/angular/angular.js in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:45> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:30766]  core @2013-10-21 12:04:46> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:30766]  core @2013-10-21 12:04:46> looking for get /js-libs/moment/moment-with-langs.js in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:46> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:30766]  core @2013-10-21 12:04:46> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:30766]  core @2013-10-21 12:04:46> looking for get /app.coffee in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:46> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:30766]  core @2013-10-21 12:04:46> looking for get /services.coffee in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:46> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:30766]  core @2013-10-21 12:04:46> looking for get /controllers.coffee in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:46> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:30766]  core @2013-10-21 12:04:46> looking for get /filters.coffee in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:46> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:30766]  core @2013-10-21 12:04:46> looking for get /directives.coffee in (eval 231) l. 2
+[HabitLab:30766]  core @2013-10-21 12:04:46> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:30766]  core @2013-10-21 12:04:46> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31431]  core @2013-10-21 12:39:17> looking for get / in (eval 231) l. 2
+[HabitLab:31431]  core @2013-10-21 12:39:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31431]  core @2013-10-21 12:39:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31452]  core @2013-10-21 12:40:26> looking for get / in (eval 231) l. 2
+[HabitLab:31452]  core @2013-10-21 12:40:26> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31452]  core @2013-10-21 12:40:26> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31011]  core @2013-10-23 09:00:05> looking for get / in (eval 244) l. 2
+[HabitLab:31011]  core @2013-10-23 09:00:05> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31011]  core @2013-10-23 09:00:05> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31011]  core @2013-10-23 09:00:05> looking for get /favicon.ico in (eval 244) l. 2
+[HabitLab:31011]  core @2013-10-23 09:00:05> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31011]  core @2013-10-23 09:00:05> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31011]  core @2013-10-23 09:00:11> looking for get / in (eval 244) l. 2
+[HabitLab:31011]  core @2013-10-23 09:00:11> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31011]  core @2013-10-23 09:00:11> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:16> looking for get / in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:16> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /css/normalize.css in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /css/webflow.css in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /css/thehabitslab.webflow.css in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /css/style.css in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /css/app.css in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /css/bootstrap.min.css in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /js-libs/lodash/lodash.js in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /js-libs/angular/angular.js in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /js-libs/moment/moment-with-langs.js in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /js/bootstrap.min.js in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /app.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /services.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /controllers.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /filters.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /directives.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /images/hl-logo-stolen.jpg in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.after_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 132
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /app.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /services.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /controllers.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /filters.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265
+[HabitLab:31225]  core @2013-10-23 09:05:17> looking for get /directives.coffee in (eval 244) l. 2
+[HabitLab:31225]  core @2013-10-23 09:05:17> Entering hook core.app.before_request in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Dispatcher.pm l. 77
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.init in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 177
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.before in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 254
+[file_not_found:31225]  core @2013-10-23 09:05:17> Entering hook core.error.after in /home/user/.perlbrew/libs/perl-5.18.1@devel/lib/perl5/Dancer2/Core/Error.pm l. 265

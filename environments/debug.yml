@@ -1,0 +1,43 @@
+# configuration file for development environment
+
+# the logger engine to use
+# console: log messages to STDOUT (your console where you started the
+#          application server)
+# file:    log message to a file in log/
+logger: "console"
+
+# the log level for this environment
+# core is the lowest, it shows Dancer2's core log messages as well as yours
+# (debug, info, warning and error)
+log: "core"
+
+# should Dancer2 consider warnings as critical errors?
+warnings: 1
+
+# should Dancer2 show a stacktrace when an error is caught?
+show_errors: 1
+
+# print the banner
+startup_info: 1
+
+# JS files to load in the Layout
+js_files:
+ - js-libs/lodash/lodash.js
+ - js-libs/angular/angular.js
+ - js-libs/moment/moment-with-langs.js
+ - //code.jquery.com/jquery.js
+ - js-libs/bootstrap.js
+ - js-libs/angular-ui-bak/bootstrap/ui-bootstrap-0.6.0.js
+    # <!-- Don't forget to add the 'ui.bootstrap' dependency in the modules -->
+
+
+# CSS files to load in the Layout
+# Note: in a String, so that I can add attributes (YAML does not like whitespaces)
+css_files:
+ - '"css/normalize.css"'
+ - '"css/webflow.css"'
+ - '"css/thehabitslab.webflow.css"'
+ - '"css/style.css"'
+ - '"css/app.css"'
+ - '"css/bootstrap.css" media="screen"'
+

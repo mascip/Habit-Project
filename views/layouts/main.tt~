@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=<% settings.charset %>" />
+        <meta charset="utf-8">
+
+        <title>The Habit Lab</title>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Load CSS files -->
+        <% FOREACH css_file IN  css_files %>
+            <link rel="stylesheet" type="text/css" href=<% css_file %>>
+        <% END %>
+
+    </head>
+    <body>
+
+        <% content %>
+
+
+        <!-- Load useful Js libraries -->
+        <% FOREACH js_file IN  js_files %>
+        <script src="<% uri_base %><% js_file %>"></script>
+        <% END %>
+
+        <!-- My JS libraries -->
+        <script src="app.coffee"></script>
+        <script src="services.coffee"></script>
+        <script src="controllers.coffee"></script>
+        <script src="filters.coffee"></script>
+        <script src="directives.coffee"></script>
+        <!-- END My JS libraries -->
+        
+    </body>
+</html>

@@ -22,7 +22,7 @@
                     <div class="col-xs-3">
                         <span class="habit-ratio">{{habit.countResults.done}} / {{habit.countResults.total}} - Streak: {{habit.streakOnDay(0)}}</span>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-9">
                         <div class="habit-results">
                             <div class="btn-toolbar" role="toolbar">
                                 <!-- Results (unknown / done / failed) for each day, grouped by week -->

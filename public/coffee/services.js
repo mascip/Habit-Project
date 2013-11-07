@@ -200,7 +200,8 @@
           res = _ref[_i];
           (_base = this.countResults)[res] || (_base[res] = 0);
         }
-        return this.countResults.total = this.results.length - this.countResults['unknown'];
+        this.countResults.total = this.results.length - this.countResults['unknown'];
+        return this.percentSuccess = this.countResults.done / this.countResults.total * 100;
       };
 
       ActiveHabit.prototype.firstResult = function() {

@@ -37,7 +37,6 @@
         console.log(habit.name + '---' + $scope.habitName);
         return habit.name === $scope.habitName;
       });
-      $scope.percentSuccess = $scope.habit.countResults.done / $scope.habit.countResults.total * 100;
       $scope.dateChangeIsSelected = 0;
       $scope.thisIsToday = function() {
         return $scope.selectedDay.isSame(today);

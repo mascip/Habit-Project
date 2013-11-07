@@ -39,9 +39,6 @@ class CtrlHabitPage
            return habit.name == $scope.habitName
         )
 
-        $scope.percentSuccess = $scope.habit.countResults.done / $scope.habit.countResults.total * 100
-        
-
         # TODO: delete duplication
         # Start date input field
         $scope.dateChangeIsSelected=0

@@ -148,6 +148,8 @@ app.factory 'ActiveHabit', (Habit) ->
                 @countResults[res] ||= 0
             @countResults.total = @results.length - @countResults['unknown']
 
+            @percentSuccess = @countResults.done / @countResults.total * 100
+
         # Update the results every time the streak is changed
         #$scope.$watch(@streak, alert('streak changed'))
 

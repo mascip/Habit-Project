@@ -22,7 +22,7 @@
                 <!-- </div> -->
                 <div class="row habit-row" ng-repeat='habit in myHabits | filter:wasActive'>
                     <div class="col-xs-4 col-md-3">
-                        <a href="/#/habit/{{habit.name}}">{{habit.name}}</a>
+                        <a class="habit-name" href="/#/habit/{{habit.name}}">{{habit.name}}</a>
                     </div>
                     <div class="col-xs-8 col-md-2 habit-ratio">
                         {{habit.countResults.done}} / {{habit.countResults.total}}

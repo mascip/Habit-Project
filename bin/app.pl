@@ -19,8 +19,8 @@ builder {
     # Both in Production and Development
     enable 'Compile' => (
         pattern => qr{\.coffee$},
-        lib     => 'public/coffee',
-        blib    => 'public/coffee',
+        lib     => 'src/coffee',
+        blib    => 'public/js',
         mime    => 'text/plain',
         map     => sub {
             my $filename = shift;

@@ -17,6 +17,8 @@ use Plack::Builder;
 builder {
 
     # Both in Production and Development
+    
+    # .coffee -> .js
     enable 'Compile' => (
         pattern => qr{\.coffee$},
         lib     => 'src/coffee',
@@ -25,7 +27,7 @@ builder {
         map     => sub {
             my $filename = shift;
             $filename =~ s/coffee$/js/;
-            say "    * FILE: $filename" if $ENV{env} eq 'dev';
+            say "    * COMPILED: $filename" if $ENV{env} eq 'dev';
             return $filename;
         },
         compile => sub {
@@ -34,6 +36,25 @@ builder {
             system("coffee --compile --stdio < $in > $out");
         }
     );
+
+    # # .scss -> css
+    # enable 'Compile' => (
+    #     pattern => qr{\.scss$},
+    #     lib     => 'src/sass',
+    #     blib    => 'public/css',
+    #     mime    => 'text/plain',
+    #     map     => sub {
+    #         my $filename = shift;
+    #         $filename =~ s/scss$/css/;
+    #         say "    * COMPILED: $filename" if $ENV{env} eq 'dev';
+    #         return $filename;
+    #     },
+    #     compile => sub {
+    #         my ( $in, $out ) = @_;
+    #         say "    * IN: $in, OUT: $out" if $ENV{env} eq 'dev';
+    #         system("compass compile");
+    #     }
+    # );
 
     # Minify and Concatenate JS and CSS files
     enable "Assets",

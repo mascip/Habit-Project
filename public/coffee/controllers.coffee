@@ -13,20 +13,24 @@ class CtrlHabitPage
         # Which day is displayed to the user (nb of days ago. 0 is today)
         $scope.daysAgo = 0 # Default: today
 
-        # Days
+        # Today
         now = moment()
         today = now.startOf('day')
         $scope.displayedToday = today.valueOf()
         $scope.$watch( 'today', ->
             $scope.displayedToday = today.valueOf()
         )
+
+        # Selected Day
         $scope.selectedDay = moment(today)
-        # The date to display, and current week, updating when selectedDay changes
-        # AngularJS wants milliseconds, valueOf() gives milliseconds
+        $scope.thisIsToday = $scope.selectedDay.isSame(today)
         $scope.displayedDay = $scope.selectedDay.valueOf()
-        $scope.$watch( 'daysAgo', ->
+            # The date to display, and current week, updating when selectedDay changes
+            # AngularJS wants milliseconds, valueOf() gives milliseconds
+        $scope.$watch( 'daysAgo', -> 
             $scope.selectedDay = moment(today).add('days',$scope.daysAgo)
             $scope.displayedDay = $scope.selectedDay.valueOf()
+            $scope.thisIsToday = $scope.selectedDay.isSame(today)
         )
 
         # Obtain the pre-prepared list of Habits and results
@@ -40,8 +44,8 @@ class CtrlHabitPage
         # TODO: delete duplication
         # Start date input field
         $scope.dateChangeIsSelected=0
+
         ## Functions called from within the page
-        $scope.thisIsToday = -> $scope.selectedDay.isSame(today)
         $scope.wasActive = (habit)->
             return habit.wasActive($scope.daysAgo)
 
@@ -62,22 +66,25 @@ class CtrlUserBoard
         # Which day is displayed to the user (nb of days ago. 0 is today)
         $scope.daysAgo = 0 # Default: today
 
-        # Days
+        # Today
         now = moment()
         today = now.startOf('day')
         $scope.displayedToday = today.valueOf()
         $scope.$watch( 'today', ->
             $scope.displayedToday = today.valueOf()
         )
-        $scope.selectedDay = moment(today)
-        # The date to display, and current week, updating when selectedDay changes
-        # AngularJS wants milliseconds, valueOf() gives milliseconds
-        $scope.displayedDay = $scope.selectedDay.valueOf()
-        $scope.$watch( 'daysAgo', -> 
-            $scope.selectedDay = moment($scope.today).add('days',$scope.daysAgo)
-            $scope.displayedDay = $scope.selectedDay.valueOf()
-        )
 
+        # Selected Day
+        $scope.selectedDay = moment(today)
+        $scope.thisIsToday = $scope.selectedDay.isSame(today)
+        $scope.displayedDay = $scope.selectedDay.valueOf()
+            # The date to display, and current week, updating when selectedDay changes
+            # AngularJS wants milliseconds, valueOf() gives milliseconds
+        $scope.$watch( 'daysAgo', -> 
+            $scope.selectedDay = moment(today).add('days',$scope.daysAgo)
+            $scope.displayedDay = $scope.selectedDay.valueOf()
+            $scope.thisIsToday = $scope.selectedDay.isSame(today)
+        )
 
         # Habits data
         $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized', 'Stay Organized', 'Organize Emails'],
@@ -97,6 +104,7 @@ class CtrlUserBoard
 
         ## Functions called from within the page
         $scope.thisIsToday = -> $scope.selectedDay.isSame(today)
+        $scope.watch
 
         $scope.clickPrevWeek = ->
             $scope.daysAgo += 7

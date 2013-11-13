@@ -1,43 +1,43 @@
-<div class="container-fluid">
+<div class="fluid-container">
     <div class="row">
-        <div class="col-md-7">
-            <div class="rounded-container display-area"> 
+        <div class="col-lg-7">
+            <div class="fluid-container rounded-container display-area"> 
                 <div class="row">
                     <h2>Pierre M.</h2>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-5">
                         <!-- replace by an offset -->
-                    </div>
-                    <div class="col-xs-6">
-                        <i class="glyphicon glyphicon-backward next-week" ng-hide="thisIsToday()" ng-click="clickNextWeek()" alt="Go to next week"></i>
+                        </div>
+                    <div class="col-xs-7">
+                        <i class="glyphicon glyphicon-backward next-week" ng-hide="thisIsToday" ng-click="clickNextWeek()" alt="Go to next week"></i>
                         <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span>
                         <i class="glyphicon glyphicon-forward prev-week" ng-click="clickPrevWeek()" alt="Go to previous week"></i>
                     </div>
                 </div>
+                <!-- <div class="row"> -->
+                <!--     <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div> -->
+                <!--     <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div> -->
+                <!--     <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div> -->
+                <!-- </div> -->
                 <div class="row habit-row" ng-repeat='habit in myHabits | filter:wasActive'>
-                    <div class="col-xs-3">
-                        <a class="habit-name" href="#/habit/{{habit.name}}">{{habit.name}}</a>
+                    <div class="col-xs-4 col-md-3">
+                        <a href="/#/habit/{{habit.name}}">{{habit.name}}</a>
                     </div>
-                    <div class="col-xs-3">
-                        <span class="habit-ratio">{{habit.countResults.done}} / {{habit.countResults.total}} - Streak: {{habit.streakOnDay(0)}}</span>
+                    <div class="col-xs-8 col-md-2 habit-ratio">
+                        {{habit.countResults.done}} / {{habit.countResults.total}}
                     </div>
-                    <div class="col-xs-6">
-                        <div class="habit-results">
-                            <div class="btn-toolbar" role="toolbar">
-                                <!-- Results (unknown / done / failed) for each day, grouped by week -->
-                                <div class="btn-group" ng-repeat='weekNum in range(habit.nbWeeksToDisplay(daysAgo))'>
-                                    <!-- TODO: clean the code and variable names: dayNum, weekNum, daysAgo -->
-                                    <button type="button" ng-repeat="dayNum in range(habit.nbDaysInWeek(weekNum+daysAgo/7))" class="btn btn-default result-btn ng-class:{unknown:'unknown', done:'done', 'failed':'failed'}[habit.tickedOnDay(dayNum+daysAgo+7*(weekNum))]" ng-click="habit.clickTick(dayNum+daysAgo+7*weekNum)"></button>
-    
-                                </div>
-                            </div>
+                    <div class="col-xs-12 col-md-7 btn-toolbar habit-results" role="toolbar">
+                        <!-- Results (unknown / done / failed) for each day, grouped by week -->
+                        <div class="btn-group" ng-repeat='weekNum in range(habit.nbWeeksToDisplay(daysAgo))'>
+                            <!-- TODO: clean the code and variable names: dayNum, weekNum, daysAgo -->
+                            <button ng-repeat="dayNum in range(habit.nbDaysInWeek(weekNum+daysAgo/7))" class="btn btn-default result-btn ng-class:{unknown:'unknown', done:'done', 'failed':'failed'}[habit.tickedOnDay(dayNum+daysAgo+7*(weekNum))]" ng-click="habit.clickTick(dayNum+daysAgo+7*weekNum)"></button>
                         </div>
                     </div>
                 </div> <!-- END ng-repeat -->
                 <div class="row" ng-show='nowAddingHabit'> 
                     <form class="form-inline" role='form' name="addHabitForm">
-                        <div class="col-xs-3">
+                        <div class="col-xs-4">
                             <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder=' Habit name' typeahead="name for name in otherHabitNames | filter:$viewValue | limitTo:8" required></input>
                         </div>
                         <div class="col-xs-4">
@@ -73,8 +73,8 @@
                 <h2>Team Zen</h2>
             </div>
         </div>
-        <div class="col-md-5">
-            <div class="rounded-container chat-area">
+        <div class="col-lg-5">
+            <div class="fluid-container rounded-container chat-area">
                 <h2>Chat area...</h2>
             </div>
         </div>

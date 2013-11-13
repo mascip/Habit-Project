@@ -1,1 +1,1 @@
-No plugins apply for '/home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/views/index.tt' in config
+could not find tidyall.ini or .tidyallrc upwards from '/home/user' at /home/user/.perlbrew/libs/perl-5.16.3@devel/lib/perl5/Code/TidyAll.pm line 372.

@@ -41,9 +41,9 @@ js_files:
 css_files:
  - '"css/vendor/normalize.css"'
 ### Vendor styles
- - '"css/vendor/bootstrap.css" media="screen"'
+ - '"css/vendor/bootstrap/bootstrap.css" media="screen"'
 # - '"css/bootstrap-theme.css" media="screen"' # Optional theme
- - '"css/vendor/bootstrap-glyphicons.css"'
+ - '"css/vendor/bootstrap/bootstrap-glyphicons.css"'
 ### My own styles
  - '"css/app.css"'
     # Keep this one last, to override the others

@@ -12,15 +12,15 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-3"></div>
-                    <div class="col-xs-6 >
-                        <i class="glyphicon glyphicon-backward next-week" ng-hide="thisIsToday()" ng-click="clickNextWeek()" alt="Go to next week"></i>
+                    <div class="col-xs-6">
+                        <i class="glyphicon glyphicon-backward next-week" ng-hide="thisIsToday" ng-click="clickNextWeek()" alt="Go to next week"></i>
                         <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span>
                         <i class="glyphicon glyphicon-forward prev-week" ng-click="clickPrevWeek()" alt="Go to previous week"></i>
                     </div>
                 </div>
                 <div class="row habit-row">
                     <div class="col-xs-3">
-                        <span class="habit-ratio">{{habit.countResults.done}} / {{habit.countResults.total}} - Streak: {{habit.streakOnDay(0)}}</span>
+                        <span class="habit-ratio">{{habit.countResults.done}} / {{habit.countResults.total}}</span>
                     </div>
                     <div class="col-xs-9">
                         <div class="habit-results">

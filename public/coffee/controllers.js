@@ -24,10 +24,12 @@
         return $scope.displayedToday = today.valueOf();
       });
       $scope.selectedDay = moment(today);
+      $scope.thisIsToday = $scope.selectedDay.isSame(today);
       $scope.displayedDay = $scope.selectedDay.valueOf();
       $scope.$watch('daysAgo', function() {
         $scope.selectedDay = moment(today).add('days', $scope.daysAgo);
-        return $scope.displayedDay = $scope.selectedDay.valueOf();
+        $scope.displayedDay = $scope.selectedDay.valueOf();
+        return $scope.thisIsToday = $scope.selectedDay.isSame(today);
       });
       $scope.habitName = $stateParams.name;
       myHabits = MyHabits;
@@ -36,9 +38,6 @@
         return habit.name === $scope.habitName;
       });
       $scope.dateChangeIsSelected = 0;
-      $scope.thisIsToday = function() {
-        return $scope.selectedDay.isSame(today);
-      };
       $scope.wasActive = function(habit) {
         return habit.wasActive($scope.daysAgo);
       };
@@ -65,10 +64,12 @@
         return $scope.displayedToday = today.valueOf();
       });
       $scope.selectedDay = moment(today);
+      $scope.thisIsToday = $scope.selectedDay.isSame(today);
       $scope.displayedDay = $scope.selectedDay.valueOf();
       $scope.$watch('daysAgo', function() {
-        $scope.selectedDay = moment($scope.today).add('days', $scope.daysAgo);
-        return $scope.displayedDay = $scope.selectedDay.valueOf();
+        $scope.selectedDay = moment(today).add('days', $scope.daysAgo);
+        $scope.displayedDay = $scope.selectedDay.valueOf();
+        return $scope.thisIsToday = $scope.selectedDay.isSame(today);
       });
       $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized', 'Stay Organized', 'Organize Emails'], function(name) {
         return new Habit(name);
@@ -82,6 +83,7 @@
       $scope.thisIsToday = function() {
         return $scope.selectedDay.isSame(today);
       };
+      $scope.watch;
       $scope.clickPrevWeek = function() {
         return $scope.daysAgo += 7;
       };

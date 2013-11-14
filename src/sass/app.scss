@@ -1,0 +1,126 @@
+.chat-area {
+  margin-top: 0px;
+  padding-top: 300px;
+  border: 1px solid silver;
+  border-radius: 10px;
+}
+.rounded-container {
+  padding-top: 5px;
+  padding-bottom: 432px;
+  padding-left: 20px;
+  border: 1px solid silver;
+  border-radius: 10px;
+}
+.rounded-container.team-area {
+  margin-top: 20px;
+  padding-bottom: 197px;
+  padding-left: 20px;
+}
+.main-logo {
+  position: static;
+  width: 90px;
+  padding-top: 27px;
+  clear: none;
+}
+
+$color-unknown: hsl(0,0%,80%);
+$color-done: hsl(120,80%,65%);
+$color-failed: hsl(0,100%,70%);
+
+@mixin result-button ($color) {
+  background-color: $color;
+    opacity: 1;
+    transition-property: opacity;
+  &:hover {
+    background-color: $color;
+    opacity: 0.6;
+  }
+  &:active {
+    //background-color: hsl($hue,100%,60%);
+    background-color: darken($color, 15%);
+  }
+}
+button.unknown {
+    @include result-button($color-unknown);
+    // background-color: hsl(0,0%,70%);
+    // //background-color: #f7ff75;
+    i { opacity: 0.9; }
+    color: white;
+    &:hover { 
+        color: black;
+    }
+}
+button.failed {
+    @include result-button($color-failed);
+    i {
+        opacity: 0.9; // No "ok" icon
+    }
+}
+button.done {
+    @include result-button($color-done);
+    i { 
+        color: green; 
+    }
+}
+
+.habit-name {
+    font-size: 1.2em;
+}
+.habit-name {
+    display: inline-block;
+    width: 80%;
+}
+.date {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: right;
+}
+.grey {
+    color: grey;
+}
+.reminder-row {
+    margin-top: 30px;
+}
+
+.habits table {
+    font-size: 1.2em;
+}
+.habits {
+    table, td, th {
+        text-align: center;
+        vertical-align: middle;
+    }
+}
+.my-badge {
+    $circle-size: 35px;
+    display: inline-block;
+    min-width: $circle-size; 
+    padding: 7px 7px;
+    //font-size: 1.4em;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+    // vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: $circle-size;
+}
+.my-badge.unknown {
+    background-color: lighten($color-unknown, 10%);
+    color: black;
+}
+.my-badge.failed {
+    background-color: $color-failed;
+}
+.my-badge.done {
+    background-color: $color-done;
+}
+.tooltip {
+    font-size: $font-size-base;
+}
+.popover {
+    font-size: $font-size-base;
+}
+.input {
+    padding: 5px;
+}

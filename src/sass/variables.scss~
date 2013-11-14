@@ -5,5 +5,6 @@ $font-size-base: 16px;
 // }
 .container-full {
   margin: 0 auto;
-  width: 95%;
+  width: 98%;
 }
+$icon-font-path: "fonts/";

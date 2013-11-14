@@ -37,24 +37,24 @@ builder {
         }
     );
 
-    # .scss -> css
-    enable 'Compile' => (
-        pattern => qr{\.scss$},
-        lib     => 'src/sass',
-        blib    => 'public/css',
-        mime    => 'text/plain',
-        map     => sub {
-            my $filename = shift;
-            $filename =~ s/scss$/css/;
-            say "    * COMPILED: $filename" if $ENV{env} eq 'dev';
-            return $filename;
-        },
-        compile => sub {
-            my ( $in, $out ) = @_;
-            say "    * IN: $in, OUT: $out" if $ENV{env} eq 'dev';
-            system("compass compile");
-        }
-    );
+    # # .scss -> css
+    # enable 'Compile' => (
+    #     pattern => qr{\.scss$},
+    #     lib     => 'src/sass',
+    #     blib    => 'public/css',
+    #     mime    => 'text/plain',
+    #     map     => sub {
+    #         my $filename = shift;
+    #         $filename =~ s/scss$/css/;
+    #         say "    * COMPILED: $filename" if $ENV{env} eq 'dev';
+    #         return $filename;
+    #     },
+    #     compile => sub {
+    #         my ( $in, $out ) = @_;
+    #         say "    * IN: $in, OUT: $out" if $ENV{env} eq 'dev';
+    #         system("compass compile");
+    #     }
+    # );
 
     # Minify and Concatenate JS and CSS files
     enable "Assets",

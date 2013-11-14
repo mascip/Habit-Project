@@ -1,119 +1,77 @@
-/* line 1, ../../src/sass/app.scss */
-.chat-area {
-  margin-top: 0px;
-  padding-top: 300px;
-  border: 1px solid silver;
-  border-radius: 10px;
-}
+/*
+Syntax error: Undefined variable: "$font-size-base".
+        on line 119 of /home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss
 
-/* line 7, ../../src/sass/app.scss */
-.rounded-container {
-  padding-top: 5px;
-  padding-bottom: 432px;
-  padding-left: 20px;
-  border: 1px solid silver;
-  border-radius: 10px;
-}
-
-/* line 14, ../../src/sass/app.scss */
-.rounded-container.team-area {
-  margin-top: 20px;
-  padding-bottom: 197px;
-  padding-left: 20px;
-}
-
-/* line 19, ../../src/sass/app.scss */
-.main-logo {
-  position: static;
-  width: 90px;
-  padding-top: 27px;
-  clear: none;
-}
-
-/* line 39, ../../src/sass/app.scss */
-.failed {
-  background-color: #ff6666;
-  opacity: 1;
-  transition-property: opacity;
-}
-/* line 30, ../../src/sass/app.scss */
-.failed:hover {
-  background-color: #ff6666;
-  opacity: 0.6;
-}
-/* line 34, ../../src/sass/app.scss */
-.failed:active {
-  background-color: #ff1a1a;
-}
-/* line 41, ../../src/sass/app.scss */
-.failed i {
-  opacity: 0;
-}
-
-/* line 45, ../../src/sass/app.scss */
-.done {
-  background-color: #66ff66;
-  opacity: 1;
-  transition-property: opacity;
-}
-/* line 30, ../../src/sass/app.scss */
-.done:hover {
-  background-color: #66ff66;
-  opacity: 0.6;
-}
-/* line 34, ../../src/sass/app.scss */
-.done:active {
-  background-color: #1aff1a;
-}
-/* line 47, ../../src/sass/app.scss */
-.done i {
-  color: green;
-}
-
-/* line 51, ../../src/sass/app.scss */
-.unknown {
-  background-color: #cccccc;
-  opacity: 1;
-  transition-property: opacity;
-}
-/* line 30, ../../src/sass/app.scss */
-.unknown:hover {
-  background-color: #cccccc;
-  opacity: 0.6;
-}
-/* line 34, ../../src/sass/app.scss */
-.unknown:active {
-  background-color: #a6a6a6;
-}
-/* line 55, ../../src/sass/app.scss */
-.unknown i {
-  opacity: 0.9;
-  color: white;
-}
-
-/* line 64, ../../src/sass/app.scss */
-.date, .habit-name, .habit-ratio .reminder {
-  font-size: 1.2em;
-}
-
-/* line 67, ../../src/sass/app.scss */
-.habit-name {
-  display: inline-block;
-  width: 80%;
-}
-
-/* line 71, ../../src/sass/app.scss */
-.date {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-/* line 75, ../../src/sass/app.scss */
-.grey {
-  color: grey;
-}
-
-/* line 78, ../../src/sass/app.scss */
-.reminder-row {
-  margin-top: 30px;
-}
+Backtrace:
+/home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss:119
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/script/variable.rb:49:in `_perform'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/script/node.rb:40:in `perform'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:298:in `visit_prop'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/root_node.rb:20:in `render'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/engine.rb:315:in `_render'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/engine.rb:262:in `render'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `call'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `run_callback'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/path.rb:55:in `callback_action'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/path.rb:35:in `update'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/state/directory.rb:39:in `block in modified'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `each'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `modified'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/state/directory.rb:18:in `refresh'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `block (2 levels) in run'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `each'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `block in run'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `loop'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `run'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm/monitor.rb:26:in `run'
+/var/lib/gems/1.9.1/gems/fssm-0.2.10/lib/fssm.rb:70:in `monitor'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/bin/compass:44:in `call'
+/var/lib/gems/1.9.1/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
+/usr/local/bin/compass:23:in `load'
+/usr/local/bin/compass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined variable: \"$font-size-base\".\A         on line 119 of /home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss"; }

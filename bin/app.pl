@@ -83,8 +83,8 @@ builder {
     else { 
         # Development
         
-        enable 'Debug', panels =>
-        [qw<DBITrace Memory Timer Parameters Dancer::Version Dancer::Settings>];
+        # enable 'Debug', panels =>
+        # [qw<DBITrace Memory Timer Parameters Dancer::Version Dancer::Settings>];
 
     }
 

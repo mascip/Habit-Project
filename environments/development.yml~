@@ -44,7 +44,7 @@ css_files:
 # - '"css/vendor/bootstrap/bootstrap.css" media="screen"'
 # # - '"css/bootstrap-theme.css" media="screen"' # Optional theme
 # - '"css/vendor/bootstrap/bootstrap-glyphicons.css"'
- - '"main.scss"'
+ - '"css/main.css"'
 ### My own styles
  - '"css/app.css"'
     # Keep this one last, to override the others

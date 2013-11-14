@@ -1,9 +1,12 @@
+/* line 1, ../../src/sass/app.scss */
 .chat-area {
   margin-top: 0px;
   padding-top: 300px;
   border: 1px solid silver;
   border-radius: 10px;
 }
+
+/* line 7, ../../src/sass/app.scss */
 .rounded-container {
   padding-top: 5px;
   padding-bottom: 432px;
@@ -11,11 +14,15 @@
   border: 1px solid silver;
   border-radius: 10px;
 }
+
+/* line 14, ../../src/sass/app.scss */
 .rounded-container.team-area {
   margin-top: 20px;
   padding-bottom: 197px;
   padding-left: 20px;
 }
+
+/* line 19, ../../src/sass/app.scss */
 .main-logo {
   position: static;
   width: 90px;
@@ -23,39 +30,90 @@
   clear: none;
 }
 
-.result-btn {
-    opacity: 1;
-    transition-property: opacity;
+/* line 39, ../../src/sass/app.scss */
+.failed {
+  background-color: #ff6666;
+  opacity: 1;
+  transition-property: opacity;
 }
-.result-btn:hover {
-    opacity: 0.4;
+/* line 30, ../../src/sass/app.scss */
+.failed:hover {
+  background-color: #ff6666;
+  opacity: 0.6;
 }
-.unknown, .unknown:hover {
-  background-color: #f7ff75;
+/* line 34, ../../src/sass/app.scss */
+.failed:active {
+  background-color: #ff1a1a;
 }
-.done, .done:hover {
-  background-color: #2ecc71;
+/* line 41, ../../src/sass/app.scss */
+.failed i {
+  opacity: 0;
 }
-.failed, .failed:hover {
-  background-color: #FF6666;
+
+/* line 45, ../../src/sass/app.scss */
+.done {
+  background-color: #66ff66;
+  opacity: 1;
+  transition-property: opacity;
 }
-.habit-row {
-    margin-bottom: 20px;
-    margin-top: 20px;
+/* line 30, ../../src/sass/app.scss */
+.done:hover {
+  background-color: #66ff66;
+  opacity: 0.6;
 }
+/* line 34, ../../src/sass/app.scss */
+.done:active {
+  background-color: #1aff1a;
+}
+/* line 47, ../../src/sass/app.scss */
+.done i {
+  color: green;
+}
+
+/* line 51, ../../src/sass/app.scss */
+.unknown {
+  background-color: #cccccc;
+  opacity: 1;
+  transition-property: opacity;
+}
+/* line 30, ../../src/sass/app.scss */
+.unknown:hover {
+  background-color: #cccccc;
+  opacity: 0.6;
+}
+/* line 34, ../../src/sass/app.scss */
+.unknown:active {
+  background-color: #a6a6a6;
+}
+/* line 55, ../../src/sass/app.scss */
+.unknown i {
+  opacity: 0.9;
+  color: white;
+}
+
+/* line 64, ../../src/sass/app.scss */
 .date, .habit-name, .habit-ratio .reminder {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
-.now {
-    font-size: 0.8em;
+
+/* line 67, ../../src/sass/app.scss */
+.habit-name {
+  display: inline-block;
+  width: 80%;
 }
+
+/* line 71, ../../src/sass/app.scss */
 .date {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
+
+/* line 75, ../../src/sass/app.scss */
 .grey {
-    color: grey;
+  color: grey;
 }
+
+/* line 78, ../../src/sass/app.scss */
 .reminder-row {
-    margin-top: 30px;
+  margin-top: 30px;
 }

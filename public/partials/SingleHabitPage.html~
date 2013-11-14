@@ -3,12 +3,7 @@
         <div class="col-md-7">
             <div class="rounded-container display-area"> 
                 <div class="row">
-                    <a href="/#/"><h2>Pierre M.</h2></a>
-
-                    
-                </div>
-                <div class="row">
-                    <h3>{{habit.name}} : {{habit.percentSuccess | number:0}}% success!</h3>
+                    <a href="/#/"><h2 class="pull-lect">Pierre M.</h2></a> - <span>{{habit.name}} : {{habit.percentSuccess | number:0}}% success!</span>
                 </div>
                 <div class="row">
                     <div class="col-xs-3"></div>
@@ -20,7 +15,7 @@
                 </div>
                 <div class="row habit-row">
                     <div class="col-xs-3">
-                        <span class="habit-ratio">{{habit.countResults.done}} / {{habit.countResults.total}} : {{habit.streakOnDay(0)}}</span>
+                        <span class="habit-ratio">{{habit.countResults.done}} / {{habit.countResults.total}}</span>
                     </div>
                     <div class="col-xs-9">
                         <div class="habit-results">

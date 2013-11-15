@@ -1,4 +1,4 @@
-<div class="container-full">
+<div class="container">
     <div class="row">
         <div class="col-lg-7">
             <div class="rounded-container display-area"> 
@@ -68,7 +68,7 @@
                                 <form class="form-inline" role='form' name="addHabitForm">
                                     <td></td>
                                     <td>
-                                        <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder=' Habit name' typeahead="name for name in otherHabitNames | filter:$viewValue | limitTo:8" required></input>
+                                        <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder='Habit name' typeahead="name for name in otherHabitNames | filter:$viewValue | limitTo:8" required></input>
                                     </td>
                                     <td>
                                         started 

@@ -121,3 +121,13 @@ button.done {
 .popover {
     font-size: $font-size-base;
 }
+.input {
+    padding: 5px;
+}
+#habit-board {
+    h3.habit-name {
+        display:block-inline;
+        @extend .h3;
+        @extend .pull-right;
+    }
+}

@@ -28,10 +28,11 @@
 
         <!-- My JS libraries -->
         <script src="app.coffee"></script>
-        <script src="services.coffee"></script>
-        <script src="controllers.coffee"></script>
-        <script src="filters.coffee"></script>
-        <script src="directives.coffee"></script>
+        <script src="habit-board/habit-board.coffee"></script>
+        <script src="my-lab/my-lab.coffee"></script>
+        <script src="components/services.coffee"></script>
+        <script src="components/filters.coffee"></script>
+        <script src="components/directives.coffee"></script>
         <!-- END My JS libraries -->
         
     </body>

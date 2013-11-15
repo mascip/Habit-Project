@@ -21,18 +21,18 @@ builder {
     # .coffee -> .js
     enable 'Compile' => (
         pattern => qr{\.coffee$},
-        lib     => 'src/coffee',
-        blib    => 'public/js',
+        lib     => 'src/app',
+        blib    => 'public/app',
         mime    => 'text/plain',
         map     => sub {
             my $filename = shift;
             $filename =~ s/coffee$/js/;
-            say "    * COMPILED: $filename" if $ENV{env} eq 'dev';
+            # say "    * COMPILED: $filename";
             return $filename;
         },
         compile => sub {
             my ( $in, $out ) = @_;
-            say "    * IN: $in, OUT: $out" if $ENV{env} eq 'dev';
+            # say "    * IN: $in, OUT: $out";
             system("coffee --compile --stdio < $in > $out");
         }
     );

@@ -1,0 +1,63 @@
+<div class="container-fluid" id="habit-board">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="rounded-container display-area"> 
+                <div class="row">
+                    <div class="col-xs-3">
+                        <a ui-sref="myLab"><button type="button" class="btn btn-md">My Lab</button></a> 
+                    </div>
+                    <div class="col-xs-6">
+                        <h3>{{habit.name}}</h3>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Calendar</h4>
+                        <table class="calendar">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="numWeek in range(numWeekOfMonth(activeDay))">
+                                    <td>
+                                        a week
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Success rate</h4> 
+                        <p> {{habit.percentSuccess | number:0}}% success!</p>
+                    </div>
+                </div>
+                <!-- <div class="row"> -->
+                <!--     <div class="col-md-12"> -->
+                <!--         Old stuff to delete: -->
+                <!--         <div class="btn-toolbar habit-results" role="toolbar"> -->
+                <!--         <1!-- Results (unknown / done / failed) for each day, grouped by week --1> -->
+                <!--             <div class="btn-group" ng-repeat='weekNum in range(habit.nbWeeksToDisplay(daysAgo))'> -->
+                <!--                 <1!-- TODO: clean the code and variable names: dayNum, weekNum, daysAgo --1> -->
+                <!--                 <button ng-repeat="dayNum in range(habit.nbDaysInWeek(weekNum+daysAgo/7))" class="btn btn-default result-btn ng-class:habit.tickedOnDay(dayNum+daysAgo+7*(weekNum))" ng-click="habit.clickTick(dayNum+daysAgo+7*weekNum)"> -->
+                <!--                     <div ng-switch="habit.tickedOnDay(dayNum+daysAgo+7*(weekNum))"> -->
+                <!--                         <1!-- the icon displayed depends on the result --1> -->
+                <!--                         <div ng-switch-when="unknown"> --> 
+                <!--                             <i class="glyphicon glyphicon-ok"></i> -->
+                <!--                         </div> -->
+                <!--                         <div ng-switch-when="done"> --> 
+                <!--                             <i class="glyphicon glyphicon-ok"></i> -->
+                <!--                         </div> -->
+                <!--                         <div ng-switch-when="failed"> --> 
+                <!--                             <i class="glyphicon glyphicon-remove"></i> -->
+                <!--                         </div> -->
+                <!--                     </div> -->
+                <!--             </div> -->
+                <!--         </div> -->
+                <!--     </div> -->
+                <!-- </div> <1!-- END ng-repeat --1> -->
+            </div>
+        </div>
+    </div>
+</div>

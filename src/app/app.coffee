@@ -3,7 +3,7 @@
 ### Declare app level module which depends on filters, and services ###
 
 app_name = "myApp"
-app = angular.module app_name, ["#{app_name}.filters", "#{app_name}.services", "#{app_name}.directives", "#{app_name}.controllers", "angular-underscore", "ui.router"]
+app = angular.module app_name, ["#{app_name}.filters", "#{app_name}.services", "#{app_name}.directives", "#{app_name}.ctrl-habit-board", "#{app_name}.ctrl-my-lab", "angular-underscore", "ui.router"]
 
 app.config ($stateProvider, $urlRouterProvider) ->
 
@@ -16,7 +16,7 @@ app.config ($stateProvider, $urlRouterProvider) ->
         .state( 'habit', {
             url: '/habit/:name',
             templateUrl: 'partials/habitBoard.html',
-            controller: 'CtrlHabitPage'
+            controller: 'CtrlHabitBoard'
         })
 
 

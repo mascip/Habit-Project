@@ -7,7 +7,7 @@
 
   app_name = "myApp";
 
-  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".controllers", "angular-underscore", "ui.router"]);
+  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".ctrl-habit-board", "" + app_name + ".ctrl-my-lab", "angular-underscore", "ui.router"]);
 
   app.config(function($stateProvider, $urlRouterProvider) {
     return $stateProvider.state('myLab', {

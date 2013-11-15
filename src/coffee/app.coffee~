@@ -15,7 +15,7 @@ app.config ($stateProvider, $urlRouterProvider) ->
         })
         .state( 'habit', {
             url: '/habit/:name',
-            templateUrl: 'partials/SingleHabitPage.html',
+            templateUrl: 'partials/habitBoard.html',
             controller: 'CtrlHabitPage'
         })
 

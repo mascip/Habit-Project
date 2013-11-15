@@ -7,8 +7,8 @@ app.controller 'myCtrl2', ['$scope', ($scope) ->
 ]
 
 
-app.controller 'CtrlHabitPage',
-class CtrlHabitPage
+app.controller 'CtrlHabitBoard',
+class CtrlHabitBoard
     constructor: ($scope, $stateParams, MyHabits) ->
         # Which day is displayed to the user (nb of days ago. 0 is today)
         $scope.daysAgo = 0 # Default: today

@@ -16,8 +16,8 @@
       controller: 'CtrlMyLab'
     }).state('habit', {
       url: '/habit/:name',
-      templateUrl: 'partials/SingleHabitPage.html',
-      controller: 'CtrlHabitPage'
+      templateUrl: 'partials/habitBoard.html',
+      controller: 'CtrlHabitBoard'
     });
   });
 

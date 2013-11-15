@@ -57,8 +57,8 @@ class CtrlHabitPage
             # TODO: move to latest day, if it's less than 7 days ahead?
             $scope.daysAgo -= 7
 
-app.controller 'CtrlUserBoard',
-class CtrlUserBoard
+app.controller 'CtrlMyLab',
+class CtrlMyLab
     constructor: ($scope, ActiveHabit, Habit, MyHabits) ->
 
         ## DATA

@@ -10,10 +10,10 @@
   app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".controllers", "angular-underscore", "ui.router"]);
 
   app.config(function($stateProvider, $urlRouterProvider) {
-    return $stateProvider.state('userboard', {
+    return $stateProvider.state('myLab', {
       url: '/',
-      templateUrl: 'partials/UserBoard2.html',
-      controller: 'CtrlUserBoard'
+      templateUrl: 'partials/myLab.html',
+      controller: 'CtrlMyLab'
     }).state('habit', {
       url: '/habit/:name',
       templateUrl: 'partials/SingleHabitPage.html',

@@ -59,42 +59,42 @@ button.unknown i:hover {
 /* line 78, ../../src/sass/app.scss */
 button.failed {
   font-size: 1.6em;
-  background-color: #fa9e9e;
-  border: 2px solid #f87c7c;
+  background-color: #fbb6b6;
+  border: 2px solid #f99494;
   opacity: 1;
   transition-property: opacity;
 }
 /* line 57, ../../src/sass/app.scss */
 button.failed:hover {
-  background-color: #fa9e9e;
+  background-color: #fbb6b6;
   opacity: 0.6;
 }
 /* line 61, ../../src/sass/app.scss */
 button.failed:active {
-  background-color: #f76e6e;
+  background-color: #f98686;
 }
 /* line 82, ../../src/sass/app.scss */
 button.failed i {
   opacity: 0.9;
-  color: #f53d3d;
+  color: #f65555;
 }
 /* line 87, ../../src/sass/app.scss */
 button.done {
   font-size: 1.6em;
-  background-color: #bef4be;
-  border: 2px solid #a0eea0;
+  background-color: #cbf6cb;
+  border: 2px solid #adf0ad;
   opacity: 1;
   transition-property: opacity;
-  background-color: #bef4be;
+  background-color: #cbf6cb;
 }
 /* line 57, ../../src/sass/app.scss */
 button.done:hover {
-  background-color: #bef4be;
+  background-color: #cbf6cb;
   opacity: 0.6;
 }
 /* line 61, ../../src/sass/app.scss */
 button.done:active {
-  background-color: #93ec93;
+  background-color: #a0eea0;
 }
 /* line 91, ../../src/sass/app.scss */
 button.done i {

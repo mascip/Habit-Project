@@ -39,13 +39,13 @@ $color-failed-streak: clr-failed(60%);
 
 // Button colors
 $color-unknown-btn: clr-unknown(85%);
-$color-done-btn: clr-done(85%);
-$color-failed-btn: clr-failed(80%);
+$color-done-btn: clr-done(88%);
+$color-failed-btn: clr-failed(85%);
 
 // Icon colors
 $color-unknown-icon: clr-unknown(80%);
 $color-done-icon: clr-done(60%);
-$color-failed-icon: clr-failed(60%);
+$color-failed-icon: clr-failed(65%);
 
 // Only usefull when I don't use _theme.scss
 @mixin result-button ($color) {
@@ -153,11 +153,9 @@ button {
         color: $color-unknown-streak;
     }
     & .failed { 
-        // background-color: $color-failed-streak; 
         color: $color-failed-streak;
     }
     & .done { 
-        // background-color: $color-done-streak; 
         color: $color-done-streak;
     }
 }

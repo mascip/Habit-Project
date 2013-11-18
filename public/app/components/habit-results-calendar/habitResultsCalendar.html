@@ -9,8 +9,8 @@
         <th class="sunday">Sun</th>
     </thead>
     <tbody>
-        <tr ng-repeat="numWeek in range(nbWeekInMonth(activeDay))">
-            <td ng-repeat="numDay in range(7)">{{1+numDay+7*numWeek}}</td>
+        <tr ng-repeat="numWeek in range(nbWeeks)"> <!-- 6 weeks displayed for each month -->
+            <td ng-repeat="numDay in daysInWeek[numWeek]">{{numDay}}</td>
         </tr>
     </tbody>
 </table>

@@ -3,7 +3,7 @@
 ### Declare app level module which depends on filters, and services ###
 
 app_name = "myApp"
-app = angular.module app_name, ["#{app_name}.filters", "#{app_name}.services", "#{app_name}.directives", "#{app_name}.ctrl-habit-board",  "#{app_name}.ctrl-tabs", "#{app_name}.ctrl-my-lab", "angular-underscore", "ui.router" ,"#{app_name}.habitResultsCalendar"]
+app = angular.module app_name, ["#{app_name}.filters", "#{app_name}.services", "#{app_name}.directives", "#{app_name}.ctrl-habit-board",  "#{app_name}.ctrl-tabs", "#{app_name}.ctrl-my-lab", "angular-underscore", "ui.router" ,"#{app_name}.habitResultsCalendar", "#{app_name}.calendarDays"]
 
 app.config ($stateProvider, $urlRouterProvider) ->
 
@@ -22,7 +22,7 @@ app.config ($stateProvider, $urlRouterProvider) ->
                     controller: 'CtrlMyLab'
                 "nav-tabs": navTabs
         )
-        .state( 'habit', 
+        .state( 'habitBoard', 
             url: '/habit/:name'
             views:
                 "":

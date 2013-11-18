@@ -7,11 +7,19 @@
 
   app = angular.module("" + app_name + ".habitResultsCalendar", []);
 
-  app.directive('habitResultsCalendar', function() {
+  app.directive('habitResultsCalendar', function(CalendarDays) {
     return {
       restrict: 'E',
       templateUrl: 'app/components/habit-results-calendar/habitResultsCalendar.html',
-      replace: true
+      replace: true,
+      link: function(scope, element, attrs) {
+        var calDays;
+        calDays = new CalendarDays(1);
+        scope.nbWeeks = calDays.nbWeeks;
+        scope.daysInWeek = calDays.weeks;
+        alert(JSON.stringify(scope.daysInWeek));
+        return alert(JSON.stringify(scope.nbWeeks));
+      }
     };
   });
 

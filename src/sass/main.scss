@@ -1,8 +1,19 @@
+// NOTE: All the .scss paths are relative
+
 // My variables, and modifications of Bootstrap variables (must be BEFORE boostrap)
+@import "my-variables.scss";
 @import "variables.scss";
+// @import "bootswatch.scss";
+
+// Readable theme
+// @import "bootstrap.min.css";
+//
+// @import "spacelab.css";
 
 @import "vendor/sass-bootstrap/lib/bootstrap.scss";
-// @import "vendor/sass-bootstrap-glyphicons/scss/bootstrap-glyphicons.scss";
+@import "vendor/sass-bootstrap/lib/_theme.scss";
+// @import "vendor/sass-bootstrap/dist/css/bootstrap-theme.scss";
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+// @import "public/vendor/css/sass-bootstrap-glyphicons/scss/bootstrap-glyphicons.scss";
 
 @import "app.scss"

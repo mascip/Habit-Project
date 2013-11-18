@@ -7,9 +7,18 @@
 
   app_name = "myApp";
 
-  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".ctrl-habit-board", "" + app_name + ".ctrl-my-lab", "angular-underscore", "ui.router"]);
+  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".ctrl-habit-board", "" + app_name + ".ctrl-tabs", "" + app_name + ".ctrl-my-lab", "angular-underscore", "ui.router", "" + app_name + ".habitResultsCalendar"]);
 
   app.config(function($stateProvider, $urlRouterProvider) {
+    var habitBoard, myLab;
+    myLab = {
+      templateUrl: 'partials/myLab.html',
+      controller: 'CtrlMyLab'
+    };
+    habitBoard = {
+      templateUrl: 'partials/habitBoard.html',
+      controller: 'CtrlHabitBoard'
+    };
     return $stateProvider.state('myLab', {
       url: '/',
       templateUrl: 'partials/myLab.html',

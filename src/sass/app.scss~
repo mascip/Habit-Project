@@ -23,43 +23,55 @@
   clear: none;
 }
 
-$color-unknown: hsl(0,0%,80%);
-$color-done: hsl(120,80%,65%);
-$color-failed: hsl(0,100%,70%);
+$color-unknown-badge: hsl(0,0%,92%);
+$color-done-badge: hsl(120,80%,65%);
+$color-failed-badge: hsl(0,100%,70%);
 
-@mixin result-button ($color) {
-  background-color: $color;
-    opacity: 1;
-    transition-property: opacity;
-  &:hover {
-    background-color: $color;
-    opacity: 0.6;
-  }
-  &:active {
-    //background-color: hsl($hue,100%,60%);
-    background-color: darken($color, 15%);
-  }
-}
-button.unknown {
-    @include result-button($color-unknown);
-    // background-color: hsl(0,0%,70%);
-    // //background-color: #f7ff75;
-    i { opacity: 0.9; }
-    color: white;
-    &:hover { 
-        color: black;
+$color-unknown-btn: hsl(0,0,95%);
+$color-done-btn: hsl(120,80%,85%);
+$color-failed-btn: hsl(0,100%,90%);
+
+// Only usefull when I don't use _theme.scss
+// @mixin result-button ($color) {
+//   background-color: $color;
+//     opacity: 1;
+//     transition-property: opacity;
+//   &:hover {
+//     background-color: $color;
+//     opacity: 0.6;
+//   }
+//   &:active {
+//     //background-color: hsl($hue,100%,60%);
+//     background-color: darken($color, 15%);
+//   }
+// }
+
+button {
+    &.unknown {
+        @include btn-styles($color-unknown-btn); // using sass-bootstrap's _theme.scss
+        // @include result-button($color-unknown);
+        // background-color: hsl(0,0%,70%);
+        // //background-color: #f7ff75;
+        i { opacity: 0.9; }
+        // color: white;
+        &:hover { 
+            // color: black;
+            color:white;
+        }
     }
-}
-button.failed {
-    @include result-button($color-failed);
-    i {
-        opacity: 0.9; // No "ok" icon
+    &.failed {
+        @include btn-styles($color-failed-btn); // using sass-bootstrap's _theme.scss
+        // @include result-button($color-failed);
+        i {
+            opacity: 0.9; // No "ok" icon
+        }
     }
-}
-button.done {
-    @include result-button($color-done);
-    i { 
-        color: green; 
+    &.done {
+        @include btn-styles($color-done-btn); // using sass-bootstrap's _theme.scss
+        // @include result-button($color-done);
+        i { 
+            color: green; 
+        }
     }
 }
 
@@ -104,30 +116,32 @@ button.done {
     white-space: nowrap;
     text-align: center;
     border-radius: $circle-size;
-}
-.my-badge.unknown {
-    background-color: lighten($color-unknown, 10%);
-    color: black;
-}
-.my-badge.failed {
-    background-color: $color-failed;
-}
-.my-badge.done {
-    background-color: $color-done;
+    &.unknown {
+        background-color: $color-unknown-badge;
+        color: black;
+    }
+    &.failed { background-color: $color-failed-badge; }
+    &.done { background-color: $color-done-badge; }
 }
 .tooltip {
-    font-size: $font-size-base;
+    // font-size: $font-size-base;
+    font-size: 1em;
 }
 .popover {
-    font-size: $font-size-base;
+    // font-size: $font-size-base;
+    font-size: 1em;
 }
 .input {
     padding: 5px;
 }
-#habit-board {
-    h3.habit-name {
-        display:block-inline;
-        @extend .h3;
-        @extend .pull-right;
-    }
+// #habit-board {
+//     #area-success-rate {
+//         h4, p { 
+//             display: inline-block;
+//         }
+//     }
+// }
+
+header {
+    margin-bottom: 10px;
 }

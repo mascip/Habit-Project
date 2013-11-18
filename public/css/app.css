@@ -1,12 +1,22 @@
 /*
-Syntax error: Undefined variable: "$font-size-base".
-        on line 119 of /home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss
+Syntax error: Undefined mixin 'btn-styles'.
+        on line 53 of /home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss, in `btn-styles'
+        from line 53 of /home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss
 
 Backtrace:
-/home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss:119
-/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/script/variable.rb:49:in `_perform'
-/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/script/node.rb:40:in `perform'
-/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:298:in `visit_prop'
+/home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss:53:in `btn-styles'
+/home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss:53
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:253:in `visit_mixin'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
 /var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `visit'
 /var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:100:in `visit'
 /var/lib/gems/1.9.1/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -74,4 +84,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$font-size-base\".\A         on line 119 of /home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss"; }
+  content: "Syntax error: Undefined mixin 'btn-styles'.\A         on line 53 of /home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss, in `btn-styles'\A         from line 53 of /home/user/Dropbox/MAIN/WORK/PROJECTS/habit-lab/HabitLab/src/sass/app.scss"; }

@@ -5,6 +5,9 @@ app = angular.module "#{app_name}.ctrl-habit-board", ['ui.bootstrap']
 app.controller 'CtrlHabitBoard',
 class CtrlHabitBoard
     constructor: ($scope, $stateParams, MyHabits) ->
+        # NOW: CALENDAR
+        $scope.nbWeekInMonth = (activeDay) -> 5
+
         # Which day is displayed to the user (nb of days ago. 0 is today)
         $scope.daysAgo = 0 # Default: today
 
@@ -32,7 +35,6 @@ class CtrlHabitBoard
         $scope.habitName = $stateParams.name
         myHabits = MyHabits
         $scope.habit = _.find(myHabits, (habit) ->
-           console.log(habit.name + '---' + $scope.habitName)
            return habit.name == $scope.habitName
         )
 
@@ -51,3 +53,8 @@ class CtrlHabitBoard
         $scope.clickNextWeek = ->
             # TODO: move to latest day, if it's less than 7 days ahead?
             $scope.daysAgo -= 7
+
+            
+app.directive 'habite', ->
+    restict: 'E'
+    template: '<div>Hi there</div>'

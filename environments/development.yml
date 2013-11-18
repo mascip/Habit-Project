@@ -43,9 +43,14 @@ js_files:
 css_files:
  - '"vendor/css/normalize.css"'
 ### Vendor styles
+ - '"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"'
 # - '"vendor/css/bootstrap/bootstrap.css" media="screen"'
-# # - '"vendor/css/bootstrap-theme.css" media="screen"' # Optional theme
-# - '"vendor/css/bootstrap/bootstrap-glyphicons.css"'
+ # - '"css/vendor/sass-bootstrap/dist/css/bootstrap-theme.css" media="screen"' # Optional theme
+ # - '"bootstrap2.css"'
+ # - '"bootstrap.css"'
+ # - '"bootstrap-theme.css"'
+ # - '"bootstrap2-theme.css"'
+ # - '"vendor/css/bootstrap/bootstrap-glyphicons.css"'
  # - '"vendor/js/select2/select2.css"'
 ### My own styles
  - '"css/main.css"'

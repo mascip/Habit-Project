@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-lg-7">
             <div class="rounded-container display-area"> 
-                <div class="row">
-                    <h2>Pierre M.</h2>
-                </div>
-                <div class="row"> 
+                <!-- <div class="row"> -->
+                <h2>Pierre M.</h2>
+                <!-- </div> -->
+                <!-- <div class="row"> --> 
                     <!-- <i class="glyphicon glyphicon-backward next-week" ng-hide="thisIsToday" ng-click="clickNextWeek()" alt="Go to next week"></i> -->
                     <!-- <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span> -->
                     <!-- <i class="glyphicon glyphicon-forward prev-week" ng-click="clickPrevWeek()" alt="Go to previous week"></i> -->
-                </div>
+                <!-- </div> -->
                 <div class="row habits">
                     <table class="table table-condensed table-hover">
                         <thead>
@@ -27,17 +27,18 @@
                         <tbody>
                             <tr class="habit-row" ng-repeat='habit in myHabits | filter:wasActive'>
                                 <td>
-                                    <button type="button" class="btn btn-lg result-btn ng-class:habit.tickedOnDay(daysAgo)" ng-click="habit.clickTick(daysAgo)">
+                                    <button type="button" class="btn btn-default btn-lg result-btn ng-class:habit.tickedOnDay(daysAgo)" ng-click="habit.clickTick(daysAgo)">
                                         <div ng-switch="habit.tickedOnDay(0)">
                                             <!-- the icon displayed depends on the result -->
                                             <div ng-switch-when="unknown"> 
-                                                <i class="glyphicon glyphicon-ok"></i>
+                                                <!-- fa-fw for 'fixed-width', so the icons have the same width -->
+                                                <i class="fa fa-fw fa-check"></i>
                                             </div>
                                             <div ng-switch-when="done"> 
-                                                <i class="glyphicon glyphicon-ok"></i>
+                                                <i class="fa fa-fw fa-check"></i>
                                             </div>
                                             <div ng-switch-when="failed"> 
-                                                <i class="glyphicon glyphicon-remove"></i>
+                                                <i class="fa fa-fw fa-times"></i>
                                             </div>
                                         </div>
                                     </button>
@@ -53,7 +54,7 @@
                                     {{habit.countResults.done}} / {{habit.countResults.total}}
                                 </td>
                                 <td>
-                                    <span  popover="manage habit" popover-trigger="mouseenter" popover-placement="left"><a class="habit-name" ui-sref="habit({name: habit.name})"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-edit" alt="Go to next week"></i></button></a></span>
+                                    <span  popover="manage habit" popover-trigger="mouseenter" popover-placement="left"><a class="habit-name" ui-sref="habit({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o" alt="Go to next week"></i></button></a></span>
                                     
                                 </td>
                             
@@ -83,7 +84,7 @@
                                     </td>
                                     <td>
                                         <span popover="add habit" popover-trigger="mouseenter" popover-placement="bottom"><button ng-disabled='!addHabitForm.$valid' type="button" class="btn btn-mini" ng-click='addOneHabit(inputHabitName, pickedDate)'><i class="glyphicon glyphicon-play"></i></button></span>
-                                        <span popover="cancel" popover-trigger="mouseenter" popover-placement="bottom"><button type="button" class="btn btn-mini" ng-click='$parent.nowAddingHabit=false'><i class="glyphicon glyphicon-remove"></i></button></span>
+                                        <span popover="cancel" popover-trigger="mouseenter" popover-placement="bottom"><button type="button" class="btn btn-mini" ng-click='$parent.nowAddingHabit=false'><i class="fa fa-times"></i></button></span>
                                     </td>
                                     <td>
                                     </td>
@@ -94,7 +95,7 @@
                 </div>
                 <div class="row"> 
                     <div class="col-xs-2">
-                        <span  popover="add habit" popover-trigger="mouseenter" popover-placement="right"><button class="btn btn-large my-badge" ng-click='$parent.nowAddingHabit=true' ng-hide='nowAddingHabit' alt="Add a new habit"><i class="glyphicon glyphicon-plus"></i></button></span>
+                        <span  popover="add habit" popover-trigger="mouseenter" popover-placement="right"><button class="btn btn-default" ng-click='$parent.nowAddingHabit=true' ng-hide='nowAddingHabit' alt="Add a new habit"><i class="fa fa-plus"></i></button></span>
                             <!-- <button type="button" class="btn btn-default btn-sm, add-habit" ng-click='nowAddingHabit=true' ng-hide='nowAddingHabit' alt="add.jpg"> --> 
                             <!--     <i class="icon-large glyphicon glyphicon-plus"></i> -->
                         <!-- </button> -->
@@ -103,7 +104,7 @@
                 <div class="row reminder-row">
                     <div class="col-xs-3 ">
                             <span class="reminder">Next Reminder: <strong>7pm</strong></span>
-                            <i class="glyphicon glyphicon-remove grey"></i>
+                            <i class="fa fa-times"></i>
                     
                     </div>
                 </div>

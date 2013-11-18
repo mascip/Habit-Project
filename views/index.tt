@@ -11,7 +11,18 @@
     </div>
   </header>
 
-  <div ui-view></div>
+    <!-- tabs -->
+    <div class="collapse navbar-collapse" ng-controller="CtrlTabs">
+        <ul class="nav navbar-nav">
+            <li ng-class="{ active: isActive('/')}">
+                <a href="/#/">My Lab</a>
+            </li>
+            <li ng-class="{ active: isActive('/habit')}">
+                <a href="#/habit/Meditation">habit</a>
+            </li>
+        </ul>
+    </div>
+    <div ui-view></div>
 
   <footer>
             Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>. Icons by <a href="glyphicons.com">Glyphicons.com</a>

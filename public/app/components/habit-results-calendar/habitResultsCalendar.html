@@ -1,0 +1,16 @@
+<table class="table table-bordered table-condensed table-responsive habit-results-calendar">
+    <thead>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th class="sunday">Sun</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="numWeek in range(nbWeekInMonth(activeDay))">
+            <td ng-repeat="numDay in range(7)">{{1+numDay+7*numWeek}}</td>
+        </tr>
+    </tbody>
+</table>

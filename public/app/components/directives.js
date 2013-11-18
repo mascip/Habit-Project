@@ -17,13 +17,6 @@
     }
   ]);
 
-  window.stoppingPropagation = function(callback) {
-    return function(event) {
-      event.stopPropagation();
-      return callback(event);
-    };
-  };
-
   app.directive('ngTap', function() {
     return function(scope, element, attrs) {
       var tapping;

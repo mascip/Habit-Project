@@ -8,14 +8,13 @@
   app = angular.module("" + app_name + ".ctrl-tabs", ['ui.bootstrap']);
 
   app.controller('CtrlTabs', CtrlTabs = (function() {
-    function CtrlTabs() {}
-
-    CtrlTabs.prototype.contructor = function($location) {
-      return $scope.isActive = function(viewLocation) {
-        alert($location.path() + '---' + viewLocation === $location.path());
-        return viewLocation === $location.path();
+    function CtrlTabs($scope, $location, $state) {
+      $scope.isActive = function(viewLocation) {
+        var res;
+        res = $state.includes(viewLocation);
+        return res;
       };
-    };
+    }
 
     return CtrlTabs;
 

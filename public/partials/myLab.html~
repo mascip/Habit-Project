@@ -31,6 +31,7 @@
                                         <div ng-switch="habit.tickedOnDay(0)">
                                             <!-- the icon displayed depends on the result -->
                                             <div ng-switch-when="unknown"> 
+                                                <!-- fa-fw for 'fixed-width', so the icons have the same width -->
                                                 <i class="fa fa-fw fa-check"></i>
                                             </div>
                                             <div ng-switch-when="done"> 
@@ -53,7 +54,7 @@
                                     {{habit.countResults.done}} / {{habit.countResults.total}}
                                 </td>
                                 <td>
-                                    <span  popover="manage habit" popover-trigger="mouseenter" popover-placement="left"><a class="habit-name" ui-sref="habit({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o" alt="Go to next week"></i></button></a></span>
+                                    <span  popover="manage habit" popover-trigger="mouseenter" popover-placement="left"><a class="habit-name" ui-sref="habitBoard({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o" alt="Go to next week"></i></button></a></span>
                                     
                                 </td>
                             

@@ -4,7 +4,10 @@ app = angular.module "#{app_name}.ctrl-tabs", ['ui.bootstrap']
 
 app.controller 'CtrlTabs',
 class CtrlTabs
-    contructor: ($location) ->
+    constructor: ($scope, $location, $state) ->
         $scope.isActive = (viewLocation) ->
-                alert($location.path() . '---' . viewLocation == $location.path())
-                return viewLocation == $location.path()
+            res = $state.includes(viewLocation)
+            return res
+            # TODO: it is called to often. I could keep a list of tabs here, 
+        # and create an object that lists whether they are active or not.
+        # It would be updated only when there is a stateChangeSuccess

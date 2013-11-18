@@ -8,25 +8,27 @@ app = angular.module app_name, ["#{app_name}.filters", "#{app_name}.services", "
 app.config ($stateProvider, $urlRouterProvider) ->
 
     # $urlRouterProvider.otherwise('/')
-
-    myLab =
-        templateUrl: 'partials/myLab.html'
-        controller: 'CtrlMyLab'
-
-    habitBoard =
-        templateUrl: 'partials/habitBoard.html'
-        controller: 'CtrlHabitBoard'
-
+    
+    navTabs=
+        templateUrl: 'partials/tabs.html'
+        controller: 'CtrlTabs'
+         
     $stateProvider
         .state( 'myLab', 
             url: '/'
-            templateUrl: 'partials/myLab.html'
-            controller: 'CtrlMyLab'
+            views:
+                "":
+                    templateUrl: 'partials/myLab.html'
+                    controller: 'CtrlMyLab'
+                "nav-tabs": navTabs
         )
-        .state( 'habit', 
+        .state( 'habitBoard', 
             url: '/habit/:name'
-            templateUrl: 'partials/habitBoard.html'
-            controller: 'CtrlHabitBoard'
+            views:
+                "":
+                    templateUrl: 'partials/habitBoard.html'
+                    controller: 'CtrlHabitBoard'
+                "nav-tabs": navTabs
         )
 
 

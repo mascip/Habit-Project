@@ -8116,10 +8116,33 @@ td.visible-print {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* line 1, ../../src/sass/my-bootstrap-variations.scss */
-.nav-tabs {
-  color: black;
-  margin-bottom: 20px;
+/* line 3, ../../src/sass/my-bootstrap-variations.scss */
+body {
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#fafafa), to(#e0e0e0));
+  background-image: -webkit-linear-gradient(top, #fafafa 0%, #e0e0e0 100%);
+  background-image: -moz-linear-gradient(top, #fafafa 0%, #e0e0e0 100%);
+  background-image: linear-gradient(to bottom, #fafafa 0%, #e0e0e0 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFAFAFA', endColorstr='#FFE0E0E0', GradientType=0);
+}
+
+/* line 9, ../../src/sass/my-bootstrap-variations.scss */
+.nav-tabs li a, .nav-tabs li a:focus, .nav-tabs li a:hover {
+  margin-right: 6px;
+  box-shadow: 2px -1px 2px #888888;
+  border: 1px solid #D3D3D3;
+  color: #151515;
+}
+/* line 16, ../../src/sass/my-bootstrap-variations.scss */
+.nav-tabs li.active > a, .nav-tabs li.active > a:hover, .nav-tabs li.active > a:focus {
+  background-color: white;
+  border-bottom-color: transparent;
+}
+
+/* line 23, ../../src/sass/my-bootstrap-variations.scss */
+#main-area {
+  background-color: white;
+  padding-top: 20px;
 }
 
 /* line 1, ../../src/sass/app.scss */

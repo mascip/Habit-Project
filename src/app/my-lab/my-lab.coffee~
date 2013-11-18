@@ -1,6 +1,6 @@
 'use strict'
 app_name = "myApp"
-app = angular.module "#{app_name}.my-lab", ['ui.bootstrap']
+app = angular.module "#{app_name}.ctrl-my-lab", ['ui.bootstrap']
 
 app.controller 'CtrlMyLab',
 class CtrlMyLab

@@ -8199,15 +8199,15 @@ button.unknown:active, button.unknown.active {
   background-color: #d4d4d4;
   border-color: #cfcfcf;
 }
-/* line 57, ../../src/sass/app.scss */
+/* line 55, ../../src/sass/app.scss */
 button.unknown i {
   opacity: 0.9;
 }
-/* line 59, ../../src/sass/app.scss */
+/* line 57, ../../src/sass/app.scss */
 button.unknown:hover {
   color: white;
 }
-/* line 64, ../../src/sass/app.scss */
+/* line 62, ../../src/sass/app.scss */
 button.failed {
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffcccc), to(#ff8f8f));
   background-image: -webkit-linear-gradient(top, #ffcccc 0%, #ff8f8f 100%);
@@ -8229,11 +8229,11 @@ button.failed:active, button.failed.active {
   background-color: #ff8f8f;
   border-color: #ff8585;
 }
-/* line 67, ../../src/sass/app.scss */
+/* line 65, ../../src/sass/app.scss */
 button.failed i {
   opacity: 0.9;
 }
-/* line 71, ../../src/sass/app.scss */
+/* line 69, ../../src/sass/app.scss */
 button.done {
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#baf7ba), to(#83f183));
   background-image: -webkit-linear-gradient(top, #baf7ba 0%, #83f183 100%);
@@ -8255,51 +8255,51 @@ button.done:active, button.done.active {
   background-color: #83f183;
   border-color: #7af07a;
 }
-/* line 74, ../../src/sass/app.scss */
+/* line 72, ../../src/sass/app.scss */
 button.done i {
   color: green;
 }
 
-/* line 80, ../../src/sass/app.scss */
+/* line 78, ../../src/sass/app.scss */
 .habit-name {
   font-size: 1.2em;
 }
 
-/* line 83, ../../src/sass/app.scss */
+/* line 81, ../../src/sass/app.scss */
 .habit-name {
   display: inline-block;
   width: 80%;
 }
 
-/* line 87, ../../src/sass/app.scss */
+/* line 85, ../../src/sass/app.scss */
 .date {
   margin-left: 10px;
   margin-right: 10px;
   text-align: right;
 }
 
-/* line 92, ../../src/sass/app.scss */
+/* line 90, ../../src/sass/app.scss */
 .grey {
   color: grey;
 }
 
-/* line 95, ../../src/sass/app.scss */
+/* line 93, ../../src/sass/app.scss */
 .reminder-row {
   margin-top: 30px;
 }
 
-/* line 99, ../../src/sass/app.scss */
+/* line 97, ../../src/sass/app.scss */
 .habits table {
   font-size: 1.2em;
 }
 
-/* line 103, ../../src/sass/app.scss */
+/* line 101, ../../src/sass/app.scss */
 .habits table, .habits td, .habits th {
   text-align: center;
   vertical-align: middle;
 }
 
-/* line 108, ../../src/sass/app.scss */
+/* line 106, ../../src/sass/app.scss */
 .my-badge {
   display: inline-block;
   min-width: 35px;
@@ -8311,36 +8311,36 @@ button.done i {
   text-align: center;
   border-radius: 35px;
 }
-/* line 121, ../../src/sass/app.scss */
+/* line 119, ../../src/sass/app.scss */
 .my-badge.unknown {
   background-color: #ebebeb;
   color: black;
 }
-/* line 125, ../../src/sass/app.scss */
+/* line 123, ../../src/sass/app.scss */
 .my-badge.failed {
   background-color: #ff6666;
 }
-/* line 126, ../../src/sass/app.scss */
+/* line 124, ../../src/sass/app.scss */
 .my-badge.done {
   background-color: #5eed5e;
 }
 
-/* line 128, ../../src/sass/app.scss */
+/* line 126, ../../src/sass/app.scss */
 .tooltip {
   font-size: 1em;
 }
 
-/* line 132, ../../src/sass/app.scss */
+/* line 130, ../../src/sass/app.scss */
 .popover {
   font-size: 1em;
 }
 
-/* line 136, ../../src/sass/app.scss */
+/* line 134, ../../src/sass/app.scss */
 .input {
   padding: 5px;
 }
 
-/* line 147, ../../src/sass/app.scss */
+/* line 145, ../../src/sass/app.scss */
 header {
   margin-bottom: 10px;
 }

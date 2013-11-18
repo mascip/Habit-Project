@@ -52,8 +52,6 @@ button {
     &.unknown {
         @include btn-styles($color-unknown-btn); // using sass-bootstrap's _theme.scss
         // @include result-button($color-unknown);
-        // background-color: hsl(0,0%,70%);
-        // //background-color: #f7ff75;
         i { opacity: 0.9; }
         // color: white;
         &:hover { 

@@ -23,10 +23,12 @@
   clear: none;
 }
 
+// Button colors
 $color-unknown-badge: hsl(0,0%,92%);
 $color-done-badge: hsl(120,80%,65%);
 $color-failed-badge: hsl(0,100%,70%);
 
+// Badge colors
 $color-unknown-btn: hsl(0,0,95%);
 $color-done-btn: hsl(120,80%,85%);
 $color-failed-btn: hsl(0,100%,90%);
@@ -61,6 +63,7 @@ button {
     }
     &.failed {
         @include btn-styles($color-failed-btn); // using sass-bootstrap's _theme.scss
+        // background-color: $color-failed-btn;
         // @include result-button($color-failed);
         i {
             opacity: 0.9; // No "ok" icon

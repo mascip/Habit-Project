@@ -8177,129 +8177,118 @@ body {
   clear: none;
 }
 
-/* line 52, ../../src/sass/app.scss */
+/* line 68, ../../src/sass/app.scss */
 button.unknown {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#f2f2f2), to(#d4d4d4));
-  background-image: -webkit-linear-gradient(top, #f2f2f2 0%, #d4d4d4 100%);
-  background-image: -moz-linear-gradient(top, #f2f2f2 0%, #d4d4d4 100%);
-  background-image: linear-gradient(to bottom, #f2f2f2 0%, #d4d4d4 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF2F2F2', endColorstr='#FFD4D4D4', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  background-repeat: repeat-x;
-  border-color: #cfcfcf;
-}
-/* line 41, ../../src/sass/vendor/sass-bootstrap/lib/_theme.scss */
-button.unknown:hover, button.unknown:focus {
-  background-color: #d4d4d4;
-  background-position: 0 -15px;
-}
-/* line 47, ../../src/sass/vendor/sass-bootstrap/lib/_theme.scss */
-button.unknown:active, button.unknown.active {
-  background-color: #d4d4d4;
-  border-color: #cfcfcf;
-}
-/* line 55, ../../src/sass/app.scss */
-button.unknown i {
-  opacity: 0.9;
+  font-size: 1.6em;
+  background-color: #d9d9d9;
+  border: 2px solid #c7c7c7;
+  opacity: 1;
+  transition-property: opacity;
 }
 /* line 57, ../../src/sass/app.scss */
 button.unknown:hover {
+  background-color: #d9d9d9;
+  opacity: 0.6;
+}
+/* line 61, ../../src/sass/app.scss */
+button.unknown:active {
+  background-color: #bfbfbf;
+}
+/* line 71, ../../src/sass/app.scss */
+button.unknown i {
+  opacity: 0.9;
   color: white;
 }
-/* line 62, ../../src/sass/app.scss */
+/* line 74, ../../src/sass/app.scss */
+button.unknown i:hover {
+  color: black;
+}
+/* line 78, ../../src/sass/app.scss */
 button.failed {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffcccc), to(#ff8f8f));
-  background-image: -webkit-linear-gradient(top, #ffcccc 0%, #ff8f8f 100%);
-  background-image: -moz-linear-gradient(top, #ffcccc 0%, #ff8f8f 100%);
-  background-image: linear-gradient(to bottom, #ffcccc 0%, #ff8f8f 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFCCCC', endColorstr='#FFFF8F8F', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  background-repeat: repeat-x;
-  border-color: #ff8585;
+  font-size: 1.6em;
+  background-color: #fa9e9e;
+  border: 2px solid #f87c7c;
+  opacity: 1;
+  transition-property: opacity;
 }
-/* line 41, ../../src/sass/vendor/sass-bootstrap/lib/_theme.scss */
-button.failed:hover, button.failed:focus {
-  background-color: #ff8f8f;
-  background-position: 0 -15px;
+/* line 57, ../../src/sass/app.scss */
+button.failed:hover {
+  background-color: #fa9e9e;
+  opacity: 0.6;
 }
-/* line 47, ../../src/sass/vendor/sass-bootstrap/lib/_theme.scss */
-button.failed:active, button.failed.active {
-  background-color: #ff8f8f;
-  border-color: #ff8585;
+/* line 61, ../../src/sass/app.scss */
+button.failed:active {
+  background-color: #f76e6e;
 }
-/* line 65, ../../src/sass/app.scss */
+/* line 82, ../../src/sass/app.scss */
 button.failed i {
   opacity: 0.9;
+  color: #f53d3d;
 }
-/* line 69, ../../src/sass/app.scss */
+/* line 87, ../../src/sass/app.scss */
 button.done {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#baf7ba), to(#83f183));
-  background-image: -webkit-linear-gradient(top, #baf7ba 0%, #83f183 100%);
-  background-image: -moz-linear-gradient(top, #baf7ba 0%, #83f183 100%);
-  background-image: linear-gradient(to bottom, #baf7ba 0%, #83f183 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFBAF7BA', endColorstr='#FF83F183', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  background-repeat: repeat-x;
-  border-color: #7af07a;
+  font-size: 1.6em;
+  background-color: #bef4be;
+  border: 2px solid #a0eea0;
+  opacity: 1;
+  transition-property: opacity;
+  background-color: #bef4be;
 }
-/* line 41, ../../src/sass/vendor/sass-bootstrap/lib/_theme.scss */
-button.done:hover, button.done:focus {
-  background-color: #83f183;
-  background-position: 0 -15px;
+/* line 57, ../../src/sass/app.scss */
+button.done:hover {
+  background-color: #bef4be;
+  opacity: 0.6;
 }
-/* line 47, ../../src/sass/vendor/sass-bootstrap/lib/_theme.scss */
-button.done:active, button.done.active {
-  background-color: #83f183;
-  border-color: #7af07a;
+/* line 61, ../../src/sass/app.scss */
+button.done:active {
+  background-color: #93ec93;
 }
-/* line 72, ../../src/sass/app.scss */
+/* line 91, ../../src/sass/app.scss */
 button.done i {
   color: green;
+  color: #52e052;
 }
 
-/* line 78, ../../src/sass/app.scss */
+/* line 98, ../../src/sass/app.scss */
 .habit-name {
   font-size: 1.2em;
 }
 
-/* line 81, ../../src/sass/app.scss */
+/* line 101, ../../src/sass/app.scss */
 .habit-name {
   display: inline-block;
   width: 80%;
 }
 
-/* line 85, ../../src/sass/app.scss */
+/* line 105, ../../src/sass/app.scss */
 .date {
   margin-left: 10px;
   margin-right: 10px;
   text-align: right;
 }
 
-/* line 90, ../../src/sass/app.scss */
+/* line 110, ../../src/sass/app.scss */
 .grey {
   color: grey;
 }
 
-/* line 93, ../../src/sass/app.scss */
+/* line 113, ../../src/sass/app.scss */
 .reminder-row {
   margin-top: 30px;
 }
 
-/* line 97, ../../src/sass/app.scss */
+/* line 117, ../../src/sass/app.scss */
 .habits table {
   font-size: 1.2em;
 }
 
-/* line 101, ../../src/sass/app.scss */
+/* line 121, ../../src/sass/app.scss */
 .habits table, .habits td, .habits th {
   text-align: center;
   vertical-align: middle;
 }
 
-/* line 106, ../../src/sass/app.scss */
+/* line 126, ../../src/sass/app.scss */
 .my-badge {
   display: inline-block;
   min-width: 35px;
@@ -8311,36 +8300,52 @@ button.done i {
   text-align: center;
   border-radius: 35px;
 }
-/* line 119, ../../src/sass/app.scss */
+/* line 139, ../../src/sass/app.scss */
 .my-badge.unknown {
-  background-color: #ebebeb;
-  color: black;
+  border: 1px solid #cccccc;
 }
-/* line 123, ../../src/sass/app.scss */
+/* line 142, ../../src/sass/app.scss */
 .my-badge.failed {
-  background-color: #ff6666;
+  border: 1px solid #f53d3d;
 }
-/* line 124, ../../src/sass/app.scss */
+/* line 145, ../../src/sass/app.scss */
 .my-badge.done {
-  background-color: #5eed5e;
+  border: 1px solid #45de45;
 }
 
-/* line 126, ../../src/sass/app.scss */
+/* line 149, ../../src/sass/app.scss */
+.current-streak {
+  font-size: 1.2em;
+}
+/* line 152, ../../src/sass/app.scss */
+.current-streak .unknown {
+  color: #cccccc;
+}
+/* line 155, ../../src/sass/app.scss */
+.current-streak .failed {
+  color: #f53d3d;
+}
+/* line 158, ../../src/sass/app.scss */
+.current-streak .done {
+  color: #45de45;
+}
+
+/* line 162, ../../src/sass/app.scss */
 .tooltip {
   font-size: 1em;
 }
 
-/* line 130, ../../src/sass/app.scss */
+/* line 166, ../../src/sass/app.scss */
 .popover {
   font-size: 1em;
 }
 
-/* line 134, ../../src/sass/app.scss */
+/* line 170, ../../src/sass/app.scss */
 .input {
   padding: 5px;
 }
 
-/* line 145, ../../src/sass/app.scss */
+/* line 181, ../../src/sass/app.scss */
 header {
   margin-bottom: 10px;
 }

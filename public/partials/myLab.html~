@@ -1,6 +1,4 @@
 <div class="container-full">
-
-
     <div class="row">
         <div class="col-lg-7">
             <div class="rounded-container display-area"> 
@@ -27,7 +25,7 @@
                         <tbody>
                             <tr class="habit-row" ng-repeat='habit in myHabits | filter:wasActive'>
                                 <td>
-                                    <button type="button" class="btn btn-default btn-lg result-btn ng-class:habit.tickedOnDay(daysAgo)" ng-click="habit.clickTick(daysAgo)">
+                                    <button type="button" class="btn btn-mini result-btn ng-class:habit.tickedOnDay(daysAgo)" ng-click="habit.clickTick(daysAgo)">
                                         <div ng-switch="habit.tickedOnDay(0)">
                                             <!-- the icon displayed depends on the result -->
                                             <div ng-switch-when="unknown"> 
@@ -47,8 +45,8 @@
                                     <span class="habit-name">{{habit.name}}</span>
                                 <!-- <a class="habit-name" href="/#/habit/{{habit.name}}"></a> -->
                                 </td}>
-                                <td class="streak-badge">
-                                    <span class="my-badge ng-class:habit.tickedOnDay(0)">{{habit.streakOnDay(0)}}</span>
+                                <td class="current-streak">
+                                    <span class=" my-badgeng-class:habit.tickedOnDay(0)">{{habit.streakOnDay(0)}}</span>
                                 </td>
                                 <td>
                                     {{habit.countResults.done}} / {{habit.countResults.total}}
@@ -83,8 +81,8 @@
                                             <!-- <button class="btn" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button> -->
                                     </td>
                                     <td>
-                                        <span popover="add habit" popover-trigger="mouseenter" popover-placement="bottom"><button ng-disabled='!addHabitForm.$valid' type="button" class="btn btn-mini" ng-click='addOneHabit(inputHabitName, pickedDate)'><i class="glyphicon glyphicon-play"></i></button></span>
-                                        <span popover="cancel" popover-trigger="mouseenter" popover-placement="bottom"><button type="button" class="btn btn-mini" ng-click='$parent.nowAddingHabit=false'><i class="fa fa-times"></i></button></span>
+                                        <span popover="add habit" popover-trigger="mouseenter" popover-placement="bottom"><button ng-disabled='!addHabitForm.$valid' type="button" class="btn btn-mini btn-default" ng-click='addOneHabit(inputHabitName, pickedDate)'><i class="glyphicon glyphicon-play"></i></button></span>
+                                        <span popover="cancel" popover-trigger="mouseenter" popover-placement="bottom"><button type="button" class="btn btn-mini btn-default" ng-click='$parent.nowAddingHabit=false'><i class="fa fa-times"></i></button></span>
                                     </td>
                                     <td>
                                     </td>

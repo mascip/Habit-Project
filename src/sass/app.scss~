@@ -23,57 +23,74 @@
   clear: none;
 }
 
-// Button colors
-$color-unknown-badge: hsl(0,0%,92%);
-$color-done-badge: hsl(120,80%,65%);
-$color-failed-badge: hsl(0,100%,70%);
+@function clr-done ($light) {
+    @return hsl(120, 70%, $light);
+}
+@function clr-unknown ($light) {
+    @return hsl(0, 0%, $light);
+}
+@function clr-failed ($light) {
+    @return hsl(0, 90%, $light);
+}
+// Streak colors
+$color-unknown-streak: clr-unknown(80%);
+$color-done-streak: clr-done(57%);
+$color-failed-streak: clr-failed(60%);
 
-// Badge colors
-$color-unknown-btn: hsl(0,0,95%);
-$color-done-btn: hsl(120,80%,85%);
-$color-failed-btn: hsl(0,100%,90%);
+// Button colors
+$color-unknown-btn: clr-unknown(85%);
+$color-done-btn: clr-done(85%);
+$color-failed-btn: clr-failed(80%);
+
+// Icon colors
+$color-unknown-icon: clr-unknown(80%);
+$color-done-icon: clr-done(60%);
+$color-failed-icon: clr-failed(60%);
 
 // Only usefull when I don't use _theme.scss
-// @mixin result-button ($color) {
-//   background-color: $color;
-//     opacity: 1;
-//     transition-property: opacity;
-//   &:hover {
-//     background-color: $color;
-//     opacity: 0.6;
-//   }
-//   &:active {
-//     //background-color: hsl($hue,100%,60%);
-//     background-color: darken($color, 15%);
-//   }
-// }
+@mixin result-button ($color) {
+  font-size: 1.6em;
+  background-color: $color;
+  border: 2px solid darken($color, 7%);
+    opacity: 1;
+    transition-property: opacity;
+  &:hover {
+    background-color: $color;
+    opacity: 0.6;
+  }
+  &:active {
+    //background-color: hsl($hue,100%,60%);
+    background-color: darken($color, 10%);
+  }
+}
 
 button {
     &.unknown {
-        @include btn-styles($color-unknown-btn); // using sass-bootstrap's _theme.scss
-        // @include result-button($color-unknown);
-        // background-color: hsl(0,0%,70%);
-        // //background-color: #f7ff75;
-        i { opacity: 0.9; }
-        // color: white;
-        &:hover { 
-            // color: black;
-            color:white;
+        // @include btn-styles($color-unknown-btn); // using sass-bootstrap's _theme.scss
+        @include result-button($color-unknown-btn);
+        i { 
+            opacity: 0.9; 
+            color: white;
+            &:hover { color: black; }
+            // color: $color-unknown-icon;
         }
     }
     &.failed {
-        @include btn-styles($color-failed-btn); // using sass-bootstrap's _theme.scss
+        // @include btn-styles($color-failed-btn); // using sass-bootstrap's _theme.scss
+        @include result-button($color-failed-btn);
         // background-color: $color-failed-btn;
-        // @include result-button($color-failed);
         i {
             opacity: 0.9; // No "ok" icon
+            color: $color-failed-icon;
         }
     }
     &.done {
-        @include btn-styles($color-done-btn); // using sass-bootstrap's _theme.scss
-        // @include result-button($color-done);
+        // @include btn-styles($color-done-btn); // using sass-bootstrap's _theme.scss
+        @include result-button($color-done-btn);
+        background-color: $color-done-btn;
         i { 
             color: green; 
+            color: $color-done-icon;
         }
     }
 }
@@ -120,11 +137,29 @@ button {
     text-align: center;
     border-radius: $circle-size;
     &.unknown {
-        background-color: $color-unknown-badge;
-        color: black;
+        border: 1px solid $color-unknown-streak;
     }
-    &.failed { background-color: $color-failed-badge; }
-    &.done { background-color: $color-done-badge; }
+    &.failed {
+        border: 1px solid $color-failed-streak;
+    }
+    &.done {
+        border: 1px solid $color-done-streak;
+    }
+}
+.current-streak {
+    // font-weight: bold;
+    font-size: 1.2em;
+    & .unknown {
+        color: $color-unknown-streak;
+    }
+    & .failed { 
+        // background-color: $color-failed-streak; 
+        color: $color-failed-streak;
+    }
+    & .done { 
+        // background-color: $color-done-streak; 
+        color: $color-done-streak;
+    }
 }
 .tooltip {
     // font-size: $font-size-base;

@@ -46,14 +46,9 @@ css_files:
  - '"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"'
 # - '"vendor/css/bootstrap/bootstrap.css" media="screen"'
  # - '"css/vendor/sass-bootstrap/dist/css/bootstrap-theme.css" media="screen"' # Optional theme
- # - '"bootstrap2.css"'
- # - '"bootstrap.css"'
- # - '"bootstrap-theme.css"'
- # - '"bootstrap2-theme.css"'
  # - '"vendor/css/bootstrap/bootstrap-glyphicons.css"'
  # - '"vendor/js/select2/select2.css"'
 ### My own styles
  - '"app/main.css"'
- #- '"css/app.css"'
     # Keep this one last, to override the others
 

@@ -102,7 +102,6 @@
         this.results.unshift(_.clone(currentResult));
         this.updateAllStreaks();
         this.dayIdx = 0;
-        this.notTickedToday = true;
       }
 
       ActiveHabit.prototype.streakOnDay = function(daysAgo) {
@@ -152,10 +151,11 @@
               return 'failed';
           }
         })();
-        if (this.dayIds === 0) {
-          this.notTickedToday = false;
-        }
         return this.updateAllStreaks();
+      };
+
+      ActiveHabit.prototype.emptyHabit = function() {
+        return this.results.length === 0;
       };
 
       ActiveHabit.prototype.emptyHabit = function() {

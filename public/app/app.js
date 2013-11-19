@@ -7,7 +7,7 @@
 
   app_name = "myApp";
 
-  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".ctrl-habit-board", "" + app_name + ".ctrl-tabs", "" + app_name + ".ctrl-my-lab", "angular-underscore", "ui.router", "" + app_name + ".habitResultsCalendar", "" + app_name + ".CalendarDays", "" + app_name + ".TheTime"]);
+  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".ctrl-habit-board", "" + app_name + ".ctrl-tabs", "" + app_name + ".ctrl-my-lab", "angular-underscore", "ui.router", "" + app_name + ".habitResultsCalendar", "" + app_name + ".CalendarDays", "" + app_name + ".TheTime", "" + app_name + ".CheckButton"]);
 
   app.config(function($stateProvider, $urlRouterProvider) {
     var navTabs;

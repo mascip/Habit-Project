@@ -41,7 +41,7 @@ js_files:
 # CSS files to load in the Layout
 # Note: in a String, so that I can add attributes (YAML does not like whitespaces)
 css_files:
- - '"vendor/css/normalize.css"'
+ - '"app/vendor/css/normalize.css"'
 ### Vendor styles
  - '"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"'
 # - '"vendor/css/bootstrap/bootstrap.css" media="screen"'

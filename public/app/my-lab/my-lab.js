@@ -8,11 +8,10 @@
   app = angular.module("" + app_name + ".ctrl-my-lab", ['ui.bootstrap']);
 
   app.controller('CtrlMyLab', CtrlMyLab = (function() {
-    function CtrlMyLab($scope, ActiveHabit, Habit, MyHabits) {
-      var now, today;
+    function CtrlMyLab($scope, ActiveHabit, Habit, MyHabits, TheTime) {
+      var today;
       $scope.daysAgo = 0;
-      now = moment();
-      today = now.startOf('day');
+      today = TheTime.today;
       $scope.displayedToday = today.valueOf();
       $scope.$watch('today', function() {
         return $scope.displayedToday = today.valueOf();

@@ -22,16 +22,16 @@ startup_info: 1
 
 # JS files to load in the Layout
 js_files:
- - vendor/js/angular/angular.js
- - vendor/js/ui-router.js
- - vendor/js/lodash/lodash.min.js
- - vendor/js/moment/moment-with-langs.min.js
+ - app/vendor/js/angular/angular.js
+ - app/vendor/js/ui-router.js
+ - app/vendor/js/lodash/lodash.min.js
+ - app/vendor/js/moment/moment-with-langs.min.js
  - //code.jquery.com/jquery.min.js
- - vendor/js/bootstrap.min.js  #  TODO: use it from somewhere else?
- - vendor/js/angular-ui/bootstrap3_bis2/ui-bootstrap-0.6.0.min.js
+ - app/vendor/js/bootstrap.min.js  #  TODO: use it from somewhere else?
+ - app/vendor/js/angular-ui/bootstrap3_bis2/ui-bootstrap-0.6.0.min.js
     # <!-- Don't forget to add the 'ui.bootstrap' dependency in the modules -->
     # Also, the templates are in public/template!
- - vendor/js/angular-underscore.js
+ - app/vendor/js/angular-underscore.js
  # - vendor/js/ui-select2/src/select2.js
  # - vendor/js/select2/select2.js
 
@@ -43,7 +43,7 @@ js_files:
 css_files:
  - '"vendor/css/normalize.css"'
 ### Vendor styles
- - '"href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"'
+ - '"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"'
 # - '"vendor/css/bootstrap/bootstrap.css" media="screen"'
  # - '"css/vendor/sass-bootstrap/dist/css/bootstrap-theme.css" media="screen"' # Optional theme
  # - '"bootstrap2.css"'
@@ -53,7 +53,7 @@ css_files:
  # - '"vendor/css/bootstrap/bootstrap-glyphicons.css"'
  # - '"vendor/js/select2/select2.css"'
 ### My own styles
- - '"css/main.css"'
+ - '"app/main.css"'
  #- '"css/app.css"'
     # Keep this one last, to override the others
 

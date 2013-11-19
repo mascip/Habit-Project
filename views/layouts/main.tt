@@ -28,7 +28,7 @@
 
         <!-- My JS libraries -->
         <script src="app.coffee"></script>
-        <script src="tabs.coffee"></script>
+        <script src="tabs/tabs.coffee"></script>
         <script src="habit-board/habit-board.coffee"></script>
         <script src="my-lab/my-lab.coffee"></script>
         <script src="components/services.coffee"></script>
@@ -36,6 +36,7 @@
         <script src="components/directives.coffee"></script>
         <script src="components/habit-results-calendar/calendar-days.coffee"></script>
         <script src="components/habit-results-calendar/habit-results-calendar.coffee"></script>
+        <script src="components/the-time.coffee"></script>
         <!-- END My JS libraries -->
         
     </body>

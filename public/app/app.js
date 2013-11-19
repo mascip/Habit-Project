@@ -7,19 +7,19 @@
 
   app_name = "myApp";
 
-  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".ctrl-habit-board", "" + app_name + ".ctrl-tabs", "" + app_name + ".ctrl-my-lab", "angular-underscore", "ui.router", "" + app_name + ".habitResultsCalendar", "" + app_name + ".calendarDays"]);
+  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".services", "" + app_name + ".directives", "" + app_name + ".ctrl-habit-board", "" + app_name + ".ctrl-tabs", "" + app_name + ".ctrl-my-lab", "angular-underscore", "ui.router", "" + app_name + ".habitResultsCalendar", "" + app_name + ".CalendarDays", "" + app_name + ".TheTime"]);
 
   app.config(function($stateProvider, $urlRouterProvider) {
     var navTabs;
     navTabs = {
-      templateUrl: 'partials/tabs.html',
+      templateUrl: 'app/tabs/tabs.html',
       controller: 'CtrlTabs'
     };
     return $stateProvider.state('myLab', {
       url: '/',
       views: {
         "": {
-          templateUrl: 'partials/myLab.html',
+          templateUrl: 'app/my-lab//myLab.html',
           controller: 'CtrlMyLab'
         },
         "nav-tabs": navTabs
@@ -28,7 +28,7 @@
       url: '/habit/:name',
       views: {
         "": {
-          templateUrl: 'partials/habitBoard.html',
+          templateUrl: 'app/habit-board/habitBoard.html',
           controller: 'CtrlHabitBoard'
         },
         "nav-tabs": navTabs

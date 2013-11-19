@@ -21,7 +21,7 @@ builder {
     # .coffee -> .js
     enable 'Compile' => (
         pattern => qr{\.coffee$},
-        lib     => 'src/app',
+        lib     => 'public/app',
         blib    => 'public/app',
         mime    => 'text/plain',
         map     => sub {

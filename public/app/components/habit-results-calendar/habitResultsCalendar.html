@@ -1,16 +1,21 @@
-<table class="table table-bordered table-condensed table-responsive habit-results-calendar">
-    <thead>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
-        <th class="sunday">Sun</th>
-    </thead>
-    <tbody>
-        <tr ng-repeat="numWeek in range(nbWeeks)"> <!-- 6 weeks displayed for each month -->
-            <td ng-repeat="numDay in daysInWeek[numWeek]">{{numDay}}</td>
-        </tr>
-    </tbody>
-</table>
+<div>
+    <div>
+        <h3 class="monthName">{{monthName}} {{year}}</h3>
+    </div>
+    <table class="table table-bordered table-condensed table-responsive habit-results-calendar">
+        <thead>
+            <th class="sunday">Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="numWeek in range(nbWeeks)"> <!-- 6 weeks displayed for each month -->
+                <td ng-repeat="numDay in dayNumsInWeek[numWeek]">{{numDay}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

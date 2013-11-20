@@ -1,0 +1,8 @@
+.habit-results-calendar {
+    p {
+        display: inline-block;
+        margin: 0px;
+        padding: 0px;
+        color: blue;
+    }
+}

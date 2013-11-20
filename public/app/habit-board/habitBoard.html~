@@ -1,0 +1,30 @@
+<div class="container-full" id="habit-board">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="rounded-container display-area"> 
+                <div class="row">
+                    <div class="col-xs-9">
+                        <h3>{{habit.name}}</h3>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <habit-results-calendar></habit-results-calendar>
+                    </div>
+                    <div class="col-md-6" id="area-success-rate">
+                        <h4>Success rate:</h4> 
+                        <p>Habit started on :</p>
+                        <p>{{habit.percentSuccess | number:0}}% success : {{habit.countResults.done}} / {{habit.countResults.total}}</p>
+                        <p>Current streak: {{habit.streakAgo(0)}}</p>
+                        <p>Longest streak: {{habit.longestStreak}}</p>
+                        <p>Weekly successes:</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

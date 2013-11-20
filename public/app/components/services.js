@@ -10,29 +10,6 @@
 
   app.value('version', '0.1');
 
-  app.factory('TheTime', function() {
-    var TheTime;
-    return TheTime = (function() {
-      function TheTime() {
-        this.daysAgoVar = 0;
-        this.now = moment();
-        this.today = this.now.startOf('day');
-        this.selectedDay = moment(this.today);
-      }
-
-      TheTime.prototype.changeDaysAgo = function(nb) {
-        return this.daysAgo += nb;
-      };
-
-      TheTime.prototype.daysAgo = function() {
-        return this.daysAgo;
-      };
-
-      return TheTime;
-
-    })();
-  });
-
   SingleResult = (function() {
     function SingleResult(_arg) {
       this.day = _arg.day, this.dateTime = _arg.dateTime, this.ticked = _arg.ticked, this.streak = _arg.streak;
@@ -74,7 +51,7 @@
     })();
   });
 
-  app.factory('ActiveHabit', function(Habit) {
+  app.factory('ActiveHabit', function(Habit, TheTime) {
     var ActiveHabit;
     return ActiveHabit = (function() {
       function ActiveHabit(name, nbDaysToInit, prevResults) {
@@ -104,12 +81,21 @@
         this.dayIdx = 0;
       }
 
-      ActiveHabit.prototype.streakOnDay = function(daysAgo) {
+      ActiveHabit.prototype.streakAgo = function(daysAgo) {
         return this.results[daysAgo].streak;
       };
 
-      ActiveHabit.prototype.tickedOnDay = function(daysAgo) {
+      ActiveHabit.prototype.tickedAgo = function(daysAgo) {
+        alert('1 - ' + daysAgo);
+        if (this.doesntExistAgo(daysAgo) || daysAgo < 0) {
+          return 'unknown';
+        }
+        alert('2 - ' + daysAgo);
         return this.results[daysAgo].ticked;
+      };
+
+      ActiveHabit.prototype.tickedOnDay = function(day) {
+        return this.tickedAgo(TheTime.wasAgo(day));
       };
 
       ActiveHabit.prototype.nbDaysSinceStart = function() {
@@ -136,9 +122,9 @@
 
       ActiveHabit.prototype.currentWeekNumbet = function() {};
 
-      ActiveHabit.prototype.clickTick = function(daysAgo) {
+      ActiveHabit.prototype.clickTickAgo = function(daysAgo) {
         var ticked;
-        ticked = this.tickedOnDay(daysAgo);
+        ticked = this.tickedAgo(daysAgo);
         this.results[daysAgo].ticked = (function() {
           switch (false) {
             case ticked !== 'unknown':
@@ -152,6 +138,10 @@
           }
         })();
         return this.updateAllStreaks();
+      };
+
+      ActiveHabit.prototype.clickTickOnDay = function(day) {
+        return this.clickTickAgo(TheTime.wasAgo(day));
       };
 
       ActiveHabit.prototype.emptyHabit = function() {
@@ -220,8 +210,12 @@
         }
       };
 
-      ActiveHabit.prototype.doesntExistOnDay = function(daysAgo) {
+      ActiveHabit.prototype.doesntExistAgo = function(daysAgo) {
         return daysAgo >= this.results.length;
+      };
+
+      ActiveHabit.prototype.doesntExistOnDay = function(day) {
+        return doesntExistAgo(TheTime.wasAgo(day));
       };
 
       ActiveHabit.prototype.wasActive = function(daysAgo) {

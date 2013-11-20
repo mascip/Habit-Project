@@ -1,0 +1,16 @@
+<button type="button" class="btn btn-mini result-btn ng-class:ticked" ng-click="clickedTheTick()">
+    <!-- TODO: put the icons in the SCSS code -->
+    <div ng-switch="ticked">
+        <!-- the icon displayed depends on the result -->
+        <div ng-switch-when="unknown"> 
+            <!-- fa-fw for 'fixed-width', so the icons have the same width -->
+            <i class="fa fa-fw fa-check"></i>
+        </div>
+        <div ng-switch-when="done"> 
+            <i class="fa fa-fw fa-check"></i>
+        </div>
+        <div ng-switch-when="failed"> 
+            <i class="fa fa-fw fa-times"></i>
+        </div>
+    </div>
+</button>

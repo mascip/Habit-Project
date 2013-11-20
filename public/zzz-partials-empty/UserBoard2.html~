@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="rounded-container display-area"> 
+                <div class="row">
+                    <h2>Pierre M.</h2>
+                </div>
+                <div class="row"> 
+                    <!-- <i class="glyphicon glyphicon-backward next-week" ng-hide="thisIsToday" ng-click="clickNextWeek()" alt="Go to next week"></i> -->
+                    <!-- <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span> -->
+                    <!-- <i class="glyphicon glyphicon-forward prev-week" ng-click="clickPrevWeek()" alt="Go to previous week"></i> -->
+                </div>
+                <div class="row habits">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr> 
+                    
+                                <th>{{displayedDay | date:'EEE d'}}<!-- tick button --></th>
+                                <th> <!-- habit name --> </th>
+                                <th>Current Streak</th>
+                                <th>Success Rate</th>
+                                <th> <!-- link to the habit's page --> </th>
+                            </tr> 
+                        </thead>
+                        <tbody>
+                            <tr class="habit-row" ng-repeat='habit in myHabits | filter:wasActive'>
+                                <td>
+                                    <button type="button" class="btn btn-lg result-btn ng-class:habit.tickedOnDay(daysAgo)" ng-click="habit.clickTick(daysAgo)">
+                                        <div ng-switch="habit.tickedOnDay(0)">
+                                            <!-- the icon displayed depends on the result -->
+                                            <div ng-switch-when="unknown"> 
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </div>
+                                            <div ng-switch-when="done"> 
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </div>
+                                            <div ng-switch-when="failed"> 
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </td>
+                                <td>
+                                    <span class="habit-name">{{habit.name}}</span>
+                                <!-- <a class="habit-name" href="/#/habit/{{habit.name}}"></a> -->
+                                </td}>
+                                <td class="streak-badge">
+                                    <span class="my-badge ng-class:habit.tickedOnDay(0)">{{habit.streakOnDay(0)}}</span>
+                                </td>
+                                <td>
+                                    {{habit.countResults.done}} / {{habit.countResults.total}}
+                                </td>
+                                <td>
+                                    <span  popover="manage habit" popover-trigger="mouseenter" popover-placement="left"><a class="habit-name" href="/#/habit/{{habit.name}}"><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-edit" alt="Go to next week"></i></button></a></span>
+                                    
+                                </td>
+                            
+
+                                <!-- <div class="col-xs-12 col-md-8 btn-toolbar habit-results" role="toolbar"> -->
+                                <!--     <1!-- Results (unknown / done / failed) for each day, grouped by week --1> -->
+                                <!--     <div class="btn-group" ng-repeat='weekNum in range(habit.nbWeeksToDisplay(daysAgo))'> -->
+                                <!--         <1!-- TODO: clean the code and variable names: dayNum, weekNum, daysAgo --1> -->
+                                <!--         <button ng-repeat="dayNum in range(habit.nbDaysInWeek(weekNum+daysAgo/7))" class="btn btn-default result-btn ng-class:habit.tickedOnDay(dayNum+daysAgo+7*(weekNum))" ng-click="habit.clickTick(dayNum+daysAgo+7*weekNum)"><i class="glyphicon glyphicon-ok"></i></button> -->
+                                <!--     </div> -->
+                                <!-- </div> -->
+                            </tr> <!-- END ng-repeat -->
+                            <tr ng-show='nowAddingHabit'> 
+                                <form class="form-inline" role='form' name="addHabitForm">
+                                    <td></td>
+                                    <td>
+                                        <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder='Habit name' typeahead="name for name in otherHabitNames | filter:$viewValue | limitTo:8" required></input>
+                                    </td>
+                                    <td>
+                                        started 
+                                        <select>
+                                            <option ng-repeat="num in range(8)">{{$index}}</option>
+                                        </select>
+                                        days ago
+                                            <!-- <input type="text" datepicker-popup="EEEE d MMM" ng-model="pickedDate" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" /> -->
+                                            <!-- <button class="btn" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button> -->
+                                    </td>
+                                    <td>
+                                        <span popover="add habit" popover-trigger="mouseenter" popover-placement="bottom"><button ng-disabled='!addHabitForm.$valid' type="button" class="btn btn-mini" ng-click='addOneHabit(inputHabitName, pickedDate)'><i class="glyphicon glyphicon-play"></i></button></span>
+                                        <span popover="cancel" popover-trigger="mouseenter" popover-placement="bottom"><button type="button" class="btn btn-mini" ng-click='$parent.nowAddingHabit=false'><i class="glyphicon glyphicon-remove"></i></button></span>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </form>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row"> 
+                    <div class="col-xs-2">
+                        <span  popover="add habit" popover-trigger="mouseenter" popover-placement="right"><button class="btn btn-large my-badge" ng-click='$parent.nowAddingHabit=true' ng-hide='nowAddingHabit' alt="Add a new habit"><i class="glyphicon glyphicon-plus"></i></button></span>
+                            <!-- <button type="button" class="btn btn-default btn-sm, add-habit" ng-click='nowAddingHabit=true' ng-hide='nowAddingHabit' alt="add.jpg"> --> 
+                            <!--     <i class="icon-large glyphicon glyphicon-plus"></i> -->
+                        <!-- </button> -->
+                    </div> 
+                </div>
+                <div class="row reminder-row">
+                    <div class="col-xs-3 ">
+                            <span class="reminder">Next Reminder: <strong>7pm</strong></span>
+                            <i class="glyphicon glyphicon-remove grey"></i>
+                    
+                    </div>
+                </div>
+            </div> <!-- END display-area -->
+            <div class="rounded-container team-area">
+                <h2>Team Zen</h2>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="rounded-container chat-area">
+                <h2>Chat area...</h2>
+            </div>
+        </div>
+    </div> <!-- END row -->
+</div>
+    

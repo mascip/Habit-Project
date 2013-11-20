@@ -1,0 +1,3 @@
+  <tabset>
+    <tab ng-repeat="tab in theTabs" heading="{{tab.heading}}"></tab>
+  </tabset>

@@ -1,0 +1,183 @@
+.chat-area {
+  margin-top: 0px;
+  padding-top: 300px;
+  border: 1px solid silver;
+  border-radius: 10px;
+}
+.rounded-container {
+  padding-top: 5px;
+  padding-bottom: 432px;
+  padding-left: 20px;
+  border: 1px solid silver;
+  border-radius: 10px;
+}
+.rounded-container.team-area {
+  margin-top: 20px;
+  padding-bottom: 197px;
+  padding-left: 20px;
+}
+.main-logo {
+  position: static;
+  width: 90px;
+  padding-top: 27px;
+  clear: none;
+}
+
+@function clr-done ($light) {
+    @return hsl(120, 70%, $light);
+}
+@function clr-unknown ($light) {
+    @return hsl(0, 0%, $light);
+}
+@function clr-failed ($light) {
+    @return hsl(0, 90%, $light);
+}
+// Streak colors
+$color-unknown-streak: clr-unknown(80%);
+$color-done-streak: clr-done(57%);
+$color-failed-streak: clr-failed(60%);
+
+// Button colors
+$color-unknown-btn: clr-unknown(85%);
+$color-done-btn: clr-done(88%);
+$color-failed-btn: clr-failed(88%);
+
+// Icon colors
+$color-unknown-icon: clr-unknown(80%);
+$color-done-icon: clr-done(60%);
+$color-failed-icon: clr-failed(65%);
+
+// Only usefull when I don't use _theme.scss
+@mixin result-button ($color) {
+  font-size: 1.2em;
+  background-color: $color;
+  border: 2px solid darken($color, 7%);
+    opacity: 1;
+    transition-property: opacity;
+  &:hover {
+    background-color: $color;
+    opacity: 0.6;
+  }
+  &:active {
+    //background-color: hsl($hue,100%,60%);
+    background-color: darken($color, 10%);
+  }
+}
+
+button {
+    &.unknown {
+        // @include btn-styles($color-unknown-btn); // using sass-bootstrap's _theme.scss
+        @include result-button($color-unknown-btn);
+        i { 
+            opacity: 0.9; 
+            color: white;
+            &:hover { color: black; }
+            // color: $color-unknown-icon;
+        }
+    }
+    &.failed {
+        // @include btn-styles($color-failed-btn); // using sass-bootstrap's _theme.scss
+        @include result-button($color-failed-btn);
+        // background-color: $color-failed-btn;
+        i {
+            opacity: 0.9; // No "ok" icon
+            color: $color-failed-icon;
+        }
+    }
+    &.done {
+        // @include btn-styles($color-done-btn); // using sass-bootstrap's _theme.scss
+        @include result-button($color-done-btn);
+        background-color: $color-done-btn;
+        i { 
+            color: green; 
+            color: $color-done-icon;
+        }
+    }
+}
+
+.habit-name {
+    font-size: 1.2em;
+}
+.habit-name {
+    display: inline-block;
+    width: 80%;
+}
+.date {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: right;
+}
+.grey {
+    color: grey;
+}
+.reminder-row {
+    margin-top: 30px;
+}
+
+.habits table {
+    font-size: 1.2em;
+}
+.habits {
+    table, td, th {
+        text-align: center;
+        vertical-align: middle;
+    }
+}
+.my-badge {
+    $circle-size: 35px;
+    display: inline-block;
+    min-width: $circle-size; 
+    padding: 7px 7px;
+    //font-size: 1.4em;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+    // vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: $circle-size;
+    &.unknown {
+        border: 1px solid $color-unknown-streak;
+    }
+    &.failed {
+        border: 1px solid $color-failed-streak;
+    }
+    &.done {
+        border: 1px solid $color-done-streak;
+    }
+}
+.current-streak {
+    // font-weight: bold;
+    font-size: 1.2em;
+    & .unknown {
+        color: $color-unknown-streak;
+    }
+    & .failed { 
+        color: $color-failed-streak;
+    }
+    & .done { 
+        color: $color-done-streak;
+    }
+}
+.tooltip {
+    // font-size: $font-size-base;
+    font-size: 1em;
+}
+.popover {
+    // font-size: $font-size-base;
+    font-size: 1em;
+}
+.input {
+    padding: 5px;
+}
+// #habit-board {
+//     #area-success-rate {
+//         h4, p { 
+//             display: inline-block;
+//         }
+//     }
+// }
+
+header {
+    margin-bottom: 10px;
+}

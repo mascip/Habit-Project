@@ -13,13 +13,13 @@
       templateUrl: 'app/components/habit-results-calendar/habitResultsCalendar.html',
       replace: true,
       link: function(scope, element, attrs) {
-        var calDays, daysInWeek;
+        var calDays;
         scope.monthName = TheTime.monthName;
         scope.year = TheTime.year;
         calDays = new CalendarDays(TheTime.month, scope.year);
         scope.nbWeeks = calDays.nbWeeks;
-        daysInWeek = calDays.weeks;
-        return scope.dayNumsInWeek = _.map(daysInWeek, function(week) {
+        scope.daysInWeek = calDays.weeks;
+        return scope.dayNumsInWeek = _.map(scope.daysInWeek, function(week) {
           return _.map(week, function(day) {
             return day.date();
           });

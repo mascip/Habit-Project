@@ -15,16 +15,16 @@
             <link rel="stylesheet" type="text/css" href=<% css_file %>>
         <% END %>
 
+        <!-- Load useful Js libraries -->
+        <% FOREACH js_file IN  js_files %>
+        <script src="<% js_file %>"></script>
+        <% END %>
     </head>
     <body>
 
         <% content %>
 
 
-        <!-- Load useful Js libraries -->
-        <% FOREACH js_file IN  js_files %>
-        <script src="<% js_file %>"></script>
-        <% END %>
 
         <!-- My JS libraries -->
         <script src="app.coffee"></script>

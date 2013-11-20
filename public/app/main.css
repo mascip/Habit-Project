@@ -8349,3 +8349,24 @@ button.done i {
 header {
   margin-bottom: 10px;
 }
+
+/* line 3, components/habit-results-calendar/styles.scss */
+.habit-results-calendar table {
+  width: 0%;
+}
+/* line 12, components/habit-results-calendar/styles.scss */
+.habit-results-calendar .day-num {
+  display: block;
+  font-size: .7em;
+  padding-left: 2px;
+}
+/* line 18, components/habit-results-calendar/styles.scss */
+.habit-results-calendar td {
+  padding: 0px !important;
+}
+/* line 21, components/habit-results-calendar/styles.scss */
+.habit-results-calendar button {
+  margin: 0px;
+  font-size: 1em;
+  padding: 3px 6px;
+}

@@ -19,10 +19,7 @@
       return day.format("dddd, MMMM Do YYYY, h:mm:ss a");
     };
     return this.wasAgo = function(day) {
-      var res;
-      res = this.today.diff(day, 'days');
-      alert(day + ' - ' + res);
-      return res;
+      return this.today.diff(day, 'days');
     };
   });
 

@@ -1,8 +1,8 @@
-<div>
+<div class="habit-results-calendar">
     <div>
         <h3 class="monthName">{{monthName}} {{year}}</h3>
     </div>
-    <table class="table table-bordered table-condensed table-responsive habit-results-calendar">
+    <table class="table table-bordered table-condensed table-responsive">
         <thead>
             <th class="sunday">Sun</th>
             <th>Mon</th>
@@ -15,8 +15,8 @@
         <tbody>
             <tr ng-repeat="numWeek in range(nbWeeks)"> <!-- 6 weeks displayed for each month -->
                 <td ng-repeat="numDay in range(7)">
-                {{daysInWeek[numWeek][numDay].date()}}
-                <check-button ticked="habit.tickedOnDay(daysInWeek[numWeek][numDay])" action-when-clicked="habit.clickTickOnDay(daysInWeek[numWeek][numDay])"></check-button>
+                    <span>{{daysInWeek[numWeek][numDay].date()}}</span>
+                    <check-button ticked="habit.tickedOnDay(daysInWeek[numWeek][numDay])" action-when-clicked="habit.clickTickOnDay(daysInWeek[numWeek][numDay])"></check-button>
                 </td>
             </tr>
         </tbody>

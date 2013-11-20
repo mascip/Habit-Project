@@ -81,16 +81,24 @@
         this.dayIdx = 0;
       }
 
+      ActiveHabit.prototype.allStreaks = function() {
+        return _.map(this.results, function(res) {
+          return res.streak;
+        });
+      };
+
+      ActiveHabit.prototype.longestStreak = function() {
+        return _.max(this.allStreaks());
+      };
+
       ActiveHabit.prototype.streakAgo = function(daysAgo) {
         return this.results[daysAgo].streak;
       };
 
       ActiveHabit.prototype.tickedAgo = function(daysAgo) {
-        alert('1 - ' + daysAgo);
         if (this.doesntExistAgo(daysAgo) || daysAgo < 0) {
           return 'unknown';
         }
-        alert('2 - ' + daysAgo);
         return this.results[daysAgo].ticked;
       };
 
@@ -121,6 +129,10 @@
       };
 
       ActiveHabit.prototype.currentWeekNumbet = function() {};
+
+      ActiveHabit.prototype.resultsOfWeek = function(weekNum) {
+        return weekNum;
+      };
 
       ActiveHabit.prototype.clickTickAgo = function(daysAgo) {
         var ticked;

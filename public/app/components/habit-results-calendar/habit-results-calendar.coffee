@@ -2,12 +2,11 @@
 app_name = "myApp"
 app = angular.module "#{app_name}.habitResultsCalendar", []
 
+# TODO: I should give the habit as a parameter to the directive
 app.directive 'habitResultsCalendar', (CalendarDays, TheTime) ->
     restrict: 'E'
     templateUrl: 'app/components/habit-results-calendar/habitResultsCalendar.html'
     replace: true
-    # scope: true
-    # compile: -> alert('COMPILED!')
     link: (scope, element, attrs) ->
         scope.monthName = TheTime.monthName
         scope.year = TheTime.year

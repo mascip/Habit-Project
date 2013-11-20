@@ -62,7 +62,7 @@ app.factory 'ActiveHabit', (Habit, TheTime) ->
             #     #TODO NOW: add unknown results, changing the day each time
                 
             currentStreak = if emptyHabit then 0 else _.first(prevResults).streak
-            currentResult = 
+            currentResult =
                 day: moment().startOf('day')
                 dateTime: 0
                 streak: currentStreak 
@@ -79,21 +79,26 @@ app.factory 'ActiveHabit', (Habit, TheTime) ->
 
             # Has today's result been ticked?
             # @notTickedToday = true
-            
+             
+
+        ## Accessing ticks and streaks
+        allStreaks: -> _.map(@results, (res) -> res.streak)
+        longestStreak: -> _.max(@allStreaks())
         streakAgo: (daysAgo) -> @results[daysAgo].streak
         tickedAgo: (daysAgo) -> 
-            alert('1 - ' + daysAgo)
             return 'unknown' if @doesntExistAgo(daysAgo) or daysAgo < 0
-            alert('2 - ' + daysAgo)
             @results[daysAgo].ticked
         tickedOnDay: (day) -> @tickedAgo(TheTime.wasAgo(day))
 
+        ## Time related methods
         nbDaysSinceStart: () -> @results.length
         nbWeeksStarted: (daysAgo=0) -> Math.ceil((@nbDaysSinceStart()-daysAgo) / 7)
         nbDaysInWeek: (weekNum) -> Math.min(7, @nbDaysSinceStart() - 7 * weekNum)
             # weekNum: 0 is the current week, 1 is the previous week, etc
         nbWeeksToDisplay: (daysAgo=0) -> Math.min(2, @nbWeeksStarted(daysAgo))
         currentWeekNumbet: -> 
+
+        resultsOfWeek: (weekNum) -> weekNum
 
         ## ClickTick
         # When the user indicates whether they have done the habit or not

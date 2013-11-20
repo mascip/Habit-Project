@@ -80,7 +80,7 @@ app.factory 'ActiveHabit', (Habit, TheTime) ->
             # Has today's result been ticked?
             # @notTickedToday = true
             
-        streakOnDay: (daysAgo) -> @results[daysAgo].streak
+        streakAgo: (daysAgo) -> @results[daysAgo].streak
         tickedAgo: (daysAgo) -> 
             alert('1 - ' + daysAgo)
             return 'unknown' if @doesntExistAgo(daysAgo) or daysAgo < 0

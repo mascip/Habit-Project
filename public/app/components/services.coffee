@@ -82,9 +82,7 @@ app.factory 'ActiveHabit', (Habit, TheTime) ->
             
         streakAgo: (daysAgo) -> @results[daysAgo].streak
         tickedAgo: (daysAgo) -> 
-            alert('1 - ' + daysAgo)
             return 'unknown' if @doesntExistAgo(daysAgo) or daysAgo < 0
-            alert('2 - ' + daysAgo)
             @results[daysAgo].ticked
         tickedOnDay: (day) -> @tickedAgo(TheTime.wasAgo(day))
 

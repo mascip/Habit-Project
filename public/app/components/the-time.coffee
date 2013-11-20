@@ -12,6 +12,4 @@ app.service 'TheTime', ->
     # For Debug purposes
     @sayDay = (day) -> day.format("dddd, MMMM Do YYYY, h:mm:ss a")
     @wasAgo = (day) -> 
-        res = @today.diff(day, 'days')
-        alert(day + ' - ' + res)
-        res
+        @today.diff(day, 'days')

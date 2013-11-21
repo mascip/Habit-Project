@@ -11,18 +11,6 @@ app.directive 'appVersion', [
       element.text version
 ]
 
-# app.directive 'habit', () ->
-#     restrict: 'E'
-#     template: '<div>Hi there</div>'
-#     # replace: true
-#     # compile: -> alert('COMPILED!')
-#     # link: (scope, element, attrs) -> alert('LINKED!')
-# #
-# # From https://gist.github.com/geelen/2873603
-# window.stoppingPropagation = (callback) -> (event) ->
-#   event.stopPropagation()
-#   callback(event)
-
 app.directive 'ngTap', ->
   (scope, element, attrs) ->
     tapping = false

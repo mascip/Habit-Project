@@ -18,4 +18,4 @@
 
 @import "global-stylesheets/my-bootstrap-variations.scss";
 @import "global-stylesheets/app.scss";
-@import "components/habit-result-calendar/styles.scss";
+@import "components/calendar-habit-results/styles.scss";

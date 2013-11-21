@@ -15,27 +15,27 @@
             <link rel="stylesheet" type="text/css" href=<% css_file %>>
         <% END %>
 
+        <!-- Load useful Js libraries -->
+        <% FOREACH js_file IN  js_files %>
+        <script src="<% js_file %>"></script>
+        <% END %>
     </head>
     <body>
 
         <% content %>
 
 
-        <!-- Load useful Js libraries -->
-        <% FOREACH js_file IN  js_files %>
-        <script src="<% js_file %>"></script>
-        <% END %>
 
         <!-- My JS libraries -->
         <script src="app.coffee"></script>
         <script src="tabs/tabs.coffee"></script>
         <script src="habit-board/habit-board.coffee"></script>
         <script src="my-lab/my-lab.coffee"></script>
-        <script src="components/services.coffee"></script>
+        <script src="components/habits/habits.coffee"></script>
         <script src="components/filters.coffee"></script>
         <script src="components/directives.coffee"></script>
-        <script src="components/habit-results-calendar/calendar-days.coffee"></script>
-        <script src="components/habit-results-calendar/habit-results-calendar.coffee"></script>
+        <script src="components/calendar-habit-results/calendar-days.coffee"></script>
+        <script src="components/calendar-habit-results/calendar-habit-results.coffee"></script>
         <script src="components/check-button/check-button.coffee"></script>
         <script src="components/the-time.coffee"></script>
         <!-- END My JS libraries -->

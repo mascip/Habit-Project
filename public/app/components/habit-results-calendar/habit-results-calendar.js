@@ -14,6 +14,7 @@
       replace: true,
       link: function(scope, element, attrs) {
         var calDays;
+        scope.today = TheTime.today;
         scope.monthName = TheTime.monthName;
         scope.year = TheTime.year;
         calDays = new CalendarDays(TheTime.month, scope.year);

@@ -7,7 +7,7 @@
         // border-spacing: 20px; 
     }
     .monthName {
-        padding-left: 25px;
+        // padding-left: 25px;
     }
     .day-num {
         display: block;
@@ -22,5 +22,14 @@
         margin: 0px;
         font-size: 1em;
         padding: 3px 6px;
+    }
+    .thisIsToday {
+        background-color: hsl(60, 100%, 80%);
+    }
+    .thisIsFuture {
+        button {
+            opacity: 0.4;
+            i{ opacity: 0; }
+        }
     }
 }

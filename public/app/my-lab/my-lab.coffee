@@ -21,14 +21,12 @@ class CtrlMyLab
 
         # Selected Day
         $scope.selectedDay = moment(today)
-        $scope.thisIsToday = $scope.selectedDay.isSame(today)
         $scope.displayedDay = $scope.selectedDay.valueOf()
             # The date to display, and current week, updating when selectedDay changes
             # AngularJS wants milliseconds, valueOf() gives milliseconds
         $scope.$watch( 'daysAgo', -> 
             $scope.selectedDay = moment(today).add('days',$scope.daysAgo)
             $scope.displayedDay = $scope.selectedDay.valueOf()
-            $scope.thisIsToday = $scope.selectedDay.isSame(today)
         )
 
         # Habits data
@@ -48,9 +46,6 @@ class CtrlMyLab
         $scope.dateChangeIsSelected=0
 
         ## Functions called from within the page
-        $scope.thisIsToday = -> $scope.selectedDay.isSame(today)
-        $scope.watch
-
         $scope.clickPrevWeek = ->
             $scope.daysAgo += 7
         

@@ -14,8 +14,8 @@
         </thead>
         <tbody>
             <tr ng-repeat="numWeek in range(nbWeeks)"> <!-- 6 weeks displayed for each month -->
-                <td ng-repeat="numDay in range(7)">
-                    <span>{{daysInWeek[numWeek][numDay].date()}}</span>
+                <td ng-repeat="numDay in range(7)"  ng-class="{thisIsToday: daysInWeek[numWeek][numDay].isSame(today), thisIsPast: daysInWeek[numWeek][numDay].isBefore(today), thisIsFuture: daysInWeek[numWeek][numDay].isAfter(today)}">
+                    <span class="day-num">{{daysInWeek[numWeek][numDay].date()}}</span>
                     <check-button ticked="habit.tickedOnDay(daysInWeek[numWeek][numDay])" action-when-clicked="habit.clickTickOnDay(daysInWeek[numWeek][numDay])"></check-button>
                 </td>
             </tr>

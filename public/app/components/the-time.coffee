@@ -13,3 +13,5 @@ app.service 'TheTime', ->
     @sayDay = (day) -> day.format("dddd, MMMM Do YYYY, h:mm:ss a")
     @wasAgo = (day) -> 
         @today.diff(day, 'days')
+
+    @isToday = (day) -> day.isSame(@today)

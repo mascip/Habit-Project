@@ -18,8 +18,11 @@
     this.sayDay = function(day) {
       return day.format("dddd, MMMM Do YYYY, h:mm:ss a");
     };
-    return this.wasAgo = function(day) {
+    this.wasAgo = function(day) {
       return this.today.diff(day, 'days');
+    };
+    return this.isToday = function(day) {
+      return day.isSame(this.today);
     };
   });
 

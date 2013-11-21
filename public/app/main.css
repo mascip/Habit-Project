@@ -8354,3 +8354,15 @@ header {
   font-size: 1em;
   padding: 3px 6px;
 }
+/* line 26, components/habit-results-calendar/styles.scss */
+.habit-results-calendar .thisIsToday {
+  background-color: #ffff99;
+}
+/* line 30, components/habit-results-calendar/styles.scss */
+.habit-results-calendar .thisIsFuture button, .habit-results-calendar .thisIsBeforeTheHabit button {
+  opacity: 0.4;
+}
+/* line 32, components/habit-results-calendar/styles.scss */
+.habit-results-calendar .thisIsFuture button i, .habit-results-calendar .thisIsBeforeTheHabit button i {
+  opacity: 0;
+}

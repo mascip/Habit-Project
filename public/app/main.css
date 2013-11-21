@@ -8299,53 +8299,37 @@ button.done i {
   white-space: nowrap;
   text-align: center;
   border-radius: 35px;
-}
-/* line 139, global-stylesheets/app.scss */
-.my-badge.unknown {
-  border: 1px solid #cccccc;
-}
-/* line 142, global-stylesheets/app.scss */
-.my-badge.failed {
-  border: 1px solid #f53d3d;
-}
-/* line 145, global-stylesheets/app.scss */
-.my-badge.done {
-  border: 1px solid #45de45;
-}
-
-/* line 149, global-stylesheets/app.scss */
-.current-streak {
   font-size: 1.2em;
 }
-/* line 152, global-stylesheets/app.scss */
-.current-streak .unknown {
-  color: #cccccc;
+/* line 140, global-stylesheets/app.scss */
+.my-badge.unknown {
+  background-color: #cccccc;
 }
-/* line 155, global-stylesheets/app.scss */
-.current-streak .failed {
-  color: #f53d3d;
+/* line 144, global-stylesheets/app.scss */
+.my-badge.failed {
+  background-color: #f65555;
 }
-/* line 158, global-stylesheets/app.scss */
-.current-streak .done {
-  color: #45de45;
+/* line 148, global-stylesheets/app.scss */
+.my-badge.done {
+  background-color: #67e467;
 }
 
-/* line 162, global-stylesheets/app.scss */
+/* line 166, global-stylesheets/app.scss */
 .tooltip {
   font-size: 1em;
 }
 
-/* line 166, global-stylesheets/app.scss */
+/* line 170, global-stylesheets/app.scss */
 .popover {
   font-size: 1em;
 }
 
-/* line 170, global-stylesheets/app.scss */
+/* line 174, global-stylesheets/app.scss */
 .input {
   padding: 5px;
 }
 
-/* line 181, global-stylesheets/app.scss */
+/* line 187, global-stylesheets/app.scss */
 header {
   margin-bottom: 10px;
 }

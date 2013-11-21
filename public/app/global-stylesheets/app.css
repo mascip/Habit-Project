@@ -152,53 +152,37 @@ button.done i {
   white-space: nowrap;
   text-align: center;
   border-radius: 35px;
-}
-/* line 139, app.scss */
-.my-badge.unknown {
-  border: 1px solid #cccccc;
-}
-/* line 142, app.scss */
-.my-badge.failed {
-  border: 1px solid #f53d3d;
-}
-/* line 145, app.scss */
-.my-badge.done {
-  border: 1px solid #45de45;
-}
-
-/* line 149, app.scss */
-.current-streak {
   font-size: 1.2em;
 }
-/* line 152, app.scss */
-.current-streak .unknown {
-  color: #cccccc;
+/* line 140, app.scss */
+.my-badge.unknown {
+  background-color: #cccccc;
 }
-/* line 155, app.scss */
-.current-streak .failed {
-  color: #f53d3d;
+/* line 144, app.scss */
+.my-badge.failed {
+  background-color: #f65555;
 }
-/* line 158, app.scss */
-.current-streak .done {
-  color: #45de45;
+/* line 148, app.scss */
+.my-badge.done {
+  background-color: #67e467;
 }
 
-/* line 162, app.scss */
+/* line 166, app.scss */
 .tooltip {
   font-size: 1em;
 }
 
-/* line 166, app.scss */
+/* line 170, app.scss */
 .popover {
   font-size: 1em;
 }
 
-/* line 170, app.scss */
+/* line 174, app.scss */
 .input {
   padding: 5px;
 }
 
-/* line 181, app.scss */
+/* line 187, app.scss */
 header {
   margin-bottom: 10px;
 }

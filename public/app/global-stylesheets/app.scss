@@ -34,8 +34,8 @@
 }
 // Streak colors
 $color-unknown-streak: clr-unknown(80%);
-$color-done-streak: clr-done(57%);
-$color-failed-streak: clr-failed(60%);
+$color-done-streak: clr-done(65%);
+$color-failed-streak: clr-failed(65%);
 
 // Button colors
 $color-unknown-btn: clr-unknown(85%);
@@ -136,29 +136,33 @@ button {
     white-space: nowrap;
     text-align: center;
     border-radius: $circle-size;
+    font-size: 1.2em;
     &.unknown {
-        border: 1px solid $color-unknown-streak;
+        // border: 1px solid $color-unknown-streak;
+        background-color: $color-unknown-streak;
     }
     &.failed {
-        border: 1px solid $color-failed-streak;
+        // border: 1px solid $color-failed-streak;
+        background-color: $color-failed-streak;
     }
     &.done {
-        border: 1px solid $color-done-streak;
+        // border: 1px solid $color-done-streak;
+        background-color: $color-done-streak;
     }
 }
-.current-streak {
+// .current-streak {
     // font-weight: bold;
-    font-size: 1.2em;
-    & .unknown {
-        color: $color-unknown-streak;
-    }
-    & .failed { 
-        color: $color-failed-streak;
-    }
-    & .done { 
-        color: $color-done-streak;
-    }
-}
+    // font-size: 1.2em;
+    // & .unknown {
+    //     color: $color-unknown-streak;
+    // }
+    // & .failed { 
+    //     color: $color-failed-streak;
+    // }
+    // & .done { 
+    //     color: $color-done-streak;
+    // }
+// }
 .tooltip {
     // font-size: $font-size-base;
     font-size: 1em;
@@ -177,6 +181,8 @@ button {
 //         }
 //     }
 // }
+    // & .unknown {
+    //     color: $color-unknown-streak;
 
 header {
     margin-bottom: 10px;

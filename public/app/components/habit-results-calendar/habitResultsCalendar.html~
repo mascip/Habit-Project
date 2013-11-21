@@ -14,9 +14,12 @@
         </thead>
         <tbody>
             <tr ng-repeat="numWeek in range(nbWeeks)"> <!-- 6 weeks displayed for each month -->
-                <td ng-repeat="numDay in range(7)"  ng-class="{thisIsToday: daysInWeek[numWeek][numDay].isSame(today), thisIsPast: daysInWeek[numWeek][numDay].isBefore(today), thisIsFuture: daysInWeek[numWeek][numDay].isAfter(today)}">
+                <td ng-repeat="numDay in range(7)" ng-class="{thisIsToday: daysInWeek[numWeek][numDay].isSame(today)}">
                     <span class="day-num">{{daysInWeek[numWeek][numDay].date()}}</span>
-                    <check-button ticked="habit.tickedOnDay(daysInWeek[numWeek][numDay])" action-when-clicked="habit.clickTickOnDay(daysInWeek[numWeek][numDay])"></check-button>
+                    <check-button ticked="habit.tickedOnDay(daysInWeek[numWeek][numDay])" action-when-clicked="habit.clickTickOnDay(daysInWeek[numWeek][numDay])" disabled="!habit.activeOnDay(daysInWeek[numWeek][numDay])"></check-button>
+                    <!-- TODO: when it's an "inactive" day with no habit, I don't want a button, 
+                    just a CSS image. To implement this, I need to separate the calendar directive,
+                    from the calendar-habit-results directive, which will pass a list of inactive days the the calendar, as a parameter -->
                 </td>
             </tr>
         </tbody>

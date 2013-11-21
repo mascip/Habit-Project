@@ -1,5 +1,5 @@
-<button type="button" class="btn btn-mini icheck-button ng-class:ticked" ng-click="clickedTheTick()">
-    <!-- TODO: put the icons in the SCSS code -->
+<button type="button" class="btn btn-mini check-button" ng-class="[{disabled: disabl}, ticked]" ng-click="clickedTheTick()">
+    <!-- TODO: put the icons in the SCSS code? -->
     <div ng-switch="ticked">
         <!-- the icon displayed depends on the result -->
         <div ng-switch-when="unknown"> 

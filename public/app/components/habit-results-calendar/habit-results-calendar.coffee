@@ -8,7 +8,7 @@ app.directive 'habitResultsCalendar', (CalendarDays, TheTime) ->
     templateUrl: 'app/components/habit-results-calendar/habitResultsCalendar.html'
     replace: true
     link: (scope, element, attrs) ->
-        scope.today = TheTime.today
+        scope.today = TheTime.today()
         scope.monthName = TheTime.monthName
         scope.year = TheTime.year
         calDays = new CalendarDays(TheTime.month, scope.year)

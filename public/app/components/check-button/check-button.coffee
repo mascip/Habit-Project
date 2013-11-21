@@ -9,10 +9,14 @@ app.directive 'checkButton', () ->
     scope:
         ticked: '='
         actionWhenClicked: '&'
+        disabl: '='
     link: (scope, elem, attrs) ->
 
-        # TODO: I want to do this here, not in habit.clickTick. However, modifying "ticked" here modifies it later in the habit...
+        # CSS 'disabled' property, or no class (empty string)
+        scope.disab = if scope.disabl then 'disabled' else ''
+
         modifyTick = ->
+            # TODO: I want to do this here, not in habit.clickTick. However, modifying "ticked" here modifies it later in the habit...
             scope.ticked = switch
                 when scope.ticked == 'unknown' then 'done'
                 when scope.ticked == 'done'    then 'failed'

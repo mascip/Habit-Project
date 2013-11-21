@@ -26,10 +26,8 @@
     .thisIsToday {
         background-color: hsl(60, 100%, 80%);
     }
-    .thisIsFuture {
-        button {
-            opacity: 0.4;
-            i{ opacity: 0; }
-        }
+    button.disabled {
+        opacity: 0.2;
+        i{ opacity: 0; }
     }
 }

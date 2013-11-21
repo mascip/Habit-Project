@@ -13,7 +13,7 @@ class CtrlMyLab
 
         # Today
         # theTime = new TheTime
-        today = TheTime.today
+        today = TheTime.today()
         $scope.displayedToday = today.valueOf()
         $scope.$watch( 'today', ->
             $scope.displayedToday = today.valueOf()

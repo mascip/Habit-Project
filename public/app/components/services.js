@@ -128,10 +128,20 @@
         return Math.min(2, this.nbWeeksStarted(daysAgo));
       };
 
-      ActiveHabit.prototype.currentWeekNumbet = function() {};
-
       ActiveHabit.prototype.resultsOfWeek = function(weekNum) {
         return weekNum;
+      };
+
+      ActiveHabit.prototype.startingDay = function() {
+        return TheTime.today().subtract(this.nbDaysSinceStart() - 1, 'days');
+      };
+
+      ActiveHabit.prototype.inactiveOnDay = function(day) {
+        return day.isBefore(this.startingDay()) || day.isAfter(TheTime.today());
+      };
+
+      ActiveHabit.prototype.activeOnDay = function(day) {
+        return !this.inactiveOnDay(day);
       };
 
       ActiveHabit.prototype.clickTickAgo = function(daysAgo) {

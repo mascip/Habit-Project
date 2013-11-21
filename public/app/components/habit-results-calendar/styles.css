@@ -22,11 +22,11 @@
 .habit-results-calendar .thisIsToday {
   background-color: #ffff99;
 }
-/* line 30, styles.scss */
-.habit-results-calendar .thisIsFuture button, .habit-results-calendar .thisIsBeforeTheHabit button {
-  opacity: 0.4;
+/* line 29, styles.scss */
+.habit-results-calendar button.disabled {
+  opacity: 0.2;
 }
-/* line 32, styles.scss */
-.habit-results-calendar .thisIsFuture button i, .habit-results-calendar .thisIsBeforeTheHabit button i {
+/* line 31, styles.scss */
+.habit-results-calendar button.disabled i {
   opacity: 0;
 }

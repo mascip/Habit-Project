@@ -96,10 +96,19 @@ app.factory 'ActiveHabit', (Habit, TheTime) ->
         nbDaysInWeek: (weekNum) -> Math.min(7, @nbDaysSinceStart() - 7 * weekNum)
             # weekNum: 0 is the current week, 1 is the previous week, etc
         nbWeeksToDisplay: (daysAgo=0) -> Math.min(2, @nbWeeksStarted(daysAgo))
-        currentWeekNumbet: -> 
+        # currentWeekNumber: -> 
 
         resultsOfWeek: (weekNum) -> weekNum # TODO
 
+        startingDay: () ->
+            TheTime.today().subtract(@nbDaysSinceStart()-1, 'days')
+
+        inactiveOnDay: (day) ->
+            day.isBefore(@startingDay()) or day.isAfter(TheTime.today())
+        activeOnDay: (day) ->
+            not @inactiveOnDay(day)
+        
+            
         ## ClickTick
         # When the user indicates whether they have done the habit or not
         clickTickAgo: (daysAgo) ->

@@ -11,7 +11,7 @@
     function CtrlMyLab($scope, ActiveHabit, Habit, MyHabits, TheTime) {
       var today;
       $scope.daysAgo = 0;
-      today = TheTime.today;
+      today = TheTime.today();
       $scope.displayedToday = today.valueOf();
       $scope.$watch('today', function() {
         return $scope.displayedToday = today.valueOf();

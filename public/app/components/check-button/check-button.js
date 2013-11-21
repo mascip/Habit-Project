@@ -14,10 +14,12 @@
       replace: true,
       scope: {
         ticked: '=',
-        actionWhenClicked: '&'
+        actionWhenClicked: '&',
+        disabl: '='
       },
       link: function(scope, elem, attrs) {
         var modifyTick;
+        scope.disab = scope.disabl ? 'disabled' : '';
         modifyTick = function() {
           return scope.ticked = (function() {
             switch (false) {

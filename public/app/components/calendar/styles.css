@@ -1,0 +1,43 @@
+/* line 3, styles.scss */
+.habit-results-calendar .table {
+  width: 0%;
+}
+/* line 8, styles.scss */
+.habit-results-calendar .table tr, .habit-results-calendar .table th {
+  height: 0px;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+/* line 14, styles.scss */
+.habit-results-calendar .table td {
+  text-align: left;
+}
+/* line 21, styles.scss */
+.habit-results-calendar .day-num {
+  display: block;
+  font-size: .7em;
+  padding-left: 2px;
+}
+/* line 27, styles.scss */
+.habit-results-calendar td {
+  padding: 0px !important;
+}
+/* line 30, styles.scss */
+.habit-results-calendar button {
+  margin: 0px;
+  font-size: 1em;
+  padding: 3px 6px;
+}
+/* line 35, styles.scss */
+.habit-results-calendar .thisIsToday {
+  background-color: #ffff99;
+}
+/* line 38, styles.scss */
+.habit-results-calendar button.disabled {
+  opacity: 0.2;
+}
+/* line 40, styles.scss */
+.habit-results-calendar button.disabled i {
+  opacity: 0;
+}

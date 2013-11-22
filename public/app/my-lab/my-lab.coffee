@@ -1,10 +1,10 @@
 'use strict'
 app_name = "myApp"
-app = angular.module "#{app_name}.ctrl-my-lab", ['ui.bootstrap']
+app = angular.module "#{app_name}.ctrl-my-lab", ['ui.bootstrap', 'ui.router']
 
 app.controller 'CtrlMyLab',
 class CtrlMyLab
-    constructor: ($scope, ActiveHabit, Habit, MyHabits, TheTime) ->
+    constructor: ($scope, $state, ActiveHabit, Habit, MyHabits, TheTime) ->
 
         ## DATA
 
@@ -56,10 +56,10 @@ class CtrlMyLab
         # When a user adds a habit
         $scope.startedDaysAgo = 0
         $scope.pickedDate = today.format('YYYY-MM-DD')
-        $scope.addOneHabit = (name, nbDaysToInit) ->
-            alert('Defect: a Habit must have a name') if name == undefined || name == ''
-            $scope.myHabits.push(new ActiveHabit name, nbDaysToInit)
-            console.log("Habit #{name} added")
+        $scope.addOneHabit = (habitName, nbDaysToInit) ->
+            alert('Defect: a Habit must have a name') if habitName == undefined || habitName == ''
+            $scope.myHabits.push(new ActiveHabit habitName, nbDaysToInit)
+            console.log("Habit #{habitName} added")
             
             # Reinitialize the form to add a habit
             $scope.nowAddingHabit = false
@@ -68,7 +68,10 @@ class CtrlMyLab
 
             # If the habit was started several days ago, go to the Habit Board,
             # so the user can update their previous day's results
-            
+            if nbDaysToInit > 0
+                $state.transitionTo("habitBoard", {name: habitName})
+           # $state.go('habit({name: name})')
+           # alert(JSON.stringify(state))
 
         # TODO: make it an angular filter, external to the controller
         $scope.wasActive = (habit)->

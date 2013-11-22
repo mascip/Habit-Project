@@ -18,20 +18,20 @@
     return $stateProvider.state('myLab', {
       url: '/',
       views: {
+        "nav-tabs": navTabs,
         "": {
           templateUrl: 'app/my-lab//myLab.html',
           controller: 'CtrlMyLab'
-        },
-        "nav-tabs": navTabs
+        }
       }
     }).state('habitBoard', {
       url: '/habit/:name',
       views: {
+        "nav-tabs": navTabs,
         "": {
           templateUrl: 'app/habit-board/habitBoard.html',
           controller: 'CtrlHabitBoard'
-        },
-        "nav-tabs": navTabs
+        }
       }
     });
   });

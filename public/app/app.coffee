@@ -8,28 +8,28 @@ app = angular.module app_name,
     "angular-underscore", "ui.router"]
 
 app.config ($stateProvider, $urlRouterProvider) ->
-
     
+    # Navigation tabs, present in all pages, as an independent ui-view
     navTabs=
         templateUrl: 'app/tabs/tabs.html'
         controller: 'CtrlTabs'
          
     $stateProvider
-        .state( 'myLab', 
+        .state( 'myLab',
             url: '/'
             views:
+                "nav-tabs": navTabs
                 "":
                     templateUrl: 'app/my-lab//myLab.html'
                     controller: 'CtrlMyLab'
-                "nav-tabs": navTabs
         )
-        .state( 'habitBoard', 
+        .state( 'habitBoard',
             url: '/habit/:name'
             views:
+                "nav-tabs": navTabs
                 "":
                     templateUrl: 'app/habit-board/habitBoard.html'
                     controller: 'CtrlHabitBoard'
-                "nav-tabs": navTabs
         )
 
 

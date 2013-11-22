@@ -8,9 +8,6 @@
                             <select ng-model="habit" ng-options='hab.name for hab in myHabits'></select>
                         </h3>
                     </div>
-                    <!-- <div class="col-xs-3"> -->
-                    <!--     <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span> -->
-                    <!-- </div> -->
                 </div>
                 <div class="row">
                     <div class="col-md-3">
@@ -23,8 +20,8 @@
                         <p>Current streak: {{habit.streakAgo(0)}}</p>
                         <p>Longest streak: {{habit.longestStreak()}}</p>
                         <p>Weekly successes:</p>
-                        <p>SOON HERE:</p>
-                        <p>some graphs! Number of successes per week, percentage of success for each workday (do you often fail on Saturdays?), etc)</p>
+                        <p>Soon here, some graphs!</p>
+                        <p>Number of successes per week, percentage of success for each workday (do you often fail on Saturdays?), etc)</p>
                     </div>
                 </div>
             </div>

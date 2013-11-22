@@ -5,10 +5,10 @@
 
   app_name = "myApp";
 
-  app = angular.module("" + app_name + ".ctrl-my-lab", ['ui.bootstrap']);
+  app = angular.module("" + app_name + ".ctrl-my-lab", ['ui.bootstrap', 'ui.router']);
 
   app.controller('CtrlMyLab', CtrlMyLab = (function() {
-    function CtrlMyLab($scope, ActiveHabit, Habit, MyHabits, TheTime) {
+    function CtrlMyLab($scope, $state, ActiveHabit, Habit, MyHabits, TheTime) {
       var today;
       $scope.daysAgo = 0;
       today = TheTime.today();
@@ -39,15 +39,20 @@
       };
       $scope.startedDaysAgo = 0;
       $scope.pickedDate = today.format('YYYY-MM-DD');
-      $scope.addOneHabit = function(name, nbDaysToInit) {
-        if (name === void 0 || name === '') {
+      $scope.addOneHabit = function(habitName, nbDaysToInit) {
+        if (habitName === void 0 || habitName === '') {
           alert('Defect: a Habit must have a name');
         }
-        $scope.myHabits.push(new ActiveHabit(name, nbDaysToInit));
-        console.log("Habit " + name + " added");
+        $scope.myHabits.push(new ActiveHabit(habitName, nbDaysToInit));
+        console.log("Habit " + habitName + " added");
         $scope.nowAddingHabit = false;
         $scope.dateChangeIsSelected = 0;
-        return $scope.startedDaysAgo = 0;
+        $scope.startedDaysAgo = 0;
+        if (nbDaysToInit > 0) {
+          return $state.transitionTo("habitBoard", {
+            name: habitName
+          });
+        }
       };
       $scope.wasActive = function(habit) {
         return habit.wasActive($scope.daysAgo);

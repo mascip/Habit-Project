@@ -186,3 +186,13 @@ button.done i {
 header {
   margin-bottom: 10px;
 }
+
+/* line 191, app.scss */
+.header .logged-in {
+  margin-top: 20px;
+  margin-right: 15px;
+}
+/* line 194, app.scss */
+.header .logged-in .user-first-name {
+  font-weight: bold;
+}

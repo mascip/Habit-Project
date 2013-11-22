@@ -54,15 +54,21 @@ class CtrlMyLab
             $scope.daysAgo -= 7
 
         # When a user adds a habit
+        $scope.startedDaysAgo = 0
         $scope.pickedDate = today.format('YYYY-MM-DD')
-        $scope.addOneHabit = (name, pickedDate) ->
-            return if name == undefined || name == ''
-            nbDaysToInit = today.diff(pickedDate, 'days')
-                # If an earlier starting date was selected
+        $scope.addOneHabit = (name, nbDaysToInit) ->
+            alert('Defect: a Habit must have a name') if name == undefined || name == ''
             $scope.myHabits.push(new ActiveHabit name, nbDaysToInit)
-            console.log('Habit #{name} added')
-            $scope.nowAddingHabit = false   # Close the form that adds a habit
-            $scope.dateChangeIsSelected=0
+            console.log("Habit #{name} added")
+            
+            # Reinitialize the form to add a habit
+            $scope.nowAddingHabit = false
+            $scope.dateChangeIsSelected = 0
+            $scope.startedDaysAgo = 0
+
+            # If the habit was started several days ago, go to the Habit Board,
+            # so the user can update their previous day's results
+            
 
         # TODO: make it an angular filter, external to the controller
         $scope.wasActive = (habit)->

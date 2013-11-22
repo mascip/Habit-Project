@@ -19,7 +19,13 @@
       },
       link: function(scope, elem, attrs) {
         var modifyTick;
-        scope.disab = scope.disabl ? 'disabled' : '';
+        scope.disab = function() {
+          if (scope.disabl) {
+            return 'disabled';
+          } else {
+            return '';
+          }
+        };
         modifyTick = function() {
           return scope.ticked = (function() {
             switch (false) {

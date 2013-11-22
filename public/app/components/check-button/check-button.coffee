@@ -13,7 +13,9 @@ app.directive 'checkButton', () ->
     link: (scope, elem, attrs) ->
 
         # CSS 'disabled' property, or no class (empty string)
-        scope.disab = if scope.disabl then 'disabled' else ''
+        scope.disab = -> if scope.disabl then 'disabled' else ''
+            # I used this instead of ng-disabled, because ng-disabled does not add the class
+            # "disabled" to the button. And I need that class to re-style the button.
 
         modifyTick = ->
             # TODO: I want to do this here, not in habit.clickTick. However, modifying "ticked" here modifies it later in the habit...

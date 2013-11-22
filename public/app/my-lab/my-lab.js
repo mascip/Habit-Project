@@ -37,17 +37,17 @@
       $scope.clickNextWeek = function() {
         return $scope.daysAgo -= 7;
       };
+      $scope.startedDaysAgo = 0;
       $scope.pickedDate = today.format('YYYY-MM-DD');
-      $scope.addOneHabit = function(name, pickedDate) {
-        var nbDaysToInit;
+      $scope.addOneHabit = function(name, nbDaysToInit) {
         if (name === void 0 || name === '') {
-          return;
+          alert('Defect: a Habit must have a name');
         }
-        nbDaysToInit = today.diff(pickedDate, 'days');
         $scope.myHabits.push(new ActiveHabit(name, nbDaysToInit));
-        console.log('Habit #{name} added');
+        console.log("Habit " + name + " added");
         $scope.nowAddingHabit = false;
-        return $scope.dateChangeIsSelected = 0;
+        $scope.dateChangeIsSelected = 0;
+        return $scope.startedDaysAgo = 0;
       };
       $scope.wasActive = function(habit) {
         return habit.wasActive($scope.daysAgo);

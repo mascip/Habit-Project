@@ -2,11 +2,15 @@
     <div class="container-fluid">
       <div class="row-fluid header clearfix">
             <div class="col-md-9">
-            <!-- <img class="main-logo pull-left" src="images/hl-logo-stolen.jpg" alt="hl-logo-stolen.jpg"> -->
-            <h1>The Habit Lab</h1>
-            <h4>          Learn about yourself, change your life!</h4>
+                <!-- <img class="main-logo pull-left" src="images/hl-logo-stolen.jpg" alt="hl-logo-stolen.jpg"> -->
+                <h1>The Habit Lab</h1>
+                <h4>          Learn about yourself, change your life!</h4>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <p class="logged-in">
+                    Connected as <span class="user-first-name pull-right">Pierre M.</span>
+                </p>
+            </div>
         </div>
     </div>
   </header>

@@ -4,24 +4,27 @@
             <div class="rounded-container display-area"> 
                 <div class="row">
                     <div class="col-xs-9">
-                        <h3>{{habit.name}}</h3>
+                        <h3>
+                            <select ng-model="habit" ng-options='hab.name for hab in myHabits'></select>
+                        </h3>
                     </div>
-                    <div class="col-xs-3">
-                        <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span>
-                    </div>
+                    <!-- <div class="col-xs-3"> -->
+                    <!--     <span class="date">{{displayedDay | date:'EEEE d MMM'}}</span> -->
+                    <!-- </div> -->
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <habit-results-calendar></habit-results-calendar>
+                    <div class="col-md-3">
+                        <calendar-habit-results></calendar-habit-results>
                     </div>
-                    <div class="col-md-6" id="area-success-rate">
-                        <h4>Success rate:</h4> 
-                        <p>Habit started on : {{habit.startingDay()}}</p>
+                    <div class="col-md-9" id="area-success-rate">
+                        <h4>Stats:</h4> 
+                        <p>Habit started on : {{habit.startingDay().valueOf() | date: 'EEEE d MMM'}}</p>
                         <p>{{habit.percentSuccess | number:0}}% success : {{habit.countResults.done}} / {{habit.countResults.total}}</p>
                         <p>Current streak: {{habit.streakAgo(0)}}</p>
                         <p>Longest streak: {{habit.longestStreak()}}</p>
                         <p>Weekly successes:</p>
-                        <p></p>
+                        <p>SOON HERE:</p>
+                        <p>some graphs! Number of successes per week, percentage of success for each workday (do you often fail on Saturdays?), etc)</p>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,11 @@
                 <h1>The Habit Lab</h1>
                 <h4>          Learn about yourself, change your life!</h4>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <p class="logged-in pull-right">
+                    Connected as <span class="user-first-name">Pierre M.</span>
+                </p>
+            </div>
         </div>
     </div>
   </header>

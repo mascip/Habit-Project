@@ -8334,35 +8334,56 @@ header {
   margin-bottom: 10px;
 }
 
+/* line 191, global-stylesheets/app.scss */
+.header .logged-in {
+  margin-top: 20px;
+  margin-right: 15px;
+}
+/* line 194, global-stylesheets/app.scss */
+.header .logged-in .user-first-name {
+  font-weight: bold;
+}
+
 /* line 3, components/calendar/styles.scss */
-.habit-results-calendar table {
+.habit-results-calendar .table {
   width: 0%;
 }
-/* line 12, components/calendar/styles.scss */
+/* line 8, components/calendar/styles.scss */
+.habit-results-calendar .table tr, .habit-results-calendar .table th {
+  height: 0px;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+/* line 14, components/calendar/styles.scss */
+.habit-results-calendar .table td {
+  text-align: left;
+}
+/* line 21, components/calendar/styles.scss */
 .habit-results-calendar .day-num {
   display: block;
   font-size: .7em;
   padding-left: 2px;
 }
-/* line 18, components/calendar/styles.scss */
+/* line 27, components/calendar/styles.scss */
 .habit-results-calendar td {
   padding: 0px !important;
 }
-/* line 21, components/calendar/styles.scss */
+/* line 30, components/calendar/styles.scss */
 .habit-results-calendar button {
   margin: 0px;
   font-size: 1em;
   padding: 3px 6px;
 }
-/* line 26, components/calendar/styles.scss */
+/* line 35, components/calendar/styles.scss */
 .habit-results-calendar .thisIsToday {
   background-color: #ffff99;
 }
-/* line 29, components/calendar/styles.scss */
+/* line 38, components/calendar/styles.scss */
 .habit-results-calendar button.disabled {
   opacity: 0.2;
 }
-/* line 31, components/calendar/styles.scss */
+/* line 40, components/calendar/styles.scss */
 .habit-results-calendar button.disabled i {
   opacity: 0;
 }

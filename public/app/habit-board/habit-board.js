@@ -9,10 +9,7 @@
 
   app.controller('CtrlHabitBoard', CtrlHabitBoard = (function() {
     function CtrlHabitBoard($scope, $stateParams, MyHabits) {
-      var myHabits, now, today;
-      $scope.nbWeekInMonth = function(activeDay) {
-        return 5;
-      };
+      var now, today;
       $scope.daysAgo = 0;
       now = moment();
       today = now.startOf('day');
@@ -29,8 +26,8 @@
         return $scope.thisIsToday = $scope.selectedDay.isSame(today);
       });
       $scope.habitName = $stateParams.name;
-      myHabits = MyHabits;
-      $scope.habit = _.find(myHabits, function(habit) {
+      $scope.myHabits = MyHabits;
+      $scope.habit = _.find(MyHabits, function(habit) {
         return habit.name === $scope.habitName;
       });
       $scope.dateChangeIsSelected = 0;

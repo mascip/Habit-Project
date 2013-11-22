@@ -44,8 +44,8 @@
                                 <!-- </div> -->
                             </tr> <!-- END ng-repeat -->
                             <tr ng-show='nowAddingHabit'> 
-                                <form class="form-inline" role='form' name="addHabitForm">
-                                    <td></td>
+                                <form class="form-inline" role='form' name="addHabitForm" ng-submit="addOneHabit(inputHabitName, startedDaysAgo)">
+                                    <td> <!-- tick buttons column --> </td>
                                     <td>
                                         <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder='Habit name' typeahead="name for name in otherHabitNames | filter:$viewValue | limitTo:8" required></input>
                                     </td>
@@ -53,12 +53,12 @@
                                         started 
                                         <select ng-model='startedDaysAgo'>
                                             <option ng-repeat="num in range(8)">{{$index}}</option>
-                                            ck
                                         </select>
                                         days ago
                                     </td>
                                     <td>
-                                        <span><button ng-disabled='!addHabitForm.$valid' type="button" class="btn btn-mini btn-default" ng-click='addOneHabit(inputHabitName, startedDaysAgo)' style="font-size:0.6em; font-weight:bold;">START</button></span>
+                                        {{addHabitForm.$valid}}
+                                        <span><button type="submit" ng-disabled='!addHabitForm.$valid' class="btn btn-mini btn-default" ng-click='' style="font-size:0.6em; font-weight:bold;">START</button></span>
                                         <span><button type="button" class="btn btn-mini btn-default" ng-click='$parent.nowAddingHabit=false'><i class="fa fa-times"></i></button></span>
                                     </td>
                                     <td>

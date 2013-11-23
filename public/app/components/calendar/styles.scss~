@@ -12,7 +12,7 @@
             text-align: center;
         }
         td {
-            text-align: right;
+            text-align: left;
         }
     }
     .monthName {
@@ -25,7 +25,7 @@
         // width: 0%;
     }
     td {
-        padding: 0px !important;
+        padding: 1px !important;
     }
     button {
         margin: 0px;

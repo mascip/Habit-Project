@@ -8367,7 +8367,7 @@ header {
 }
 /* line 27, components/calendar/styles.scss */
 .habit-results-calendar td {
-  padding: 0px !important;
+  padding: 1px !important;
 }
 /* line 30, components/calendar/styles.scss */
 .habit-results-calendar button {
@@ -8378,12 +8378,13 @@ header {
 /* line 35, components/calendar/styles.scss */
 .habit-results-calendar .thisIsToday {
   background-color: #ffff99;
+  border: 2px solid gray;
 }
-/* line 38, components/calendar/styles.scss */
+/* line 39, components/calendar/styles.scss */
 .habit-results-calendar button.disabled {
   opacity: 0.2;
 }
-/* line 40, components/calendar/styles.scss */
+/* line 41, components/calendar/styles.scss */
 .habit-results-calendar button.disabled i {
   opacity: 0;
 }

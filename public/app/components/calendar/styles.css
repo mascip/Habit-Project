@@ -21,7 +21,7 @@
 }
 /* line 27, styles.scss */
 .habit-results-calendar td {
-  padding: 0px !important;
+  padding: 1px !important;
 }
 /* line 30, styles.scss */
 .habit-results-calendar button {
@@ -32,12 +32,13 @@
 /* line 35, styles.scss */
 .habit-results-calendar .thisIsToday {
   background-color: #ffff99;
+  border: 2px solid gray;
 }
-/* line 38, styles.scss */
+/* line 39, styles.scss */
 .habit-results-calendar button.disabled {
   opacity: 0.2;
 }
-/* line 40, styles.scss */
+/* line 41, styles.scss */
 .habit-results-calendar button.disabled i {
   opacity: 0;
 }

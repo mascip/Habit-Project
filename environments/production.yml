@@ -39,11 +39,11 @@ js_files:
 # CSS files to load in the Layout
 # Note: in a String, so that I can add attributes (YAML does not like whitespaces)
 css_files:
-  - '"app/vendor/css/normalize.css"'
+  # - '"app/vendor/css/normalize.css"'
  # - '"css/webflow.css"'
  # - '"css/thehabitslab.webflow.css"'
  # - '"css/style.css"'
-  - '"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"'
+  # - '"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"'
   - "'app/main.css'"
  # - '"css/app.css"'
 # - '"//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" media="screen"'

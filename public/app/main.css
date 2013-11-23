@@ -1,4 +1,5 @@
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+@import url("//normalize-css.googlecode.com/svn/trunk/normalize.css");
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 /* line 10, global-stylesheets/my-variables.scss */
 .container-full {
   margin: 0 auto;

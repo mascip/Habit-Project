@@ -57,10 +57,11 @@ builder {
     # );
 
     # Minify and Concatenate JS and CSS files
+    # enable "Assets",
+    #     files => [<**/*.js>],
+    #     minify => 1; 
     enable "Assets",
-        files => [<public/js/**/*.js>];
-    enable "Assets",
-        files => [<public/css/**/*.css>],
+        files => ['public/app/main.css'],
         minify => 1; 
         # $env->{'psgix.assets'}->[0] points at the first asset.
 
@@ -87,6 +88,7 @@ builder {
         # [qw<DBITrace Memory Timer Parameters Dancer::Version Dancer::Settings>];
 
     }
+
 
 
     HabitLab->dance;

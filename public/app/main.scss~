@@ -12,10 +12,11 @@
 
 @import "vendor/css/sass-bootstrap/lib/bootstrap.scss";
 @import "vendor/css/sass-bootstrap/lib/_theme.scss";
+@import url("//normalize-css.googlecode.com/svn/trunk/normalize.css");
 // @import "vendor/sass-bootstrap/dist/css/bootstrap-theme.scss";
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+// @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 // @import "public/vendor/css/sass-bootstrap-glyphicons/scss/bootstrap-glyphicons.scss";
 
 @import "global-stylesheets/my-bootstrap-variations.scss";
 @import "global-stylesheets/app.scss";
-@import "components/calendar-habit-results/styles.scss";
+@import "components/calendar/styles.scss";

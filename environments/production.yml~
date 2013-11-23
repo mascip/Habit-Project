@@ -44,9 +44,9 @@ css_files:
  # - '"css/thehabitslab.webflow.css"'
  # - '"css/style.css"'
   - '"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"'
+  - "'app/main.css'"
  # - '"css/app.css"'
 # - '"//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" media="screen"'
  # - '"css/vendor/bootstrap.min.css"'
  # - '"//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"'
  #- '"//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css"' # Optional theme
-  # - "'app/main.css"'

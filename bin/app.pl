@@ -10,11 +10,16 @@ use FindBin;
 use lib "$FindBin::Bin/../lib";
 
 use IO::All;
+use Path::Iterator::Rule;
 
 use HabitLab;
 use Plack::Builder;
+use Plack::Middleware::Assets;
+use Plack::App::MCCS;
+ 
+ 
+my $app = builder {
 
-builder {
 
     # Both in Production and Development
     
@@ -56,14 +61,30 @@ builder {
     #     }
     # );
 
-    # Minify and Concatenate JS and CSS files
-    # enable "Assets",
-    #     files => [<**/*.js>],
-    #     minify => 1; 
+    # Minify and Concatenate JS and CSS files    
+    my $rules = Path::Iterator::Rule->new;
+    my @css_files = $rules->skip_dirs( qr/vendor/ )
+        ->name( qr/\.css/ )
+        # ->and(
+        #     $rules->new->not(name( qr/\.min/ ))
+        # )
+        ->all;
+    # say $_ for @css_files;
+    my $rules_js = Path::Iterator::Rule->new;
+    my @js_files = $rules_js->skip_dirs( qr/vendor/ )
+        ->name( qr/\.js/ )
+        # ->and(
+        #     $rules->new->not(name( qr/\.min/ ))
+        # )
+        ->all;
+    # say $_ for @js_files;
     enable "Assets",
-        files => ['public/app/main.css'],
+        files => \@js_files,
         minify => 1; 
-        # $env->{'psgix.assets'}->[0] points at the first asset.
+    enable "Assets",
+        files => ['public/app/main.css'], #\@css_files,
+        minify => 1; 
+    # say "ASSET:" . $env->{'psgix.assets'}->[0]; # points at the first asset.
 
     enable "Deflater",
         content_type => ['text/css','text/html','text/javascript','application/javascript'],
@@ -93,3 +114,8 @@ builder {
 
     HabitLab->dance;
 };
+
+# builder {
+#     mount '/public' => Plack::App::MCCS->new(root => '/public');
+#     mount '/' => $app;
+# }

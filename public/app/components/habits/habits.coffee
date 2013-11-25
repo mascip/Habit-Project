@@ -1,6 +1,6 @@
 'use strict'
 app_name = "myApp"
-app = angular.module "#{app_name}.services", []
+app = angular.module "#{app_name}.habits", []
 
 # Demonstrate how to register services
 # In this case it is a simple value service.

@@ -21,7 +21,6 @@
                                 </td>
                                 <td>
                                     <span class="habit-name">{{habit.name}}</span>
-                                <!-- <a class="habit-name" href="/#/habit/{{habit.name}}"></a> -->
                                 </td}>
                                 <td class="current-streak">
                                     <span class="my-badge ng-class:habit.tickedAgo(0)">{{habit.streakAgo(0)}}</span>
@@ -30,7 +29,7 @@
                                     {{habit.countResults.done}} / {{habit.countResults.total}}
                                 </td>
                                 <td>
-                                    <span popover="manage habit" popover-trigger="mouseenter" popover-placement="left"><a class="habit-name" ui-sref="habitBoard({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o" alt="Go to next week"></i></button></a></span>
+                                    <span popover="manage habit" popover-trigger="mouseenter" popover-placement="left"><a ui-sref="habitBoard({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button></a></span>
                                     
                                 </td>
                             

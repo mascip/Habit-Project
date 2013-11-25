@@ -22,7 +22,7 @@ hook before_template_render => sub {
 
 ### ROUTES
 get '/' => sub {
-    template 'index2';
+    template 'index';
 };
 
 1;

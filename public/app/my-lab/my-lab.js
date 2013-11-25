@@ -8,7 +8,7 @@
   app = angular.module("" + app_name + ".ctrl-my-lab", ['ui.bootstrap', 'ui.router']);
 
   app.controller('CtrlMyLab', CtrlMyLab = (function() {
-    function CtrlMyLab($scope, $state, ActiveHabit, Habit, MyHabits, TheTime) {
+    function CtrlMyLab($scope, $state, ActiveHabit, MyHabits, HabitTemplates, TheTime) {
       var today;
       $scope.daysAgo = 0;
       today = TheTime.today();
@@ -22,9 +22,7 @@
         $scope.selectedDay = moment(today).add('days', $scope.daysAgo);
         return $scope.displayedDay = $scope.selectedDay.valueOf();
       });
-      $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized', 'Stay Organized', 'Organize Emails'], function(name) {
-        return new Habit(name);
-      });
+      $scope.allHabits = HabitTemplates;
       $scope.myHabits = MyHabits;
       $scope.inputHabitName = void 0;
       $scope.allHabitNames = _.pluck($scope.allHabits, 'name');

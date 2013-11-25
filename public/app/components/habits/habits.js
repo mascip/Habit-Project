@@ -6,7 +6,7 @@
 
   app_name = "myApp";
 
-  app = angular.module("" + app_name + ".services", []);
+  app = angular.module("" + app_name + ".habits", []);
 
   app.value('version', '0.1');
 

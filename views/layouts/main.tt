@@ -17,7 +17,7 @@
 
         <!-- Load useful Js libraries -->
         <% FOREACH js_file IN  js_files %>
-        <script src="<% js_file %>"></script>
+            <script src="<% js_file %>"></script>
         <% END %>
     </head>
     <body>
@@ -25,20 +25,25 @@
         <% content %>
 
 
+        <!-- Load my Coffeescript files -->
+        <% FOREACH coffee_file IN  coffee_files %>
+            <script src="<% coffee_file %>"></script>
+        <% END %>
+
 
         <!-- My JS libraries -->
         <!-- <script src="app/all.js"></script> -->
-        <script src="app/app.js"></script>
-        <script src="app/tabs/tabs.js"></script>
-        <script src="app/habit-board/habit-board.js"></script>
-        <script src="app/my-lab/my-lab.js"></script>
-        <script src="app/components/habits/habits.js"></script>
-        <script src="app/components/filters.js"></script>
-        <script src="app/components/directives.js"></script>
-        <script src="app/components/calendar/calendar-days.js"></script>
-        <script src="app/components/calendar/calendar-habit-results.js"></script>
-        <script src="app/components/check-button/check-button.js"></script>
-        <script src="app/components/the-time.js"></script>
+        <!-- <script src="app/app.js"></script> -->
+        <!-- <script src="app/tabs/tabs.js"></script> -->
+        <!-- <script src="app/habit-board/habit-board.js"></script> -->
+        <!-- <script src="app/my-lab/my-lab.js"></script> -->
+        <!-- <script src="app/components/habits/habits.js"></script> -->
+        <!-- <script src="app/components/filters.js"></script> -->
+        <!-- <script src="app/components/directives.js"></script> -->
+        <!-- <script src="app/components/calendar/calendar-days.js"></script> -->
+        <!-- <script src="app/components/calendar/calendar-habit-results.js"></script> -->
+        <!-- <script src="app/components/check-button/check-button.js"></script> -->
+        <!-- <script src="app/components/the-time.js"></script> -->
         <!-- END My JS libraries -->
         
     </body>

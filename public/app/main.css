@@ -8389,3 +8389,16 @@ header {
 .habit-results-calendar button.disabled i {
   opacity: 0;
 }
+
+/* line 1, admin/habitTemplates.scss */
+#habit-templates-list {
+  font-size: 1.2em;
+}
+/* line 3, admin/habitTemplates.scss */
+#habit-templates-list > .row {
+  padding: 5px 0px 5px 10px;
+}
+/* line 6, admin/habitTemplates.scss */
+#habit-templates-list > .row.habit {
+  border-bottom: 1px solid lightgray;
+}

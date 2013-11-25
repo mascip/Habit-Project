@@ -4,7 +4,7 @@ app = angular.module "#{app_name}.ctrl-my-lab", ['ui.bootstrap', 'ui.router']
 
 app.controller 'CtrlMyLab',
 class CtrlMyLab
-    constructor: ($scope, $state, ActiveHabit, Habit, MyHabits, TheTime) ->
+    constructor: ($scope, $state, ActiveHabit, MyHabits, HabitTemplates, TheTime) ->
 
         ## DATA
 
@@ -30,9 +30,7 @@ class CtrlMyLab
         )
 
         # Habits data
-        $scope.allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized', 'Stay Organized', 'Organize Emails'],
-            (name) -> new Habit(name))
-
+        $scope.allHabits = HabitTemplates
         # Obtain the pre-prepared list of Habits and results
         $scope.myHabits = MyHabits
 
@@ -58,6 +56,7 @@ class CtrlMyLab
         $scope.pickedDate = today.format('YYYY-MM-DD')
         $scope.addOneHabit = (habitName, nbDaysToInit) ->
             alert('Defect: a Habit must have a name') if habitName == undefined || habitName == ''
+            # Add the habit
             $scope.myHabits.push(new ActiveHabit habitName, nbDaysToInit)
             console.log("Habit #{habitName} added")
             

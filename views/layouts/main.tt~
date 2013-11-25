@@ -17,7 +17,7 @@
 
         <!-- Load useful Js libraries -->
         <% FOREACH js_file IN  js_files %>
-        <script src="<% js_file %>"></script>
+            <script src="<% js_file %>"></script>
         <% END %>
     </head>
     <body>
@@ -25,9 +25,19 @@
         <% content %>
 
 
+        <!-- Load my Coffeescript files -->
+        <% FOREACH coffee_file IN  coffee_files %>
+            <script src="<% coffee_file %>"></script>
+        <% END %>
+
+        <!-- Load the JS version of my Coffeescript files -->
+        <!-- <% FOREACH coffee_file IN  coffee_files %> -->
+            <!-- <% corresponding_js_file = --> 
+        <!-- <script src="<% coffee_file %>"></script> -->
+        <!-- <% END %> -->
 
         <!-- My JS libraries -->
-        <script src="app/all.js"></script>
+        <!-- <script src="app/all.js"></script> -->
         <!-- <script src="app/app.js"></script> -->
         <!-- <script src="app/tabs/tabs.js"></script> -->
         <!-- <script src="app/habit-board/habit-board.js"></script> -->

@@ -7,8 +7,9 @@
                 <h4>          Learn about yourself, change your life!</h4>
             </div>
             <div class="col-md-3">
-                <p class="logged-in">
-                    Connected as <span class="user-first-name pull-right">Pierre M.</span>
+                <p class="logged-in pull-right">
+                    Connected as <span class="user-first-name">Pierre M.</span><br/>
+                    <a ui-sref="adminhabit"><button>Admin</button></a>
                 </p>
             </div>
         </div>

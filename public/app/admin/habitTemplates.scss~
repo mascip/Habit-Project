@@ -1,0 +1,12 @@
+#habit-templates-list {
+    font-size: 1.2em;
+    > .row {
+        padding: 5px 0px 5px 10px;
+    }
+    > .row.habit {
+        border-bottom: 1px solid lightgray;
+        > button {
+            // margin-right: 10px;
+        }
+    }
+}

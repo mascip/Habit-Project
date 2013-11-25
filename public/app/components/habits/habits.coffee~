@@ -41,7 +41,6 @@ app.factory 'ActiveHabit', (Habit, TheTime) ->
         # @name: the name of the habit (eg:meditation)
         # prevResults: a list of previous results. The N-th element was N days ago
         constructor: (name, nbDaysToInit=0, prevResults=[]) ->
-            alert(nbDaysToInit)
             @habit = new Habit(name)
             @name = @habit.name
             @results = _.clone prevResults
@@ -55,14 +54,13 @@ app.factory 'ActiveHabit', (Habit, TheTime) ->
                 @results.unshift(unknownResult)
                 
             @addUnknownResults = (nbDays=0, lastDay=TheTime.today(), prevStreak=0) ->
-                alert(nbDays)
                 for daysAgo in [0..nbDays]
                     theDay = moment(lastDay).subtract(daysAgo, 'days')
                     @addOneUnknownResult(theDay, prevStreak)
 
             # Result currently selected by the user (default: today's result)
             emptyHabit = prevResults.length == 0
-            addalert("Defect: to create a Habit, it must either have previous results, or past days to initialize; not both") if nbDaysToInit>0 and !emptyHabit
+            alert("Defect: to create a Habit, it must either have previous results, or past days to initialize; not both") if nbDaysToInit>0 and !emptyHabit
 
             currentStreak = if emptyHabit then 0 else _.first(prevResults).streak
             
@@ -103,7 +101,6 @@ app.factory 'ActiveHabit', (Habit, TheTime) ->
             TheTime.today().subtract(@nbDaysSinceStart()-1, 'days')
 
         inactiveOnDay: (day) ->
-            # alert(day + ' || ' +  @name + ' || ' + @startingDay() + ' || ' + day.isBefore(@startingDay()))
             day.isBefore(@startingDay()) or day.isAfter(TheTime.today())
         activeOnDay: (day) ->
             not @inactiveOnDay(day)
@@ -157,9 +154,6 @@ app.factory 'ActiveHabit', (Habit, TheTime) ->
             @countResults.total = @results.length - @countResults['unknown']
 
             @percentSuccess = @countResults.done / @countResults.total * 100
-
-        # Update the results every time the streak is changed
-        #$scope.$watch(@streak, alert('streak changed'))
 
         firstResult: -> _.last @results
 

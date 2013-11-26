@@ -4,11 +4,12 @@ app = angular.module "#{app_name}.ctrl-habit-board", ['ui.bootstrap']
 
 app.controller 'CtrlHabitBoard',
 class CtrlHabitBoard
-    constructor: ($scope, $stateParams, MyHabits) ->
+    constructor: ($scope, $stateParams, MyHabits, HabitF) ->
         # Which day is displayed to the user (nb of days ago. 0 is today)
         $scope.daysAgo = 0 # Default: today
 
         # Today
+        # TODO: refactor this with the TheTime service (see my-lab.coffee)
         now = moment()
         today = now.startOf('day')
         $scope.displayedToday = today.valueOf()
@@ -29,16 +30,13 @@ class CtrlHabitBoard
         )
 
         # Obtain the pre-prepared list of Habits and results
-        $scope.habitName = $stateParams.name
-        $scope.myHabits = MyHabits
-        $scope.habit = _.find(MyHabits, (habit) ->
-           return habit.name == $scope.habitName
-        )
+        $scope.habit = HabitF.findIn(MyHabits, $stateParams.name)
+        $scope.habitName = $scope.habit.name
 
         # Delete the habit
         $scope.stopHabit = -> 
             # alert("Not implemented yet")
-            $scope.myHabits.stopHabit(habit)
+            MyHabits.stopHabit($scope.habit)
 
         # TODO: delete duplication
         # Start date input field

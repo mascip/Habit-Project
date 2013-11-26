@@ -56,6 +56,7 @@ coffee_files:
  - "habit-board/habit-board.coffee"
  - "my-lab/my-lab.coffee"
  - "admin/habits.coffee"
+ - "admin/habits/CtrlAdminHabitsEdit.coffee"
  - "components/habits/habits.coffee"
  - "components/filters.coffee"
  - "components/directives.coffee"
@@ -64,3 +65,4 @@ coffee_files:
  - "components/check-button/check-button.coffee"
  - "components/the-time.coffee"
  - "components/habits/habit-templates.coffee"
+ - "components/habits/habit-functions.coffee"

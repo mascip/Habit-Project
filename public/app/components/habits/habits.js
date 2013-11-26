@@ -36,7 +36,7 @@
         return createSingleResult.apply(null, args);
       });
     };
-    theHabits = [new ActiveHabit('Meditation', 0, createResults([1, 'done'], [2, 'done'], [3, 'done', 3], [4, 'done', 2], [5, 'done', 1])), new ActiveHabit('Exercise', 0, createResults([1, 'failed'], [2, 'failed'], [3, 'done'], [4, 'done'], [5, 'done'], [6, 'done'], [7, 'done'], [8, 'done'], [9, 'done'], [10, 'failed'], [11, 'done'], [12, 'done'], [13, 'done'], [14, 'done'], [15, 'done'], [16, 'done'], [17, 'done'], [18, 'done'], [19, 'done'], [20, 'done'], [21, 'done'], [22, 'done'], [23, 'done'], [24, 'done']))];
+    theHabits = [new ActiveHabit('Meditation', 0, createResults([1, 'done'], [2, 'done'], [3, 'done', 3], [4, 'done', 2], [5, 'done', 1], [5, 'done', 1], [6, 'done', 1], [7, 'done', 1], [8, 'failed', 1], [9, 'done', 1], [10, 'done', 1], [11, 'done', 1])), new ActiveHabit('Exercise', 0, createResults([1, 'failed'], [2, 'failed'], [3, 'done'], [4, 'done'], [5, 'done'], [6, 'done'], [7, 'done'], [8, 'done'], [9, 'done'], [10, 'failed'], [11, 'done'], [12, 'done'], [13, 'done'], [14, 'done'], [15, 'done'], [16, 'done'], [17, 'done'], [18, 'done'], [19, 'done'], [20, 'done'], [21, 'done'], [22, 'done'], [23, 'done'], [24, 'done']))];
     theHabits.stopHabit = function(habitName) {
       return theHabits.splice(0, 1);
     };
@@ -55,19 +55,28 @@
     })();
   });
 
-  app.factory('ActiveHabit', function(Habit, TheTime) {
+  app.factory('ActiveHabit', function(HabitTemplates, HabitTemplate, TheTime, HabitUtil) {
     var ActiveHabit;
     return ActiveHabit = (function() {
       function ActiveHabit(name, nbDaysToInit, prevResults) {
-        var currentStreak, emptyHabit;
+        var currentStreak, emptyHabit, template;
         if (nbDaysToInit == null) {
           nbDaysToInit = 0;
         }
         if (prevResults == null) {
           prevResults = [];
         }
-        this.habit = new Habit(name);
-        this.name = this.habit.name;
+        template = HabitUtil.findIn(HabitTemplates, name);
+        if (template == null) {
+          template = new HabitTemplate(name, '');
+        }
+        this.getName = function() {
+          return template.getName();
+        };
+        this.getDesc = function() {
+          return template.getDesc();
+        };
+        this.myNotes = "You can leave here personal notes about your habit.<br\>            <br\>            <h2>Why I do it:</h2><br\>            <br\>            <br\>            <h2>How I do it:</h2><br\>            <br\>            <br\>            <h2>Things I have remarked:</h2>            <br\>            <br\>";
         this.results = _.clone(prevResults);
         this.addOneUnknownResult = function(day, prevStreak) {
           var unknownResult;

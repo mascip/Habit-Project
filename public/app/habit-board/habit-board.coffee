@@ -4,7 +4,7 @@ app = angular.module "#{app_name}.ctrl-habit-board", ['ui.bootstrap']
 
 app.controller 'CtrlHabitBoard',
 class CtrlHabitBoard
-    constructor: ($scope, $stateParams, MyHabits, HabitF) ->
+    constructor: ($scope, $stateParams, MyHabits, HabitUtil) ->
         # Which day is displayed to the user (nb of days ago. 0 is today)
         $scope.daysAgo = 0 # Default: today
 
@@ -29,9 +29,14 @@ class CtrlHabitBoard
             $scope.thisIsToday = $scope.selectedDay.isSame(today)
         )
 
+        $scope.tinymceOptions = 
+            menubar: false
+            statusbar: false
+            toolbar: "undo redo | styleselect | bold italic | spellchecker link image | save"
+
         # Obtain the pre-prepared list of Habits and results
-        $scope.habit = HabitF.findIn(MyHabits, $stateParams.name)
-        $scope.habitName = $scope.habit.name
+        $scope.habit = HabitUtil.findIn(MyHabits, $stateParams.name)
+        $scope.habitName = $scope.habit.getName()
         $scope.myHabits = MyHabits
 
         # Delete the habit

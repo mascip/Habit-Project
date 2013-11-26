@@ -36,9 +36,9 @@ class CtrlMyLab
 
         # New Habit input field
         $scope.inputHabitName = undefined
-        $scope.allHabitNames = _.pluck(HabitTemplates, 'name')
+        allHabitNames = _.pluck(HabitTemplates, 'name')
         $scope.myHabitNames = _.pluck(MyHabits, 'name')
-        $scope.otherHabitNames = _.difference( $scope.allHabitNames, $scope.myHabitNames)
+        $scope.otherHabitNames = _.difference( allHabitNames, $scope.myHabitNames)
 
         # Start date input field
         $scope.dateChangeIsSelected=0
@@ -54,11 +54,11 @@ class CtrlMyLab
         # When a user adds a habit
         $scope.startedDaysAgo = 0
         $scope.pickedDate = today.format('YYYY-MM-DD')
-        $scope.addOneHabit = (habitName, nbDaysToInit) ->
-            alert('Defect: a Habit must have a name') if habitName == undefined || habitName == ''
+        $scope.addOneHabit = (habName, nbDaysToInit) ->
+            alert('Defect: a Habit must have a name') if habName == undefined || habName == ''
             # Add the habit
-            MyHabits.push(new ActiveHabit habitName, nbDaysToInit)
-            console.log("Habit #{habitName} added")
+            MyHabits.push(new ActiveHabit habName, nbDaysToInit)
+            console.log("Habit #{habName} added")
             
             # Reinitialize the form to add a habit
             $scope.nowAddingHabit = false
@@ -68,7 +68,7 @@ class CtrlMyLab
             # If the habit was started several days ago, go to the Habit Board,
             # so the user can update their previous day's results
             if nbDaysToInit > 0
-                $state.transitionTo("habitBoard", {name: habitName})
+                $state.transitionTo("habitBoard", {name: habName})
            # $state.go('habit({name: name})')
            # alert(JSON.stringify(state))
 

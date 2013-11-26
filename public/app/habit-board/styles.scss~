@@ -1,7 +1,17 @@
-#habitboard {
+#habit-board {
     h3 {
         display: inline-block;
-        width: 25%;
+        // width: 25%;
+    }
+    .habit-desc {
+        margin-left: 20px;
+    }
+    h4 { 
+        margin-top: 30px;
+    }
+    textarea {
+        width: 90%;
+        height: 350px;
     }
 }
 

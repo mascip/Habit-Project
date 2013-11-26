@@ -8,7 +8,7 @@
   app = angular.module("" + app_name + ".ctrl-habit-board", ['ui.bootstrap']);
 
   app.controller('CtrlHabitBoard', CtrlHabitBoard = (function() {
-    function CtrlHabitBoard($scope, $stateParams, MyHabits, HabitF) {
+    function CtrlHabitBoard($scope, $stateParams, MyHabits, HabitUtil) {
       var now, today;
       $scope.daysAgo = 0;
       now = moment();
@@ -25,8 +25,13 @@
         $scope.displayedDay = $scope.selectedDay.valueOf();
         return $scope.thisIsToday = $scope.selectedDay.isSame(today);
       });
-      $scope.habit = HabitF.findIn(MyHabits, $stateParams.name);
-      $scope.habitName = $scope.habit.name;
+      $scope.tinymceOptions = {
+        menubar: false,
+        statusbar: false,
+        toolbar: "undo redo | styleselect | bold italic | spellchecker link image | save"
+      };
+      $scope.habit = HabitUtil.findIn(MyHabits, $stateParams.name);
+      $scope.habitName = $scope.habit.getName();
       $scope.myHabits = MyHabits;
       $scope.stopHabit = function() {
         return MyHabits.stopHabit($scope.habit);

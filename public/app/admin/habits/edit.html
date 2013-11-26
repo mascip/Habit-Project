@@ -1,5 +1,10 @@
-<div>
-    {{habitName}}
-
-    {{habit.desc}}
+<div class="container-full">
+    <div class="rounded-container row">
+        <h3>{{habitName}}</h3>
+            
+        <form method="post">
+            <textarea ui-tinymce="tinymceOptions" ng-model="habit.desc"></textarea>
+            TODO: I didn't manage to add a "link" button to this editor today. So that you can add links. I wrote to the people who implemented the editor, and will figure it out soon.
+        </form>
+    </div>
 </div>

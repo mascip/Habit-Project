@@ -8,10 +8,14 @@
   app = angular.module("" + app_name + ".CtrlAdminHabitsEdit", []);
 
   app.controller('CtrlAdminHabitsEdit', CtrlAdminHabitsEdit = (function() {
-    function CtrlAdminHabitsEdit($scope, $stateParams, HabitTemplates, HabitF) {
-      $scope.test = 'a';
-      $scope.habit = HabitF.findIn(HabitTemplates, $stateParams.name);
+    function CtrlAdminHabitsEdit($scope, $stateParams, HabitTemplates, HabitUtil) {
+      $scope.habit = HabitUtil.findIn(HabitTemplates, $stateParams.name);
       $scope.habitName = $scope.habit.name;
+      $scope.tinymceOptions = {
+        menubar: false,
+        statusbar: false,
+        toolbar: "undo redo | styleselect | bold italic | spellchecker link image | save"
+      };
     }
 
     return CtrlAdminHabitsEdit;

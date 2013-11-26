@@ -5,16 +5,21 @@
                 <div class="row">
                     <div class="col-xs-9">
                         <h3>
-                            <select ng-model="habit" ng-options='hab.name for hab in myHabits'></select>
+                            <select ng-model="habit" ng-options='hab.getName() for hab in myHabits'></select>
                         </h3>
                         <!-- <button class="btn btn-default btn-capital-text" ng-click="stopHabit(habit)">STOP HABIT</button> -->
                     </div>
+                </div>
+                <div class="row">
+                    <p class="habit-desc" ng-bind-html-unsafe="habit.getDesc()"></p>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         <calendar-habit-results></calendar-habit-results>
                     </div>
                     <div class="col-md-9" id="area-success-rate">
+                    My Notes:
+                    <textarea ui-tinymce="tinymceOptions" ng-model="habit.myNotes"></textarea>
                         <h4>Stats:</h4> 
                         <p>Habit started on : {{habit.startingDay().valueOf() | date: 'EEEE d MMM'}}</p>
                         <p>{{habit.percentSuccess | number:0}}% success : {{habit.countResults.done}} / {{habit.countResults.total}}</p>

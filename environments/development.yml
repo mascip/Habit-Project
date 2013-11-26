@@ -35,9 +35,10 @@ js_files:
  - app/vendor/js/angular-underscore.js
  # - vendor/js/ui-select2/src/select2.js
  # - vendor/js/select2/select2.js
+ - app/bower_components/tinymce/tinymce.min.js
+ - app/bower_components/angular-ui-tinymce/src/tinymce.js
 
 js_from_CDN:
- -
 
 ### CSS files to load in the Layout
     # Note: in a String, so that I can add attributes (YAML does not like whitespaces)
@@ -65,4 +66,4 @@ coffee_files:
  - "components/check-button/check-button.coffee"
  - "components/the-time.coffee"
  - "components/habits/habit-templates.coffee"
- - "components/habits/habit-functions.coffee"
+ - "components/habits/habit-util.coffee"

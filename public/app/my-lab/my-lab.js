@@ -9,7 +9,7 @@
 
   app.controller('CtrlMyLab', CtrlMyLab = (function() {
     function CtrlMyLab($scope, $state, ActiveHabit, MyHabits, HabitTemplates, TheTime) {
-      var today;
+      var allHabitNames, today;
       $scope.daysAgo = 0;
       today = TheTime.today();
       $scope.displayedToday = today.valueOf();
@@ -25,9 +25,9 @@
       $scope.allHabits = HabitTemplates;
       $scope.myHabits = MyHabits;
       $scope.inputHabitName = void 0;
-      $scope.allHabitNames = _.pluck(HabitTemplates, 'name');
+      allHabitNames = _.pluck(HabitTemplates, 'name');
       $scope.myHabitNames = _.pluck(MyHabits, 'name');
-      $scope.otherHabitNames = _.difference($scope.allHabitNames, $scope.myHabitNames);
+      $scope.otherHabitNames = _.difference(allHabitNames, $scope.myHabitNames);
       $scope.dateChangeIsSelected = 0;
       $scope.clickPrevWeek = function() {
         return $scope.daysAgo += 7;
@@ -37,18 +37,18 @@
       };
       $scope.startedDaysAgo = 0;
       $scope.pickedDate = today.format('YYYY-MM-DD');
-      $scope.addOneHabit = function(habitName, nbDaysToInit) {
-        if (habitName === void 0 || habitName === '') {
+      $scope.addOneHabit = function(habName, nbDaysToInit) {
+        if (habName === void 0 || habName === '') {
           alert('Defect: a Habit must have a name');
         }
-        MyHabits.push(new ActiveHabit(habitName, nbDaysToInit));
-        console.log("Habit " + habitName + " added");
+        MyHabits.push(new ActiveHabit(habName, nbDaysToInit));
+        console.log("Habit " + habName + " added");
         $scope.nowAddingHabit = false;
         $scope.dateChangeIsSelected = 0;
         $scope.startedDaysAgo = 0;
         if (nbDaysToInit > 0) {
           return $state.transitionTo("habitBoard", {
-            name: habitName
+            name: habName
           });
         }
       };

@@ -27,7 +27,7 @@ app.factory 'MyHabits', (ActiveHabit) ->
             
         theHabits = [
             # TODO: no need for the day number here
-            new ActiveHabit 'Meditation', 0, createResults([1,'done'], [2,'done'], [3,'done',3], [4,'done',2], [5,'done',1])
+            new ActiveHabit 'Meditation', 0, createResults([1,'done'], [2,'done'], [3,'done',3], [4,'done',2], [5,'done',1], [5,'done',1], [6,'done',1], [7,'done',1], [8,'failed',1], [9,'done',1], [10,'done',1], [11,'done',1])
             new ActiveHabit 'Exercise', 0, createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'failed'], [11,'done'], [12,'done'], [13,'done'], [14,'done'], [15,'done'], [16,'done'], [17,'done'], [18,'done'], [19,'done'], [20,'done'], [21,'done'], [22,'done'], [23,'done'], [24,'done']) 
         ]
 
@@ -38,19 +38,39 @@ app.factory 'MyHabits', (ActiveHabit) ->
 # app.factory 'MyHabits', ->
 
 
+    #TODO : delete? (useless?)
 app.factory 'Habit', ->
     class Habit
         constructor: (@name) ->
 
 
-app.factory 'ActiveHabit', (Habit, TheTime) ->
+app.factory 'ActiveHabit', (HabitTemplates, HabitTemplate, TheTime, HabitUtil) ->
     class ActiveHabit
         # A habit and the user's results to display for this habit
         # @name: the name of the habit (eg:meditation)
         # prevResults: a list of previous results. The N-th element was N days ago
         constructor: (name, nbDaysToInit=0, prevResults=[]) ->
-            @habit = new Habit(name)
-            @name = @habit.name
+            # Find the habit in the list of habit templates
+            template = HabitUtil.findIn(HabitTemplates, name)
+            template ?=  new HabitTemplate(name, '')
+                # Not in the list of templates: the user is defining her own habit
+            @getName = -> template.getName()
+            @getDesc = -> template.getDesc()
+                # I need these getters, so that I can ask for the name either from the template, or from the ActiveHabit
+                # This is because I cannot pass a String by reference in JS
+
+            @myNotes = "You can leave here personal notes about your habit.<br\>
+            <br\>
+            <h2>Why I do it:</h2><br\>
+            <br\>
+            <br\>
+            <h2>How I do it:</h2><br\>
+            <br\>
+            <br\>
+            <h2>Things I have remarked:</h2>
+            <br\>
+            <br\>"
+
             @results = _.clone prevResults
 
             @addOneUnknownResult = (day=TheTime.today(), prevStreak=0) ->

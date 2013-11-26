@@ -1,32 +1,30 @@
 <div class="container-full">
     <div class="row">
-        <div class="col-xs-4">
-            <div id="habit-templates-list" class="rounded-container admin-area"> 
-                <div class="row habit" ng-repeat="habit in habitTemplates">
-                    <div class="col-xs-7">
-                        {{habit.name}}
+        <div id="habit-templates-list" class="rounded-container admin-area col-xs-4"> 
+            <div class="row habit" ng-repeat="habit in habitTemplates">
+                <div class="col-xs-7">
+                    {{habit.name}}
+                </div>
+                <div class="col-xs-5">
+                    <a ui-sref="admin/habits/edit({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button></a>
+                    <button type="button" class="btn btn-mini btn-default" ng-click='removeHabit($index)'><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="row" ng-show='nowAddingHabit'> 
+                <form class="form-inline" role='form' name="addHabitForm" ng-submit="addOneHabitTemplate(inputHabitName)">
+                    <div class="col-xs-8">
+                        <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder='Habit name' required></input>
                     </div>
-                    <div class="col-xs-5">
-                        <a ui-sref="admin/habits/edit({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button></a>
-                        <button type="button" class="btn btn-mini btn-default" ng-click='removeHabit($index)'><i class="fa fa-times"></i></button>
+                    <div class="col-xs-4">
+                        <button type="submit" ng-disabled='!addHabitForm.$valid' class="btn btn-mini btn-default" ng-click='' style="font-size:0.6em; font-weight:bold;">ADD</button>
+                        <button type="button" class="btn btn-mini btn-default" ng-click='nowAddingHabit=false'><i class="fa fa-times"></i></button>
                     </div>
-                </div>
-                <div class="row" ng-show='nowAddingHabit'> 
-                    <form class="form-inline" role='form' name="addHabitForm" ng-submit="addOneHabitTemplate(inputHabitName)">
-                        <div class="col-xs-8">
-                            <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder='Habit name' required></input>
-                        </div>
-                        <div class="col-xs-4">
-                            <button type="submit" ng-disabled='!addHabitForm.$valid' class="btn btn-mini btn-default" ng-click='' style="font-size:0.6em; font-weight:bold;">ADD</button>
-                            <button type="button" class="btn btn-mini btn-default" ng-click='nowAddingHabit=false'><i class="fa fa-times"></i></button>
-                        </div>
-                    </form>
-                </div>
-                <div class="row"> 
-                    <div class="col-xs-2">
-                        <button class="btn btn-default" ng-click='nowAddingHabit=true' ng-hide='nowAddingHabit' alt="Add a new habit template"><i class="fa fa-plus"></i></button>
-                    </div> 
-                </div>
+                </form>
+            </div>
+            <div class="row"> 
+                <div class="col-xs-2">
+                    <button class="btn btn-default" ng-click='nowAddingHabit=true' ng-hide='nowAddingHabit' alt="Add a new habit template"><i class="fa fa-plus"></i></button>
+                </div> 
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@
                                     <check-button ticked="habit.results[daysAgo].ticked" action-when-clicked="habit.clickTickAgo(daysAgo)"></check-button>
                                 </td>
                                 <td>
-                                    <span class="habit-name">{{habit.name}}</span>
+                                    <span class="habit-name">{{habit.getName()}}</span>
                                 </td}>
                                 <td class="current-streak">
                                     <span class="my-badge ng-class:habit.tickedAgo(0)">{{habit.streakAgo(0)}}</span>
@@ -29,7 +29,7 @@
                                     {{habit.countResults.done}} / {{habit.countResults.total}}
                                 </td>
                                 <td>
-                                    <span popover="manage habit" popover-trigger="mouseenter" popover-placement="left"><a ui-sref="habitBoard({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button></a></span>
+                                    <span popover="manage habit" popover-trigger="mouseenter" popover-placement="left"><a ui-sref="habitBoard({name: habit.getName()})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button></a></span>
                                     
                                 </td>
                             

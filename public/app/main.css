@@ -8331,22 +8331,28 @@ button.done i {
 }
 
 /* line 187, global-stylesheets/app.scss */
+.container-full {
+  margin: 0 auto;
+  width: 95%;
+}
+
+/* line 192, global-stylesheets/app.scss */
 .btn-capital-text {
   font-size: 0.8em;
   font-weight: bold;
 }
 
-/* line 193, global-stylesheets/app.scss */
+/* line 198, global-stylesheets/app.scss */
 header {
   margin-bottom: 10px;
 }
 
-/* line 197, global-stylesheets/app.scss */
+/* line 202, global-stylesheets/app.scss */
 .header .logged-in {
   margin-top: 20px;
   margin-right: 15px;
 }
-/* line 200, global-stylesheets/app.scss */
+/* line 205, global-stylesheets/app.scss */
 .header .logged-in .user-first-name {
   font-weight: bold;
 }
@@ -8354,7 +8360,19 @@ header {
 /* line 2, habit-board/styles.scss */
 #habit-board h3 {
   display: inline-block;
-  width: 25%;
+}
+/* line 6, habit-board/styles.scss */
+#habit-board .habit-desc {
+  margin-left: 20px;
+}
+/* line 9, habit-board/styles.scss */
+#habit-board h4 {
+  margin-top: 20px;
+}
+/* line 12, habit-board/styles.scss */
+#habit-board textarea {
+  width: 90%;
+  height: 350px;
 }
 
 /* line 3, components/calendar/styles.scss */

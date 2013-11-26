@@ -1,5 +1,17 @@
 /* line 2, styles.scss */
 #habit-board h3 {
   display: inline-block;
-  width: 25%;
+}
+/* line 6, styles.scss */
+#habit-board .habit-desc {
+  margin-left: 20px;
+}
+/* line 9, styles.scss */
+#habit-board h4 {
+  margin-top: 20px;
+}
+/* line 12, styles.scss */
+#habit-board textarea {
+  width: 90%;
+  height: 350px;
 }

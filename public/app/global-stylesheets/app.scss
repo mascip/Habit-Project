@@ -184,6 +184,11 @@ button {
     // & .unknown {
     //     color: $color-unknown-streak;
 
+.container-full {
+  margin: 0 auto;
+  width: 95%;
+}
+
 .btn-capital-text {
     // TODO: import btn and btn-default
     font-size: 0.8em; 

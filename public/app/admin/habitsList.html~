@@ -1,13 +1,12 @@
 <div class="container-full">
     <div class="row">
-        <div class="col-xs-4">
-            <div id="habit-templates-list" class="rounded-container admin-area"> 
+            <div id="habit-templates-list" class="rounded-container admin-area col-xs-4"> 
                 <div class="row habit" ng-repeat="habit in habitTemplates">
                     <div class="col-xs-7">
                         {{habit.name}}
                     </div>
                     <div class="col-xs-5">
-                        <a ui-sref="admin/:name/edit({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button></a>
+                        <a ui-sref="admin/habits/edit({name: habit.name})"><button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button></a>
                         <button type="button" class="btn btn-mini btn-default" ng-click='removeHabit($index)'><i class="fa fa-times"></i></button>
                     </div>
                 </div>
@@ -28,7 +27,6 @@
                     </div> 
                 </div>
             </div>
-        </div>
     </div>
 </div>
 

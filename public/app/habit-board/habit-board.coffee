@@ -54,8 +54,3 @@ class CtrlHabitBoard
         $scope.clickNextWeek = ->
             # TODO: move to latest day, if it's less than 7 days ahead?
             $scope.daysAgo -= 7
-
-            
-app.directive 'habite', ->
-    restict: 'E'
-    template: '<div>Hi there</div>'

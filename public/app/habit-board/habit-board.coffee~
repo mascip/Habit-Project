@@ -32,6 +32,7 @@ class CtrlHabitBoard
         # Obtain the pre-prepared list of Habits and results
         $scope.habit = HabitF.findIn(MyHabits, $stateParams.name)
         $scope.habitName = $scope.habit.name
+        $scope.myHabits = MyHabits
 
         # Delete the habit
         $scope.stopHabit = -> 

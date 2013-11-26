@@ -7,20 +7,12 @@
 
   app = angular.module("" + app_name + ".HabitF", []);
 
-  app.factory('HabitF', function(Habit) {
-    var HabitF;
-    return HabitF = (function() {
-      function HabitF() {}
-
-      HabitF.prototype.contructor = HabitF.findIn = function(habitService, name) {
-        return _.find(habitService, function(habit) {
-          return habit.name === name;
-        });
-      };
-
-      return HabitF;
-
-    })();
+  app.service('HabitF', function() {
+    return this.findIn = function(habitService, name) {
+      return _.find(habitService, function(habit) {
+        return habit.name === name;
+      });
+    };
   });
 
 }).call(this);

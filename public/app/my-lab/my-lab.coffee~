@@ -37,7 +37,7 @@ class CtrlMyLab
         # New Habit input field
         $scope.inputHabitName = undefined
         $scope.allHabitNames = _.pluck($scope.allHabits, 'name')
-        $scope.myHabitNames = _.pluck($scope.myHabits, 'name')
+        $scope.myHabitNames = _.pluck(MyHabits, 'name')
         $scope.otherHabitNames = _.difference( $scope.allHabitNames, $scope.myHabitNames)
 
         # Start date input field
@@ -56,7 +56,8 @@ class CtrlMyLab
         $scope.pickedDate = today.format('YYYY-MM-DD')
         $scope.addOneHabit = (habitName, nbDaysToInit) ->
             alert('Defect: a Habit must have a name') if habitName == undefined || habitName == ''
-            $scope.myHabits.push(new ActiveHabit habitName, nbDaysToInit)
+            # Add the habit
+            MyHabits.push(new ActiveHabit habitName, nbDaysToInit)
             console.log("Habit #{habitName} added")
             
             # Reinitialize the form to add a habit

@@ -47,11 +47,4 @@
 
   })());
 
-  app.directive('habite', function() {
-    return {
-      restict: 'E',
-      template: '<div>Hi there</div>'
-    };
-  });
-
 }).call(this);

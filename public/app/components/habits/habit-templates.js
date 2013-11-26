@@ -7,12 +7,25 @@
 
   app = angular.module("" + app_name + ".srvc-habit-templates", []);
 
-  app.factory('HabitTemplates', function(Habit) {
+  app.factory('HabitTemplates', function(HabitTemplate) {
     var allHabits;
     allHabits = _.map(['Meditation', 'Exercise', 'Procrastination', 'Get Organized', 'Stay Organized', 'Organize Emails'], function(name) {
-      return new Habit(name);
+      return new HabitTemplate(name);
     });
     return allHabits;
+  });
+
+  app.factory('HabitTemplate', function() {
+    var HabitTemplate;
+    return HabitTemplate = (function() {
+      function HabitTemplate(name, desc) {
+        this.name = name;
+        this.desc = desc != null ? desc : '';
+      }
+
+      return HabitTemplate;
+
+    })();
   });
 
 }).call(this);

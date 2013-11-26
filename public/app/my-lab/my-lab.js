@@ -25,8 +25,8 @@
       $scope.allHabits = HabitTemplates;
       $scope.myHabits = MyHabits;
       $scope.inputHabitName = void 0;
-      $scope.allHabitNames = _.pluck($scope.allHabits, 'name');
-      $scope.myHabitNames = _.pluck($scope.myHabits, 'name');
+      $scope.allHabitNames = _.pluck(HabitTemplates, 'name');
+      $scope.myHabitNames = _.pluck(MyHabits, 'name');
       $scope.otherHabitNames = _.difference($scope.allHabitNames, $scope.myHabitNames);
       $scope.dateChangeIsSelected = 0;
       $scope.clickPrevWeek = function() {
@@ -41,7 +41,7 @@
         if (habitName === void 0 || habitName === '') {
           alert('Defect: a Habit must have a name');
         }
-        $scope.myHabits.push(new ActiveHabit(habitName, nbDaysToInit));
+        MyHabits.push(new ActiveHabit(habitName, nbDaysToInit));
         console.log("Habit " + habitName + " added");
         $scope.nowAddingHabit = false;
         $scope.dateChangeIsSelected = 0;

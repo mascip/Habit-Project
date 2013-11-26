@@ -1,0 +1,5 @@
+/* line 2, styles.scss */
+#habit-board h3 {
+  display: inline-block;
+  width: 25%;
+}

@@ -7,7 +7,7 @@
 
   app_name = "myApp";
 
-  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".habits", "" + app_name + ".srvc-habit-templates", "" + app_name + ".directives", "" + app_name + ".ctrl-habit-board", "" + app_name + ".ctrl-tabs", "" + app_name + ".ctrl-my-lab", "" + app_name + ".calendarHabitResults", "" + app_name + ".CalendarDays", "" + app_name + ".TheTime", "" + app_name + ".CheckButton", "" + app_name + ".ctrl-admin-habits", "angular-underscore", "ui.router"]);
+  app = angular.module(app_name, ["" + app_name + ".filters", "" + app_name + ".habits", "" + app_name + ".srvc-habit-templates", "" + app_name + ".directives", "" + app_name + ".ctrl-habit-board", "" + app_name + ".ctrl-tabs", "" + app_name + ".ctrl-my-lab", "" + app_name + ".calendarHabitResults", "" + app_name + ".CalendarDays", "" + app_name + ".TheTime", "" + app_name + ".CheckButton", "" + app_name + ".ctrl-admin-habits", "" + app_name + ".CtrlAdminHabitsEdit", "angular-underscore", "ui.router"]);
 
   app.config(function($stateProvider, $urlRouterProvider) {
     var navTabs;
@@ -50,6 +50,15 @@
         "": {
           templateUrl: 'app/admin/habitsList.html',
           controller: 'CtrlAdminHabitsList'
+        }
+      }
+    }).state('admin/habits/edit', {
+      url: '/admin/habits/:name/edit',
+      views: {
+        "nav-tabs": navTabs,
+        "": {
+          templateUrl: 'app/admin/habits/edit.html',
+          controller: 'CtrlAdminHabitsEdit'
         }
       }
     });

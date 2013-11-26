@@ -7,7 +7,7 @@
                         <h3>
                             <select ng-model="habit" ng-options='hab.name for hab in myHabits'></select>
                         </h3>
-                        <button class="btn btn-default btn-capital-text" ng-click="stopHabit(habit)">STOP HABIT</button>
+                        <!-- <button class="btn btn-default btn-capital-text" ng-click="stopHabit(habit)">STOP HABIT</button> -->
                     </div>
                 </div>
                 <div class="row">

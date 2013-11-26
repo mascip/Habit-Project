@@ -24,11 +24,19 @@ app.factory 'MyHabits', (ActiveHabit) ->
                 #createSingleResult.apply(this,args)
                 createSingleResult(args...)
             )
+            
+        theHabits = [
             # TODO: no need for the day number here
-        return [
-                new ActiveHabit 'Meditation', 0, createResults([1,'done'], [2,'done'], [3,'done',3], [4,'done',2], [5,'done',1])
-                new ActiveHabit 'Exercise', 0, createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'failed'], [11,'done'], [12,'done'], [13,'done'], [14,'done'], [15,'done'], [16,'done'], [17,'done'], [18,'done'], [19,'done'], [20,'done'], [21,'done'], [22,'done'], [23,'done'], [24,'done']) 
+            new ActiveHabit 'Meditation', 0, createResults([1,'done'], [2,'done'], [3,'done',3], [4,'done',2], [5,'done',1])
+            new ActiveHabit 'Exercise', 0, createResults([1,'failed'], [2,'failed'], [3,'done'], [4,'done'], [5,'done'], [6,'done'], [7,'done'], [8,'done'], [9,'done'], [10,'failed'], [11,'done'], [12,'done'], [13,'done'], [14,'done'], [15,'done'], [16,'done'], [17,'done'], [18,'done'], [19,'done'], [20,'done'], [21,'done'], [22,'done'], [23,'done'], [24,'done']) 
         ]
+
+        theHabits.stopHabit = (habitName) -> theHabits.splice(0,1)
+
+        return theHabits
+
+# app.factory 'MyHabits', ->
+
 
 app.factory 'Habit', ->
     class Habit

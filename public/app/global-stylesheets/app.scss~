@@ -184,6 +184,12 @@ button {
     // & .unknown {
     //     color: $color-unknown-streak;
 
+.btn-capital-text {
+    // TODO: import btn and btn-default
+    font-size: 0.6em; 
+    font-weight: bold;
+}
+
 header {
     margin-bottom: 10px;
 }
@@ -191,7 +197,7 @@ header {
     .logged-in {
         margin-top:20px; 
         margin-right: 15px;
-        > .user-first-name {
+        .user-first-name {
             font-weight: bold;
         }
     }

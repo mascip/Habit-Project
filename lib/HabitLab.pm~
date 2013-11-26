@@ -12,6 +12,7 @@ hook 'before_template' => sub {
 
     $request->{js_files} =  config->{js_files};
     $request->{css_files} =  config->{css_files};
+    $request->{coffee_files} =  config->{coffee_files};
 };
 
 # Base folder (if the website is not running under '/' )

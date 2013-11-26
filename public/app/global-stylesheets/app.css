@@ -183,16 +183,22 @@ button.done i {
 }
 
 /* line 187, app.scss */
+.btn-capital-text {
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+/* line 193, app.scss */
 header {
   margin-bottom: 10px;
 }
 
-/* line 191, app.scss */
+/* line 197, app.scss */
 .header .logged-in {
   margin-top: 20px;
   margin-right: 15px;
 }
-/* line 194, app.scss */
+/* line 200, app.scss */
 .header .logged-in .user-first-name {
   font-weight: bold;
 }

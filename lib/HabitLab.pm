@@ -10,6 +10,7 @@ our $VERSION = '0.1';
 hook 'before_template' => sub { 
     my $request = shift; 
 
+    $request->{js_from_CDN} =  config->{js_from_CDN};
     $request->{js_files} =  config->{js_files};
     $request->{css_files} =  config->{css_files};
     $request->{coffee_files} =  config->{coffee_files};

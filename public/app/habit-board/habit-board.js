@@ -30,6 +30,9 @@
       $scope.habit = _.find(MyHabits, function(habit) {
         return habit.name === $scope.habitName;
       });
+      $scope.stopHabit = function() {
+        return $scope.myHabits.stopHabit($scope.habit);
+      };
       $scope.dateChangeIsSelected = 0;
       $scope.wasActive = function(habit) {
         return habit.wasActive($scope.daysAgo);

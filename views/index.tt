@@ -9,7 +9,7 @@
             <div class="col-md-3">
                 <p class="logged-in pull-right">
                     Connected as <span class="user-first-name">Pierre M.</span><br/>
-                    <a ui-sref="adminhabits"><button>Admin</button></a>
+                    <a ui-sref="admin/habits"><button>Admin</button></a>
                 </p>
             </div>
         </div>

@@ -35,6 +35,11 @@ class CtrlHabitBoard
            return habit.name == $scope.habitName
         )
 
+        # Delete the habit
+        $scope.stopHabit = -> 
+            # alert("Not implemented yet")
+            $scope.myHabits.stopHabit($scope.habit)
+
         # TODO: delete duplication
         # Start date input field
         $scope.dateChangeIsSelected=0

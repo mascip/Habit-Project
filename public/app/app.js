@@ -43,7 +43,7 @@
           controller: ''
         }
       }
-    }).state('adminhabits', {
+    }).state('admin/habits', {
       url: '/admin/habits',
       views: {
         "nav-tabs": navTabs,

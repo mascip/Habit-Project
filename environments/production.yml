@@ -17,10 +17,20 @@ route_cache: 1
 
 # JS files to load in the Layout
 js_files:
- - https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js 
-    # angular
+ - app/production_application.js
+
+js_files_to_concatenate:
  - app/vendor/js/ui-router.js
     # ui-router
+ #- //cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js # angular-ui-bootstrap
+ - app/vendor/js/angular-ui/bootstrap3_bis2/ui-bootstrap-0.6.0.min.js
+     # <!-- Don't forget to add the 'ui.bootstrap' dependency in the modules -->
+     # Also, the templates are in public/template!
+ - app/vendor/js/angular-underscore.js
+
+js_from_CDN:
+ - https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js 
+    # angular
  - //cdnjs.cloudflare.com/ajax/libs/lodash.js/2.2.1/lodash.js 
     # lodash
  - //cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js 
@@ -29,12 +39,8 @@ js_files:
     # jquery
  # - http://code.jquery.com/jquery-migrate-1.2.1.min.js # jquery-migrate
  - //netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js 
-    # bootstrap
- #- //cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js # angular-ui-bootstrap
- - app/vendor/js/angular-ui/bootstrap3_bis2/ui-bootstrap-0.6.0.min.js
-     # <!-- Don't forget to add the 'ui.bootstrap' dependency in the modules -->
-     # Also, the templates are in public/template!
- - app/vendor/js/angular-underscore.js
+
+coffee_files:
 
 # CSS files to load in the Layout
 # Note: in a String, so that I can add attributes (YAML does not like whitespaces)

@@ -46,7 +46,7 @@
                                 <form class="form-inline" role='form' name="addHabitForm" ng-submit="addOneHabit(inputHabitName, startedDaysAgo)">
                                     <td> <!-- tick buttons column --> </td>
                                     <td>
-                                        <input type="text" required></input>
+                                        <input type="text" class='input-habit-name' ng-model='inputHabitName' placeholder='Habit name' typeahead="name for name in otherHabitNames | filter:$viewValue | limitTo:8" required></input>
                                     </td>
                                     <td>
                                         started 

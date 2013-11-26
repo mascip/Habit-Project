@@ -10,9 +10,7 @@
   app.controller('CtrlTabs', CtrlTabs = (function() {
     function CtrlTabs($scope, $location, $state) {
       $scope.isActive = function(viewLocation) {
-        var res;
-        res = $state.includes(viewLocation);
-        return res;
+        return $state.includes(viewLocation);
       };
     }
 

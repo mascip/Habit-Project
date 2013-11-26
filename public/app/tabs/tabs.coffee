@@ -6,8 +6,7 @@ app.controller 'CtrlTabs',
 class CtrlTabs
     constructor: ($scope, $location, $state) ->
         $scope.isActive = (viewLocation) ->
-            res = $state.includes(viewLocation)
-            return res
-            # TODO: it is called to often. I could keep a list of tabs here, 
+            $state.includes(viewLocation)
+            # TODO: it is called to very frequently (too often?). I could keep a list of tabs here, 
             # and create an object that lists whether they are active or not.
             # It would be updated only when there is a stateChangeSuccess
